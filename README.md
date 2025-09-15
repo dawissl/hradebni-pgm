@@ -6,43 +6,59 @@
 - Zadání a implementace aplikací vytvářených v hodinách
 - Dodatečné materiály k výuce
 
+---
 
 ## Hodnocení v předmětu, podmínky klasifikace
 
-#### Odevzdaný a ohodnocený týmový/seminární projekt (váha 10)
-- Známka je nutnou součástí klasifikace
+### Odevzdaný a ohodnocený týmový/seminární projekt (váha 10)
+- Známka je nutnou součástí klasifikace.
+- Seminární projekt se realizuje zejména ve vyšších ročnících (3.–4. ročník).  
+- V nižších ročnících nebo v některých pololetích nemusí být projekt zadán – v takovém případě se tato část hodnocení neuplatňuje.
 
-#### Ústní zkoušení z probírané látky (váha 7)
-- Zkoušení probíhá jak v teoretické, tak v praktické rovině
+### Ústní zkoušení z probírané látky (váha 7)
+- Zkoušení probíhá jak v teoretické, tak v praktické rovině.  
+- V nižších ročnících slouží především k ověření průběžných znalostí.  
+- Klíčovou roli má ústní zkoušení ve 3. a 4. ročníku, kde je zaměřeno na přípravu k maturitní zkoušce.  
 
-#### Napsání a odevzdání 50% testů příslušných vah (váhy 3 - 7)
-- 50 % testů s váhou 3, 50% testů s vahou 5, ...
-- Testy si lze dopisovat do 14 dnů po ukončení absence
-- Do 14 dnů stačí domluvit termín dopsání testu
-- Testy mají různou formu (implementační, teorie) 
-- Splnění potřebného množství testů pro jednotlivé váhy je nutnou podmínkou klasifikace
+### Napsání a odevzdání 50 % testů příslušných vah (váhy 3–7)
+- 50 % testů s váhou 3, 50 % testů s váhou 5, …  
+- Testy si lze dopisovat do 14 dnů po ukončení absence.  
+- Do 14 dnů stačí domluvit termín dopsání testu.  
+- Testy mají různou formu (implementační, teorie).  
+- Splnění potřebného množství testů pro jednotlivé váhy je nutnou podmínkou klasifikace.  
 
-#### Aktivní přístup v hodinách, řešení implementace
-- V průběhu hodin bude hodnocena implementace zadaných projektů a samostatná práce (váha 3 - 5)
-- Bonusové známky lze získat za aktivitu v hodinách
+### Aktivní přístup v hodinách, řešení implementace
+- V průběhu hodin bude hodnocena implementace zadaných projektů a samostatná práce (váha 3–5).  
+- Pokud student práci v hodině neodevzdá, je tato práce hodnocena známkou **N (neklasifikováno)**. Aktivita v hodině je však hodnocena samostatně se stejnou vahou, jakou měla původní práce.  
+- Bonusové známky lze získat za aktivitu v hodinách.  
 
-#### Dobrovolné domácí práce (váha 1-3)
-- V průběhu výuky budou pro procvičení zařazovány domáci úlohy, za které lze získat známku navíc
+### Dobrovolné domácí práce (váha 1–3)
+- V průběhu výuky budou pro procvičení zařazovány domácí úlohy, za které lze získat známku navíc.  
 
-#### Výsledná známka vychází jako vážený průměr z výše uvedeného hodnocení. 
+---
 
-- Nerozhodná známka je v intervalu X,40 - X,60 (např. 2,40 - 2,60).
+## Výsledná známka
+
+- Výsledná známka vychází jako vážený průměr z výše uvedeného hodnocení.  
+- Nerozhodná známka je v intervalu **X,40–X,60** (např. 2,40–2,60).  
 - V případě nerozhodné známky rozhodují dodatečná kritéria:
   - Přístup k výuce
   - Připravenost na jednotlivé hodiny
   - Vypracování dobrovolných úkolů
   - Chování v hodinách
 
-#### Docházka
-- Student nepřekročí povolenou absenci vycházející ze školního řádu
-- V případě překročení absence je klasifikace diskutována s třídním a vyhodnocena individuálně
+---
 
-#### Konzultace k jednotlivým předmětům po předchozí domluvě s vyučujícím
+## Docházka
+- Student nepřekročí povolenou absenci vycházející ze školního řádu.  
+- V případě překročení absence je klasifikace diskutována s třídním a vyhodnocena individuálně.  
 
-### Bc. David Sládeček
+---
+
+## Konzultace
+Konzultace k jednotlivým předmětům probíhají po předchozí domluvě s vyučujícím.  
+
+---
+
+**Bc. David Sládeček**  
 sladecek@hradebni.cz
