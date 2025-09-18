@@ -28,44 +28,161 @@
         /// </summary>
         private void InitializeComponent()
         {
+            Btn_AddFilm = new Button();
+            kolekceFilmu = new ListBox();
+            txtName = new TextBox();
+            label1 = new Label();
+            label2 = new Label();
+            txtDirector = new TextBox();
+            label3 = new Label();
+            lblInfo = new Label();
+            BtnAddDialog = new Button();
             button1 = new Button();
-            LblOut = new Label();
+            saveFileDialog1 = new SaveFileDialog();
+            openFileDialog1 = new OpenFileDialog();
+            button2 = new Button();
             SuspendLayout();
+            // 
+            // Btn_AddFilm
+            // 
+            Btn_AddFilm.Location = new Point(57, 44);
+            Btn_AddFilm.Name = "Btn_AddFilm";
+            Btn_AddFilm.Size = new Size(136, 51);
+            Btn_AddFilm.TabIndex = 0;
+            Btn_AddFilm.Text = "button1";
+            Btn_AddFilm.UseVisualStyleBackColor = true;
+            Btn_AddFilm.Click += Btn_AddFilm_Click;
+            // 
+            // kolekceFilmu
+            // 
+            kolekceFilmu.FormattingEnabled = true;
+            kolekceFilmu.ItemHeight = 15;
+            kolekceFilmu.Location = new Point(300, 46);
+            kolekceFilmu.Name = "kolekceFilmu";
+            kolekceFilmu.Size = new Size(165, 379);
+            kolekceFilmu.TabIndex = 1;
+            // 
+            // txtName
+            // 
+            txtName.Location = new Point(47, 161);
+            txtName.Name = "txtName";
+            txtName.Size = new Size(169, 23);
+            txtName.TabIndex = 2;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(73, 125);
+            label1.Name = "label1";
+            label1.Size = new Size(37, 15);
+            label1.TabIndex = 3;
+            label1.Text = "nazev";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(73, 214);
+            label2.Name = "label2";
+            label2.Size = new Size(40, 15);
+            label2.TabIndex = 5;
+            label2.Text = "režiser";
+            // 
+            // txtDirector
+            // 
+            txtDirector.Location = new Point(47, 250);
+            txtDirector.Name = "txtDirector";
+            txtDirector.Size = new Size(169, 23);
+            txtDirector.TabIndex = 4;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(520, 51);
+            label3.Name = "label3";
+            label3.Size = new Size(28, 15);
+            label3.TabIndex = 6;
+            label3.Text = "Info";
+            // 
+            // lblInfo
+            // 
+            lblInfo.BorderStyle = BorderStyle.FixedSingle;
+            lblInfo.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            lblInfo.Location = new Point(520, 80);
+            lblInfo.Name = "lblInfo";
+            lblInfo.Size = new Size(166, 333);
+            lblInfo.TabIndex = 7;
+            // 
+            // BtnAddDialog
+            // 
+            BtnAddDialog.Location = new Point(34, 301);
+            BtnAddDialog.Name = "BtnAddDialog";
+            BtnAddDialog.Size = new Size(136, 51);
+            BtnAddDialog.TabIndex = 8;
+            BtnAddDialog.Text = "Dialo přidání";
+            BtnAddDialog.UseVisualStyleBackColor = true;
+            BtnAddDialog.Click += BtnAddDialog_Click;
             // 
             // button1
             // 
-            button1.Location = new Point(57, 44);
+            button1.Location = new Point(57, 374);
             button1.Name = "button1";
             button1.Size = new Size(136, 51);
-            button1.TabIndex = 0;
-            button1.Text = "button1";
+            button1.TabIndex = 9;
+            button1.Text = "Vypsat do souboru";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
-            // LblOut
+            // openFileDialog1
             // 
-            LblOut.BorderStyle = BorderStyle.Fixed3D;
-            LblOut.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            LblOut.Location = new Point(250, 52);
-            LblOut.Name = "LblOut";
-            LblOut.Size = new Size(435, 373);
-            LblOut.TabIndex = 1;
+            openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // button2
+            // 
+            button2.Location = new Point(219, 374);
+            button2.Name = "button2";
+            button2.Size = new Size(75, 23);
+            button2.TabIndex = 10;
+            button2.Text = "button2";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(LblOut);
+            Controls.Add(button2);
             Controls.Add(button1);
+            Controls.Add(BtnAddDialog);
+            Controls.Add(lblInfo);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(txtDirector);
+            Controls.Add(label1);
+            Controls.Add(txtName);
+            Controls.Add(kolekceFilmu);
+            Controls.Add(Btn_AddFilm);
             Name = "Form1";
             Text = "Form1";
+            Load += Form1_Load;
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
+        private Button Btn_AddFilm;
+        private ListBox kolekceFilmu;
+        private TextBox txtName;
+        private Label label1;
+        private Label label2;
+        private TextBox txtDirector;
+        private Label label3;
+        private Label lblInfo;
+        private Button BtnAddDialog;
         private Button button1;
-        private Label LblOut;
+        private SaveFileDialog saveFileDialog1;
+        private OpenFileDialog openFileDialog1;
+        private Button button2;
     }
 }

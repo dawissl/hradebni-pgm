@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,9 @@ using System.Threading.Tasks;
 
 namespace _01_Filmoteka
 {
-    internal class Film
+    // třída implementuje interface IComparable, která nám umožňuje následné řazení objektu dle 
+    // našich kritérií
+    internal class Film  : IComparable<Film>
     {
         private string name;
         private string director;
@@ -38,6 +41,10 @@ namespace _01_Filmoteka
             note = string.Empty;
         }
 
+        /// <summary>
+        /// Vypisu info o filmu zejmena hodnocení
+        /// </summary>
+        /// <returns>retezec na vystup</returns>
         public string Info()
         {
             //Enviroment.NewLine - systémová konstanta pro zjištění 
@@ -53,5 +60,21 @@ namespace _01_Filmoteka
             //return name.ToUpper() + " - " + director;
             return $"{name.ToUpper()} - {director}";
         }
+
+        public string ToCsv()
+        {
+            return $"{name};{director};{rating};{note}";
+        }
+
+        public int CompareTo(Film? other)
+        {
+            if (other == null) return -1;
+            if(name.CompareTo(other.name) == 0)
+            {
+                return director.CompareTo(other.director);
+            }
+            return name.CompareTo(other.name);
+        }
+               
     }
 }
