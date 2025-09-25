@@ -18,7 +18,7 @@ namespace _01_Filmoteka
 
         public string Name { get { return name; } }
         public string Director { get { return director; } }
-
+        public string Note { get { return note; } set { note = value; } }
         public int Rating { get { return rating; } set { rating = SetRating(value); } }
 
         private int SetRating(int value)
@@ -26,11 +26,6 @@ namespace _01_Filmoteka
             if (value < 0) return 0;
             if (value > 100) return 100;
             return value;
-        }
-
-        public string Note
-        {
-            set { note = value; }
         }
 
         public Film(string name,string director)

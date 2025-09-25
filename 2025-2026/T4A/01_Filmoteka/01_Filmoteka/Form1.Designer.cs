@@ -40,7 +40,7 @@
             button1 = new Button();
             saveFileDialog1 = new SaveFileDialog();
             openFileDialog1 = new OpenFileDialog();
-            button2 = new Button();
+            BtnEdit = new Button();
             SuspendLayout();
             // 
             // Btn_AddFilm
@@ -49,7 +49,7 @@
             Btn_AddFilm.Name = "Btn_AddFilm";
             Btn_AddFilm.Size = new Size(136, 51);
             Btn_AddFilm.TabIndex = 0;
-            Btn_AddFilm.Text = "button1";
+            Btn_AddFilm.Text = "Přidat film";
             Btn_AddFilm.UseVisualStyleBackColor = true;
             Btn_AddFilm.Click += Btn_AddFilm_Click;
             // 
@@ -61,6 +61,8 @@
             kolekceFilmu.Name = "kolekceFilmu";
             kolekceFilmu.Size = new Size(165, 379);
             kolekceFilmu.TabIndex = 1;
+            kolekceFilmu.SelectedIndexChanged += kolekceFilmu_SelectedIndexChanged;
+            kolekceFilmu.DoubleClick += kolekceFilmu_DoubleClick;
             // 
             // txtName
             // 
@@ -124,7 +126,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(57, 374);
+            button1.Location = new Point(34, 358);
             button1.Name = "button1";
             button1.Size = new Size(136, 51);
             button1.TabIndex = 9;
@@ -136,22 +138,22 @@
             // 
             openFileDialog1.FileName = "openFileDialog1";
             // 
-            // button2
+            // BtnEdit
             // 
-            button2.Location = new Point(219, 374);
-            button2.Name = "button2";
-            button2.Size = new Size(75, 23);
-            button2.TabIndex = 10;
-            button2.Text = "button2";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            BtnEdit.Location = new Point(300, 431);
+            BtnEdit.Name = "BtnEdit";
+            BtnEdit.Size = new Size(162, 70);
+            BtnEdit.TabIndex = 10;
+            BtnEdit.Text = "EditaceFilmu";
+            BtnEdit.UseVisualStyleBackColor = true;
+            BtnEdit.Click += BtnEdit_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(button2);
+            ClientSize = new Size(848, 543);
+            Controls.Add(BtnEdit);
             Controls.Add(button1);
             Controls.Add(BtnAddDialog);
             Controls.Add(lblInfo);
@@ -183,6 +185,6 @@
         private Button button1;
         private SaveFileDialog saveFileDialog1;
         private OpenFileDialog openFileDialog1;
-        private Button button2;
+        private Button BtnEdit;
     }
 }

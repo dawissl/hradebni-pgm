@@ -7,7 +7,9 @@ namespace _01_Filmoteka
             InitializeComponent();
         }
 
+        // instance pro pøipravená dialogová okna, kter jsou atributy hlavního formuláøe
         private Form2 dialogoveOkno;
+        private EditFilm editaceFilmu;
 
         /// <summary>
         /// Pøidáme film do kolekce a do labelu vypíšeme všchny filmy seøazené lexikograficky
@@ -48,7 +50,7 @@ namespace _01_Filmoteka
             // úspìšným uzavøením v opaèném pøípadì se nic nevykoná
             if (dialogoveOkno.ShowDialog() == DialogResult.OK)
             {
-
+                // vytvoøení a pøidání filmu do Listbox bez vynuceného vypsání øazených položek
                 Film f = new Film(dialogoveOkno.MovieName, dialogoveOkno.MovieDirector);
                 kolekceFilmu.Items.Add(f);
             }
@@ -67,7 +69,7 @@ namespace _01_Filmoteka
         private void button1_Click(object sender, EventArgs e)
         {
             // ukladani je podmínìno volbou souboru
-       
+
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 // ustanovení proudo pro zápis
@@ -90,22 +92,50 @@ namespace _01_Filmoteka
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Editace vybraného filmu z dané kolekce. Editace probíhá pøes dialogové okno editaceFilmut
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnEdit_Click(object sender, EventArgs e)
         {
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            // v pøípadì, že není vybrána položka je v SelectedIndex -1 a chceme zabránit
+            // dalšímmu provádìní kódu
+            if (kolekceFilmu.SelectedIndex == -1)
             {
-                MessageBox.Show(openFileDialog1.FileName);
-                using (StreamReader sr = new StreamReader(openFileDialog1.FileName))
+                MessageBox.Show("Je tøeba vybrat film");
+                return;
+            }
+            else
+            {
+                // vytvoøení nové èisté instance dialogu pro editaci
+                editaceFilmu = new EditFilm();
+                if (editaceFilmu.ShowDialog() == DialogResult.OK) // editace probìhne jen pøi validním zavøení
                 {
-                    // ètení dokud nenarazíme na konec souboru
-                    while (!sr.EndOfStream)
-                    {
-                        string line = sr.ReadLine();  // vyètení jednoho øádku
-                        MessageBox.Show(line); // zobrazení naèteného øádku
-                    }
-                    sr.Close();
+                    // Vytažení zvolené položky do doèasné promìnné umožòjící následnou editaci
+                    // (Film) ekxplicitní pøetypování, abychom získali možnost volat metody dané tøídy
+                    Film f = (Film)kolekceFilmu.Items[kolekceFilmu.SelectedIndex]; 
+                    // pøístup k properties filmu a jejich editace
+                    f.Rating = editaceFilmu.Rating;
+                    f.Note = editaceFilmu.Note;
+                    // nahrazení editovaného do pùvodní kolekce
+                    kolekceFilmu.Items[kolekceFilmu.SelectedIndex] = f;
                 }
             }
+        }
+
+        private void kolekceFilmu_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void kolekceFilmu_DoubleClick(object sender, EventArgs e)
+        {
+            // nekontrolujeme vybrání položky, mùže zpùsobit výjimku za bìhu
+            Film f = (Film)kolekceFilmu.Items[kolekceFilmu.SelectedIndex];
+            // výpis do label komponenty informace o zvoleném filmu
+            lblInfo.Text = $"Název: {f.Name}{Environment.NewLine}" +
+                $"Rating:{f.Rating}{Environment.NewLine}";
         }
     }
 }
