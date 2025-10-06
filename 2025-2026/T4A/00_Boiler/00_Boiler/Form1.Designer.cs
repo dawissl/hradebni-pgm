@@ -175,7 +175,6 @@
             // Timer
             // 
             Timer.Enabled = true;
-            Timer.Interval = 200;
             Timer.Tick += Timer_Tick;
             // 
             // Form1

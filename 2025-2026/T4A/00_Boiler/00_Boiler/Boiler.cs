@@ -82,7 +82,6 @@ namespace _00_Boiler
             //return temp.ToString();
         }
 
-        textbox.Text = $"{boiler.Temp}";
 
         //DTTO
         public string HeatOff(double current_temp)

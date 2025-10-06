@@ -18,7 +18,6 @@ namespace _00_Boiler
                 ProgVolume.Value = vol;
                 if (vol <= 0) throw new Exception("Objem musí být vìtší 0");
                 boiler = new TopnyBoiler(int.Parse(TxtPower.Text), vol);
-                    boiler.
             }
             catch (FormatException ex)
             {
@@ -33,7 +32,19 @@ namespace _00_Boiler
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            if (boiler == null) return;
+            if (boiler == null) {
+                return;
+            } 
+            if (boiler.IsOn)
+            {
+                if(boiler.Temperature < 40)
+                    boiler.HeatWater();
+            }
+            else
+            {
+                boiler.CoolWater();
+            }
+            LblTemperature.Text = boiler.ToString();
         }
 
         private void BtnControl_Click(object sender, EventArgs e)
