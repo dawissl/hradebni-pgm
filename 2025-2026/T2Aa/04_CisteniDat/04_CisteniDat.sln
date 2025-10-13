@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35828.75 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04_CisteniDat", "04_CisteniDat\04_CisteniDat.csproj", "{52458FD8-47F4-42E9-B70F-D4E8BC7DAD5A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{52458FD8-47F4-42E9-B70F-D4E8BC7DAD5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52458FD8-47F4-42E9-B70F-D4E8BC7DAD5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52458FD8-47F4-42E9-B70F-D4E8BC7DAD5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52458FD8-47F4-42E9-B70F-D4E8BC7DAD5A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FB908C8F-867E-4594-89ED-E879FD9D9BCD}
+	EndGlobalSection
+EndGlobal
