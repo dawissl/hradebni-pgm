@@ -1,0 +1,87 @@
+﻿namespace _04_Grafika
+{
+    partial class Form1
+    {
+        /// <summary>
+        ///  Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        ///  Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        ///  Required method for Designer support - do not modify
+        ///  the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            PanelDraw = new Panel();
+            BtnDraw = new Button();
+            LblInfo = new Label();
+            SuspendLayout();
+            // 
+            // PanelDraw
+            // 
+            PanelDraw.BackColor = Color.White;
+            PanelDraw.BorderStyle = BorderStyle.Fixed3D;
+            PanelDraw.Location = new Point(121, 61);
+            PanelDraw.Name = "PanelDraw";
+            PanelDraw.Size = new Size(449, 296);
+            PanelDraw.TabIndex = 0;
+            PanelDraw.Paint += PanelDraw_Paint;
+            // 
+            // BtnDraw
+            // 
+            BtnDraw.Location = new Point(121, 379);
+            BtnDraw.Name = "BtnDraw";
+            BtnDraw.Size = new Size(216, 59);
+            BtnDraw.TabIndex = 1;
+            BtnDraw.Text = "Vykresli";
+            BtnDraw.UseVisualStyleBackColor = true;
+            BtnDraw.Click += BtnDraw_Click;
+            BtnDraw.Paint += BtnDraw_Paint;
+            // 
+            // LblInfo
+            // 
+            LblInfo.BorderStyle = BorderStyle.Fixed3D;
+            LblInfo.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            LblInfo.Location = new Point(357, 379);
+            LblInfo.Name = "LblInfo";
+            LblInfo.Size = new Size(207, 57);
+            LblInfo.TabIndex = 2;
+            LblInfo.Paint += LblInfo_Paint;
+            // 
+            // Form1
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(LblInfo);
+            Controls.Add(BtnDraw);
+            Controls.Add(PanelDraw);
+            Name = "Form1";
+            Text = "Form1";
+            Paint += Form1_Paint;
+            ResumeLayout(false);
+        }
+
+        #endregion
+
+        private Panel PanelDraw;
+        private Button BtnDraw;
+        private Label LblInfo;
+    }
+}
