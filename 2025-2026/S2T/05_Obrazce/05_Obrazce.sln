@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35312.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05_Obrazce", "05_Obrazce\05_Obrazce.csproj", "{FA34B368-10AC-4C02-A365-E82B4A49D431}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FA34B368-10AC-4C02-A365-E82B4A49D431}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA34B368-10AC-4C02-A365-E82B4A49D431}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA34B368-10AC-4C02-A365-E82B4A49D431}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA34B368-10AC-4C02-A365-E82B4A49D431}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {060E66A6-6370-4993-B843-E638B6ABE030}
+	EndGlobalSection
+EndGlobal
