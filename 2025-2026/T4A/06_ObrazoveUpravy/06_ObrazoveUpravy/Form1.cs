@@ -90,5 +90,28 @@ namespace _06_ObrazoveUpravy
             image = new Bitmap(PicEdit.Image);   // vytvoøí novou bitmapu z upraveného obrázku
             PicDefault.Image = PicEdit.Image;    // zobrazí ji vlevo
         }
+
+        private void zesvìtlitztmavitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PicEdit.Image = ImageProcessing.Brightness(image, 20);
+
+        }
+
+        private void obarvitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PicEdit.Image = ImageProcessing.Greyscale(image);
+        }
+
+        private void rotaceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PicEdit.Image = ImageProcessing.Rotate(image);
+
+        }
+
+        private void gaussùvFiltrToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PicEdit.Image = ImageProcessing.GaussBlur(image);
+
+        }
     }
 }

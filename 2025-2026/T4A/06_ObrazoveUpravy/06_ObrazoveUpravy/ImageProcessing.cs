@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;          // nutné pro práci s Bitmap a Color
-using System.Windows.Forms;    // kvůli MessageBox
+using System.Windows.Forms;
+using System.Diagnostics.CodeAnalysis;    // kvůli MessageBox
 
 namespace _06_ObrazoveUpravy
 {
@@ -147,6 +148,99 @@ namespace _06_ObrazoveUpravy
             }
 
             return newImage;
+        }
+
+        public static Bitmap Brightness(Bitmap img, int brightness)
+        {
+            Bitmap newImage = new Bitmap(img.Width, img.Height);
+
+            for (int x = 0; x < img.Width; x++)
+            {
+                for (int y = 0; y < img.Height; y++)
+                {
+                    int newColorValue = (int)Math.Max(0, img.GetPixel(x, y).R
+                                                        - img.GetPixel(x, y).R * (brightness / 100.0));
+                    Color newColor = Color.FromArgb(newColorValue, newColorValue, newColorValue);
+                    newImage.SetPixel(x, y, newColor);
+                }
+            }
+            return newImage;
+
+        }
+
+        public static Bitmap Greyscale(Bitmap img)
+        {
+
+            Bitmap newImage = new Bitmap(img.Width, img.Height);
+            const double RED = 0.299;
+            const double GREEN = 0.587;
+            const double BLUE = 0.114;
+
+            for (int x = 0; x < img.Width; x++)
+            {
+                for (int y = 0; y < img.Height; y++)
+                {
+                    Color c = img.GetPixel(x, y);
+                    int grey = (int)(c.R * RED + c.G * GREEN + c.B * BLUE);
+                    newImage.SetPixel(x, y, Color.FromArgb(grey, grey, grey));
+                }
+            }
+            return newImage;
+
+        }
+
+        public static Bitmap Rotate(Bitmap img)
+        {
+            Bitmap newImage = new Bitmap(img.Height, img.Width);
+            for (int x = 0; x < img.Width; x++)
+            {
+                for (int y = 0; y < img.Height; y++)
+                {
+                    Color px = img.GetPixel(x, y);
+
+                    int newX = img.Height - 1 - y;
+                    int newY = x;
+
+                    newImage.SetPixel(newX, newY, px);
+                }
+            }
+
+            return newImage;
+
+        }
+
+        public static Bitmap GaussBlur(Bitmap img)
+        {
+
+            Bitmap newImage = new Bitmap(img.Width, img.Height);
+            int[,] kernel = {
+                        { 1, 2, 1 },
+                        { 2, 4, 2 },
+                        { 1, 2, 1 }
+                          };
+            int kernelCoefficenet = 16;
+            for (int x = 1; x < img.Width - 1; x++)
+            {
+                for (int y = 1; y < img.Height - 1; y++)
+                {
+                    int sum = 0;
+                    for (int px = -1; px <= 1; px++)
+                    {
+                        for (int py = -1; py <= 1; py++)
+                        {
+                            int color = img.GetPixel(x + px, y + py).R;
+                            sum += color * kernel[py + 1, px + 1];
+                        }
+                    }
+                    int newValue = sum / kernelCoefficenet;
+                    if(newValue < 0) newValue = 0;
+                    if( newValue > 255) newValue = 255;
+                    newImage.SetPixel(x,y,Color.FromArgb(newValue,newValue,newValue));
+     
+                }
+            }
+            return newImage;
+
         }
     }
 }

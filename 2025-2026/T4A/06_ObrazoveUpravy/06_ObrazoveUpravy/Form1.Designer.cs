@@ -35,13 +35,16 @@
             otevřítToolStripMenuItem = new ToolStripMenuItem();
             uložitToolStripMenuItem = new ToolStripMenuItem();
             konecToolStripMenuItem = new ToolStripMenuItem();
+            přemístitToolStripMenuItem = new ToolStripMenuItem();
             editaceToolStripMenuItem = new ToolStripMenuItem();
             prahováníToolStripMenuItem = new ToolStripMenuItem();
             šumSůlAPepřToolStripMenuItem = new ToolStripMenuItem();
             mediánovýFiltrToolStripMenuItem = new ToolStripMenuItem();
             zesvětlitztmavitToolStripMenuItem = new ToolStripMenuItem();
             obarvitToolStripMenuItem = new ToolStripMenuItem();
-            přemístitToolStripMenuItem = new ToolStripMenuItem();
+            rotaceToolStripMenuItem = new ToolStripMenuItem();
+            gaussůvFiltrToolStripMenuItem = new ToolStripMenuItem();
+            detekceHranToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)PicDefault).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PicEdit).BeginInit();
             menuStrip1.SuspendLayout();
@@ -83,26 +86,33 @@
             // otevřítToolStripMenuItem
             // 
             otevřítToolStripMenuItem.Name = "otevřítToolStripMenuItem";
-            otevřítToolStripMenuItem.Size = new Size(180, 34);
+            otevřítToolStripMenuItem.Size = new Size(167, 34);
             otevřítToolStripMenuItem.Text = "Otevřít";
             otevřítToolStripMenuItem.Click += otevřítToolStripMenuItem_Click;
             // 
             // uložitToolStripMenuItem
             // 
             uložitToolStripMenuItem.Name = "uložitToolStripMenuItem";
-            uložitToolStripMenuItem.Size = new Size(180, 34);
+            uložitToolStripMenuItem.Size = new Size(167, 34);
             uložitToolStripMenuItem.Text = "Uložit";
             uložitToolStripMenuItem.Click += uložitToolStripMenuItem_Click;
             // 
             // konecToolStripMenuItem
             // 
             konecToolStripMenuItem.Name = "konecToolStripMenuItem";
-            konecToolStripMenuItem.Size = new Size(180, 34);
+            konecToolStripMenuItem.Size = new Size(167, 34);
             konecToolStripMenuItem.Text = "Konec";
+            // 
+            // přemístitToolStripMenuItem
+            // 
+            přemístitToolStripMenuItem.Name = "přemístitToolStripMenuItem";
+            přemístitToolStripMenuItem.Size = new Size(167, 34);
+            přemístitToolStripMenuItem.Text = "Přemístit";
+            přemístitToolStripMenuItem.Click += přemístitToolStripMenuItem_Click;
             // 
             // editaceToolStripMenuItem
             // 
-            editaceToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { prahováníToolStripMenuItem, šumSůlAPepřToolStripMenuItem, mediánovýFiltrToolStripMenuItem, zesvětlitztmavitToolStripMenuItem, obarvitToolStripMenuItem });
+            editaceToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { prahováníToolStripMenuItem, šumSůlAPepřToolStripMenuItem, mediánovýFiltrToolStripMenuItem, zesvětlitztmavitToolStripMenuItem, obarvitToolStripMenuItem, rotaceToolStripMenuItem, gaussůvFiltrToolStripMenuItem, detekceHranToolStripMenuItem });
             editaceToolStripMenuItem.Name = "editaceToolStripMenuItem";
             editaceToolStripMenuItem.Size = new Size(92, 34);
             editaceToolStripMenuItem.Text = "Editace";
@@ -133,19 +143,34 @@
             zesvětlitztmavitToolStripMenuItem.Name = "zesvětlitztmavitToolStripMenuItem";
             zesvětlitztmavitToolStripMenuItem.Size = new Size(239, 34);
             zesvětlitztmavitToolStripMenuItem.Text = "Zesvětlit/ztmavit";
+            zesvětlitztmavitToolStripMenuItem.Click += zesvětlitztmavitToolStripMenuItem_Click;
             // 
             // obarvitToolStripMenuItem
             // 
             obarvitToolStripMenuItem.Name = "obarvitToolStripMenuItem";
             obarvitToolStripMenuItem.Size = new Size(239, 34);
-            obarvitToolStripMenuItem.Text = "Obarvit";
+            obarvitToolStripMenuItem.Text = "Odbarvit";
+            obarvitToolStripMenuItem.Click += obarvitToolStripMenuItem_Click;
             // 
-            // přemístitToolStripMenuItem
+            // rotaceToolStripMenuItem
             // 
-            přemístitToolStripMenuItem.Name = "přemístitToolStripMenuItem";
-            přemístitToolStripMenuItem.Size = new Size(180, 34);
-            přemístitToolStripMenuItem.Text = "Přemístit";
-            přemístitToolStripMenuItem.Click += přemístitToolStripMenuItem_Click;
+            rotaceToolStripMenuItem.Name = "rotaceToolStripMenuItem";
+            rotaceToolStripMenuItem.Size = new Size(239, 34);
+            rotaceToolStripMenuItem.Text = "Rotace";
+            rotaceToolStripMenuItem.Click += rotaceToolStripMenuItem_Click;
+            // 
+            // gaussůvFiltrToolStripMenuItem
+            // 
+            gaussůvFiltrToolStripMenuItem.Name = "gaussůvFiltrToolStripMenuItem";
+            gaussůvFiltrToolStripMenuItem.Size = new Size(239, 34);
+            gaussůvFiltrToolStripMenuItem.Text = "Gaussův filtr";
+            gaussůvFiltrToolStripMenuItem.Click += gaussůvFiltrToolStripMenuItem_Click;
+            // 
+            // detekceHranToolStripMenuItem
+            // 
+            detekceHranToolStripMenuItem.Name = "detekceHranToolStripMenuItem";
+            detekceHranToolStripMenuItem.Size = new Size(239, 34);
+            detekceHranToolStripMenuItem.Text = "Detekce hran";
             // 
             // Form1
             // 
@@ -181,5 +206,8 @@
         private ToolStripMenuItem zesvětlitztmavitToolStripMenuItem;
         private ToolStripMenuItem obarvitToolStripMenuItem;
         private ToolStripMenuItem přemístitToolStripMenuItem;
+        private ToolStripMenuItem rotaceToolStripMenuItem;
+        private ToolStripMenuItem gaussůvFiltrToolStripMenuItem;
+        private ToolStripMenuItem detekceHranToolStripMenuItem;
     }
 }
