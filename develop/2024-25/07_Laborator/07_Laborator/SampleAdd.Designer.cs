@@ -96,7 +96,6 @@
             Controls.Add(TxtSampleName);
             MaximizeBox = false;
             MinimizeBox = false;
-            Name = "SampleAdd";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Přidání nového vzorku";
             ResumeLayout(false);

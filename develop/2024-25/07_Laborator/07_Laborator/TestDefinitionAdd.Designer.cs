@@ -146,7 +146,6 @@
             Controls.Add(BtnAddTest);
             Controls.Add(ComboSampleType);
             Controls.Add(TxtTestName);
-            Name = "TestDefinitionAdd";
             Text = "Přidání nového testu";
             ((System.ComponentModel.ISupportInitialize)NumThreshold).EndInit();
             ((System.ComponentModel.ISupportInitialize)NumTime).EndInit();

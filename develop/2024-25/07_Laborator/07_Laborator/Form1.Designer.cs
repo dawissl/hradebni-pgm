@@ -73,6 +73,7 @@
             BtnAddSample.TabIndex = 2;
             BtnAddSample.Text = "Nový vzorek";
             BtnAddSample.UseVisualStyleBackColor = true;
+            BtnAddSample.Click += BtnAddSample_Click;
             // 
             // button1
             // 
@@ -83,6 +84,7 @@
             button1.TabIndex = 5;
             button1.Text = "Nový test";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // label2
             // 
@@ -113,6 +115,7 @@
             button2.TabIndex = 8;
             button2.Text = "Přidat do fronty";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // label3
             // 
@@ -160,10 +163,12 @@
             PanelInfo.Name = "PanelInfo";
             PanelInfo.Size = new Size(277, 389);
             PanelInfo.TabIndex = 11;
+            PanelInfo.Paint += PanelInfo_Paint;
             // 
             // TimerLab
             // 
             TimerLab.Enabled = true;
+            TimerLab.Tick += TimerLab_Tick;
             // 
             // Form1
             // 
