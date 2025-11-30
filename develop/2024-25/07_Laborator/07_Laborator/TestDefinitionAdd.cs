@@ -29,7 +29,14 @@ namespace _07_Laborator
 
         private void BtnAddTest_Click(object sender, EventArgs e)
         {
+             if(ComboSampleType.SelectedIndex == -1) MessageBox.Show("Je třeba vybrat typ vzorku potřebný pro test");
+             if(TxtTestName.Text.Trim() == "") MessageBox.Show("Zadejte jméno test");
             name = TxtTestName.Text;
+            type = ComboSampleType.Text;
+            threashold = (double) NumThreshold.Value;
+            time = (int) NumTime.Value;
+            DialogResult = DialogResult.OK;
+            Close();
 
         }
     }

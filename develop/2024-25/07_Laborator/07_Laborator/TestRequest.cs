@@ -15,6 +15,7 @@ namespace _07_Laborator
 
         public Sample Sample { get { return sample; } }
         public TestDefinition TestDefinition { get { return testDefinition; } }
+        public int Time{get {return time;} set {time = value;}}
         public TestRequest(Sample s,TestDefinition t)
         {
             this.sample = s;

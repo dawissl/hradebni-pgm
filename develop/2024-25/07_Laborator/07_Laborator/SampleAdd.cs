@@ -23,6 +23,8 @@ namespace _07_Laborator
 
         private void BtnAddSample_Click(object sender, EventArgs e)
         {
+            if(ComboSampleType.SelectedIndex == -1) MessageBox.Show("Je třeba vybrat typ vzorku");
+             if(TxtSampleName.Text.Trim() == "") MessageBox.Show("Zadejte jméno vzorku");
             name = TxtSampleName.Text;
             type = ComboSampleType.Text;
             DialogResult = DialogResult.OK;
