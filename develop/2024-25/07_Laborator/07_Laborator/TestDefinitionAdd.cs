@@ -33,7 +33,7 @@ namespace _07_Laborator
              if(TxtTestName.Text.Trim() == "") MessageBox.Show("Zadejte jméno test");
             name = TxtTestName.Text;
             type = ComboSampleType.Text;
-            threashold = (double) NumThreshold.Value;
+            threshold = (double) NumThreshold.Value;
             time = (int) NumTime.Value;
             DialogResult = DialogResult.OK;
             Close();
