@@ -33,8 +33,8 @@ namespace GroupData
 
         public Rectangle GetCityArea()
         {
-            int size = (int)(10 + 90 * GetCoefficient(population));
-            return new Rectangle(center.X, center.Y, size, size);
+            int size = (int)(10 + 90 * GetCoefficient(population)/2);
+            return new Rectangle(center.X-size, center.Y-size, 2*size, 2*size);
         }
 
         private double GetCoefficient(int value)

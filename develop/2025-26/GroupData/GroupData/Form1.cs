@@ -11,11 +11,11 @@ namespace GroupData
 
         private void InitData()
         {
-            City a = new City("A", new Point(50, 50), 31, 500, false);
+            City a = new City("A", new Point(130, 300), 31, 500, false);
             City b = new City("B", new Point(300, 50), 310, 5000, true);
             City c = new City("C", new Point(100, 60), 2305, 30000, true);
             City d = new City("D", new Point(280, 400), 678, 1200, false);
-            City e = new City("E", new Point(0, 0), 10, 13080, true);
+            City e = new City("E", new Point(10, 10), 10, 13080, true);
             ListCity.Items.Add(a);
             ListCity.Items.Add(b);
             ListCity.Items.Add(c);
@@ -60,10 +60,9 @@ namespace GroupData
             foreach (Group gr in groups) { 
                 SolidBrush sb = new SolidBrush(gr.Color);
                 g.FillEllipse(sb,gr.GetArea());
-                g.DrawString(gr.Info(), new Font("Arial", 14), Brushes.Black, gr.Centroid);
             }
             foreach (City c in ListCity.Items) {
-                g.FillEllipse(Brushes.Blue, c.GetCityArea());
+                g.FillEllipse(new SolidBrush(Color.FromArgb(150,0,255,0)), c.GetCityArea());
                 g.DrawString(c.Name, new Font("Arial", 14), Brushes.Black, c.Center);
 
             }

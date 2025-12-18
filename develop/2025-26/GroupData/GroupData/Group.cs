@@ -22,14 +22,14 @@ namespace GroupData
         {
             value = city.Population;
             cityList.Add(city);
-            color = Color.Red;
+            color = Color.FromArgb(200,255,0,0);
             centroid = city.Center;
         }
 
         public Rectangle GetArea()
         {
-            int size = (int)(BASE_RADIUS + 140 * GetCoefficient(value));
-            return new Rectangle(centroid.X, centroid.Y, size, size);
+            int size = (int)(BASE_RADIUS + 140 * GetCoefficient(value))/2;
+            return new Rectangle(centroid.X-size, centroid.Y-size, 2*size, 2*size);
         }
 
         public double GetGroupPercents()
