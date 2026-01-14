@@ -10,10 +10,12 @@
 
 ## Hodnocení v předmětu, podmínky klasifikace
 
-### Odevzdaný a ohodnocený týmový/seminární projekt (váha 10)
-- Známka je nutnou součástí klasifikace.
-- Seminární projekt se realizuje zejména ve vyšších ročnících (3.–4. ročník).  
-- V nižších ročnících nebo v některých pololetích nemusí být projekt zadán – v takovém případě se tato část hodnocení neuplatňuje.
+### Seminární/týmový projekt (váha 10)
+- Seminární projekt ověřuje schopnost samostatné práce, aplikace znalostí a porozumění uceleným tematickým celkům, a proto tvoří významnou součást hodnocení.
+- Pokud seminární projekt není odevzdán, nemusí být k dispozici dostatek podkladů pro objektivní posouzení těchto dovedností; v takovém případě je stanoven náhradní způsob jejich ověření.
+- Seminární projekt se realizuje zejména ve vyšších ročnících (3.–4. ročník).
+- V nižších ročnících nebo v některých pololetích nemusí být projekt zadán; v takovém případě se tato složka hodnocení neuplatňuje.
+
 
 ### Ústní zkoušení z probírané látky (váha 7)
 - Zkoušení probíhá jak v teoretické, tak v praktické rovině.  
