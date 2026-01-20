@@ -1,69 +1,90 @@
- body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
+:root {
+    --black: #000000;
+    --blue-slate: #586f7c;
+    --light-blue: #b8dbd9;
+    --ghost-white: #f4f4f9;
+    --turf-green: #04724d;
 
-        header {
-            background-color: #222;
-            color: white;
-            padding: 1rem;
-            text-align: center;
-        }
+    --text-main: #222;
+    --text-light: #ffffff;
+}
 
-        main {
-            padding: 2rem;
-        }
+/* ===== ZÁKLAD ===== */
 
-        footer {
-            text-align: center;
-            padding: 1rem;
-            color: #666;
-            font-size: 0.9rem;
-        }
-/* CSS HEX */
---black: #000000ff;
---blue-slate: #586f7cff;
---light-blue: #b8dbd9ff;
---ghost-white: #f4f4f9ff;
---turf-green: #04724dff;
+* {
+    box-sizing: border-box;
+}
 
-/* CSS HSL */
---black: hsla(0, 0%, 0%, 1);
---blue-slate: hsla(202, 17%, 42%, 1);
---light-blue: hsla(177, 33%, 79%, 1);
---ghost-white: hsla(240, 29%, 97%, 1);
---turf-green: hsla(160, 93%, 23%, 1);
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--ghost-white);
+    color: var(--text-main);
+}
 
-/* SCSS HEX */
-$black: #000000ff;
-$blue-slate: #586f7cff;
-$light-blue: #b8dbd9ff;
-$ghost-white: #f4f4f9ff;
-$turf-green: #04724dff;
+/* ===== HEADER + NAV ===== */
 
-/* SCSS HSL */
-$black: hsla(0, 0%, 0%, 1);
-$blue-slate: hsla(202, 17%, 42%, 1);
-$light-blue: hsla(177, 33%, 79%, 1);
-$ghost-white: hsla(240, 29%, 97%, 1);
-$turf-green: hsla(160, 93%, 23%, 1);
+header {
+    background: linear-gradient(
+        135deg,
+        var(--turf-green),
+        var(--blue-slate)
+    );
+    color: var(--text-light);
+    padding: 1.5rem 1rem;
+    text-align: center;
+}
 
-/* SCSS RGB */
-$black: rgba(0, 0, 0, 1);
-$blue-slate: rgba(88, 111, 124, 1);
-$light-blue: rgba(184, 219, 217, 1);
-$ghost-white: rgba(244, 244, 249, 1);
-$turf-green: rgba(4, 114, 77, 1);
+header h1 {
+    margin: 0 0 1rem 0;
+    font-size: 2rem;
+}
 
-/* SCSS Gradient */
-$gradient-top: linear-gradient(0deg, #000000ff, #586f7cff, #b8dbd9ff, #f4f4f9ff, #04724dff);
-$gradient-right: linear-gradient(90deg, #000000ff, #586f7cff, #b8dbd9ff, #f4f4f9ff, #04724dff);
-$gradient-bottom: linear-gradient(180deg, #000000ff, #586f7cff, #b8dbd9ff, #f4f4f9ff, #04724dff);
-$gradient-left: linear-gradient(270deg, #000000ff, #586f7cff, #b8dbd9ff, #f4f4f9ff, #04724dff);
-$gradient-top-right: linear-gradient(45deg, #000000ff, #586f7cff, #b8dbd9ff, #f4f4f9ff, #04724dff);
-$gradient-bottom-right: linear-gradient(135deg, #000000ff, #586f7cff, #b8dbd9ff, #f4f4f9ff, #04724dff);
-$gradient-top-left: linear-gradient(225deg, #000000ff, #586f7cff, #b8dbd9ff, #f4f4f9ff, #04724dff);
-$gradient-bottom-left: linear-gradient(315deg, #000000ff, #586f7cff, #b8dbd9ff, #f4f4f9ff, #04724dff);
-$gradient-radial: radial-gradient(#000000ff, #586f7cff, #b8dbd9ff, #f4f4f9ff, #04724dff);
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-light);
+    padding: 0.5rem 1.2rem;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.15);
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+nav a:hover {
+    background-color: var(--light-blue);
+    color: var(--black);
+    transform: translateY(-2px);
+}
+
+/* ===== MAIN ===== */
+
+main {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+main ul {
+    padding-left: 1.2rem;
+}
+
+main li {
+    margin-bottom: 0.5rem;
+}
+
+/* ===== FOOTER ===== */
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    color: #666;
+    font-size: 0.9rem;
+}
