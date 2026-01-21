@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WFA Aplikace - Programování v C#</title>
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <style>
+        .projects-container {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+
+        .filters {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .filters button {
+            padding: 10px 20px;
+            border: 2px solid var(--turf-green);
+            background: white;
+            color: var(--turf-green);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filters button:hover,
+        .filters button.active {
+            background: var(--turf-green);
+            color: white;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .project-card header {
+            background: linear-gradient(135deg, var(--turf-green), var(--blue-slate));
+            color: white;
+            padding: 20px;
+            text-align: left;
+        }
+
+        .project-card header h3 {
+            margin: 0 0 8px 0;
+            font-size: 1.3rem;
+        }
+
+        .project-year {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .project-body {
+            padding: 20px;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .tag {
+            background: var(--ghost-white);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            color: var(--turf-green);
+        }
+
+        .project-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .project-actions button {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-view {
+            background: var(--turf-green);
+            color: white;
+        }
+
+        .btn-view:hover {
+            background: var(--blue-slate);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-inner {
+            background: white;
+            width: 90%;
+            max-width: 900px;
+            max-height: 90vh;
+            overflow-y: auto;
+            border-radius: 12px;
+            padding: 40px;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 2em;
+            cursor: pointer;
+            color: #999;
+        }
+
+        .modal-close:hover {
+            color: var(--turf-green);
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Windows Forms Aplikace</h1>
+    <nav>
+        <a href="../index.html">Domů</a>
+        <a href="timeline.html">Timeline</a>
+        <a href="theory.html">Teorie</a>
+        <a href="wfa-apps.html">WFA Aplikace</a>
+        <a href="projects.html">Projekty</a>
+        <a href="glossary.html">Slovník</a>
+        <a href="about.html">O projektu</a>
+        <a href="evaluation.html">Hodnocení</a>
+    </nav>
+</header>
+
+<div class="projects-container">
+    <p>Aplikace s grafickým rozhraním vytvořené studenty.</p>
+
+    <div class="filters">
+        <button class="active" onclick="filterProjects('all')">Vše</button>
+        <button onclick="filterProjects('2025-2026')">2025-2026</button>
+        <button onclick="filterProjects('2024-2025')">2024-2025</button>
+        <button onclick="filterProjects('2023-2024')">2023-2024</button>
+    </div>
+
+    <div class="projects-grid" id="projects-grid">
+        <!-- Dynamicky naplněno -->
+        <div class="project-card" data-year="2025-2026">
+            <header>
+                <h3>Filmotéka S1T</h3>
+                <div class="project-year">2025-2026</div>
+            </header>
+            <div class="project-body">
+                <p>Aplikace pro správu filmové sbírky s databází a vyhledáváním.</p>
+                <div class="project-tags">
+                    <span class="tag">GUI</span>
+                    <span class="tag">Databáze</span>
+                    <span class="tag">LINQ</span>
+                </div>
+                <div class="project-actions">
+                    <button class="btn-view" onclick="showProject('2025-2026/filmoteka')">Zobrazit</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-card" data-year="2024-2025">
+            <header>
+                <h3>Kalkulačka</h3>
+                <div class="project-year">2024-2025</div>
+            </header>
+            <div class="project-body">
+                <p>Základní kalkulačka s historií výpočtů.</p>
+                <div class="project-tags">
+                    <span class="tag">GUI</span>
+                    <span class="tag">Události</span>
+                </div>
+                <div class="project-actions">
+                    <button class="btn-view" onclick="showProject('2024-2025/kalkulacka')">Zobrazit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div id="project-modal" class="modal">
+    <div class="modal-inner">
+        <span class="modal-close" onclick="closeModal()">×</span>
+        <div id="modal-content"></div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2026 | Programování v C#</p>
+</footer>
+
+<script src="../assets/js/marked.min.js"></script>
+<script src="../assets/js/prism.js"></script>
+<script>
+    const REPO_BASE = 'https://raw.githubusercontent.com/USERNAME/REPO/main/';
+
+    function filterProjects(year) {
+        const cards = document.querySelectorAll('.project-card');
+        const buttons = document.querySelectorAll('.filters button');
+
+        buttons.forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+
+        cards.forEach(card => {
+            if (year === 'all' || card.dataset.year === year) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+
+    async function showProject(path) {
+        const modal = document.getElementById('project-modal');
+        const content = document.getElementById('modal-content');
+
+        content.innerHTML = '<div class="loading">Načítám projekt</div>';
+        modal.classList.add('active');
+
+        const url = `${REPO_BASE}${path}/README.md`;
+
+        try {
+            const response = await fetch(url);
+            if (!response.ok) throw new Error('README nenalezen');
+
+            const markdown = await response.text();
+            const html = marked.parse(markdown);
+            content.innerHTML = html;
+
+            Prism.highlightAllUnder(content);
+        } catch (error) {
+            content.innerHTML = `<h2>Projekt není dostupný</h2><p>${error.message}</p>`;
+        }
+    }
+
+    function closeModal() {
+        document.getElementById('project-modal').classList.remove('active');
+    }
+
+    // Zavři modal kliknutím mimo
+    document.getElementById('project-modal').addEventListener('click', (e) => {
+        if (e.target.id === 'project-modal') {
+            closeModal();
+        }
+    });
+</script>
+
+</body>
+</html>

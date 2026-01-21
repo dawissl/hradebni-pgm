@@ -2,40 +2,231 @@
 <html lang="cs">
 <head>
     <meta charset="UTF-8">
-    <title>Programování</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programování v C# - Lyceum</title>
     <link rel="stylesheet" href="assets/css/main.css">
 </head>
-<body>
+<body class="landing-page">
 
-<header>
-    <h1>Programování</h1>
-
-    <nav>
-        <a href="#">Domů</a>
-        <a href="pages/timeline.html">Timeline</a>
-        <a href="pages/theory.html">Teorie</a>
-        <a href="pages/about.html">O projektu</a>
-        <a href="pages/evaluation.html">Hodnocení předmětu</a>
-
+    <!-- Floating Navigation -->
+    <nav class="floating-nav" id="floating-nav">
+        <a href="#hero" title="Úvod" class="active"></a>
+        <a href="#about-subject" title="O předmětu"></a>
+        <a href="#materials" title="Materiály"></a>
+        <a href="#roadmap" title="Road Map"></a>
+        <a href="#contact" title="Kontakt"></a>
     </nav>
-</header>
 
-<main>
-    <p>
-        Vítej na úvodní stránce projektu.
-        Pomocí navigace výše se můžeš přesunout na jednotlivé části:
-    </p>
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
+        <div class="hero-content">
+            <h1>Programování v C#</h1>
+            <p class="subtitle">Windows Forms & Console Applications</p>
+            <p class="description">
+                Učební materiály pro technické lyceum<br>
+                Od základů po pokročilé koncepty
+            </p>
+            <a href="#materials" class="button primary">Začít explorovat</a>
+        </div>
+        <div class="scroll-indicator">
+            <span>↓</span>
+        </div>
+    </section>
 
-    <ul>
-        <li><strong>Timeline</strong> – časová osa událostí</li>
-        <li><strong>Teorie</strong> – vysvětlení pojmů a kontext</li>
-        <li><strong>O projektu</strong> – informace o vzniku a cíli</li>
-    </ul>
-</main>
+    <!-- About Subject -->
+    <section id="about-subject" class="content-section">
+        <div class="container">
+            <h2>O předmětu</h2>
+            <div class="about-grid">
+                <div class="about-item">
+                    <h3>📚 4 roky výuky</h3>
+                    <p>Postupný přechod od základů syntaxe až po komplexní objektově orientované aplikace</p>
+                </div>
+                <div class="about-item">
+                    <h3>🖥️ Windows Forms</h3>
+                    <p>Tvorba GUI aplikací s událostním modelem a návrhovými vzory</p>
+                </div>
+                <div class="about-item">
+                    <h3>⚙️ Console Apps</h3>
+                    <p>Algoritmy, datové struktury a logika bez grafického rozhraní</p>
+                </div>
+                <div class="about-item">
+                    <h3>🎓 Portfolio</h3>
+                    <p>Studenti si budují vlastní portfolio projektů s dokumentací</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<footer>
-    <p>&copy; 2026</p>
-</footer>
+    <!-- Materials (Quick Links) -->
+    <section id="materials" class="content-section materials-section">
+        <div class="container">
+            <h2>Studijní materiály</h2>
+            <p class="section-intro">
+                Vyber oblast, která tě zajímá, nebo procházej chronologicky přes Timeline
+            </p>
+            
+            <div class="materials-grid">
+                <a href="pages/theory.html" class="material-card">
+                    <div class="card-icon">📚</div>
+                    <h3>Teorie</h3>
+                    <p>Teoretické základy C#, koncepty, syntax, OOP principy</p>
+                    <span class="card-arrow">→</span>
+                </a>
 
+                <a href="pages/wfa-apps.html" class="material-card">
+                    <div class="card-icon">🖥️</div>
+                    <h3>WFA Aplikace</h3>
+                    <p>Projekty s grafickým rozhraním - kalkulačky, hry, databázové aplikace</p>
+                    <span class="card-arrow">→</span>
+                </a>
+
+                <a href="pages/projects.html" class="material-card">
+                    <div class="card-icon">⚙️</div>
+                    <h3>Console Projekty</h3>
+                    <p>Algoritmy, datové struktury, parsing, zpracování souborů</p>
+                    <span class="card-arrow">→</span>
+                </a>
+
+                <a href="pages/glossary.html" class="material-card">
+                    <div class="card-icon">📖</div>
+                    <h3>Slovník pojmů</h3>
+                    <p>Terminologie, definice, příklady použití klíčových konceptů</p>
+                    <span class="card-arrow">→</span>
+                </a>
+
+                <a href="pages/timeline.html" class="material-card">
+                    <div class="card-icon">📅</div>
+                    <h3>Timeline</h3>
+                    <p>Chronologický přehled projektů a vývoje výuky</p>
+                    <span class="card-arrow">→</span>
+                </a>
+
+                <a href="pages/evaluation.html" class="material-card">
+                    <div class="card-icon">📊</div>
+                    <h3>Hodnocení</h3>
+                    <p>Kritéria hodnocení, váhy úkolů, požadavky</p>
+                    <span class="card-arrow">→</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Road Map -->
+    <section id="roadmap" class="content-section roadmap-section">
+        <div class="container">
+            <h2>Vývoj výuky</h2>
+            <p class="section-intro">
+                Jak se předmět vyvíjel v průběhu let
+            </p>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">2020-2021</div>
+                    <div class="timeline-content">
+                        <h3>První kroky</h3>
+                        <p>Základy C#, proměnné, podmínky, cykly, pole</p>
+                        <ul>
+                            <li>Hello World a konzolové aplikace</li>
+                            <li>Práce s datovými typy</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2021-2022</div>
+                    <div class="timeline-content">
+                        <h3>Windows Forms</h3>
+                        <p>První GUI aplikace a event handling</p>
+                        <ul>
+                            <li>Základní controls (Button, TextBox, Label)</li>
+                            <li>Události a delegáty</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2022-2023</div>
+                    <div class="timeline-content">
+                        <h3>OOP a složitější projekty</h3>
+                        <p>Objektově orientované programování</p>
+                        <ul>
+                            <li>Třídy, dědičnost, polymorfismus</li>
+                            <li>Kolekce a LINQ</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2023-2024</div>
+                    <div class="timeline-content">
+                        <h3>Pokročilé koncepty</h3>
+                        <p>Databáze, návrhové vzory, testování</p>
+                        <ul>
+                            <li>Práce s grafikou a animacemi</li>
+                            <li>Práce s obrázky</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2024-2025</div>
+                    <div class="timeline-content">
+                        <h3>Komplexní projekty</h3>
+                        <p>Filmotéka, vícerozměrné pole, slovníky</p>
+                        <ul>
+                            <li>Mapování žánrů</li>
+                            <li>Pokročilé datové struktury</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item active">
+                    <div class="timeline-year">2025-2026</div>
+                    <div class="timeline-content">
+                        <h3>Aktuální ročník</h3>
+                        <p>Genreování mapy, filmotéka S1T</p>
+                        <ul>
+                            <li>Pokračování složitých projektů</li>
+                            <li>Příprava na maturitu</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact / About Me -->
+    <section id="contact" class="content-section contact-section">
+        <div class="container">
+            <h2>O mně</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Vyučující předmětu</h3>
+                    <p>
+                        Tester webových a mobilních aplikací se specializací na automatizaci.<br>
+                        Učitel programování na technickém lyceu.
+                    </p>
+                    <ul class="tech-stack">
+                        <li>TypeScript</li>
+                        <li>Cypress</li>
+                        <li>Playwright</li>
+                        <li>C# / WinForms</li>
+                    </ul>
+                </div>
+                <div class="contact-links">
+                    <a href="pages/about.html" class="button secondary">Více o projektu</a>
+                    <a href="pages/evaluation.html" class="button secondary">Hodnocení předmětu</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 | Programování v C#</p>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
 </body>
 </html>

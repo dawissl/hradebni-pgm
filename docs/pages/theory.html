@@ -2,33 +2,167 @@
 <html lang="cs">
 <head>
     <meta charset="UTF-8">
-    <title>Teorie</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teorie - Programování v C#</title>
     <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/prism.css">
+    <style>
+        .theory-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 40px;
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+
+        .sidebar {
+            position: sticky;
+            top: 20px;
+            height: fit-content;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .sidebar h3 {
+            color: var(--turf-green);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .sidebar nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar nav li {
+            margin-bottom: 8px;
+        }
+
+        .sidebar nav a {
+            display: block;
+            padding: 12px 15px;
+            color: var(--text-main);
+            text-decoration: none;
+            border-left: 3px solid transparent;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .sidebar nav a:hover,
+        .sidebar nav a.active {
+            border-left-color: var(--turf-green);
+            background: var(--ghost-white);
+            color: var(--turf-green);
+        }
+
+        .theory-content {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            min-height: 400px;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 60px 20px;
+            color: #999;
+        }
+
+        .loading::after {
+            content: '...';
+            animation: dots 1.5s infinite;
+        }
+
+        @keyframes dots {
+            0%, 20% { content: '.'; }
+            40% { content: '..'; }
+            60%, 100% { content: '...'; }
+        }
+
+        @media (max-width: 968px) {
+            .theory-layout {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                position: static;
+            }
+        }
+    </style>
 </head>
 <body>
 
 <header>
-    <h1>Teorie</h1>
-
+    <h1>Teoretické základy C#</h1>
     <nav>
-        <a href="../index.html">Úvod</a>
+        <a href="../index.html">Domů</a>
         <a href="timeline.html">Timeline</a>
         <a href="theory.html">Teorie</a>
-         <a href="about.html">O projektu</a>
-                 <a href="evaluation.html">Hodnocení předmětu</a>
-
-    </nav>
-</header>
-
-<main>
-    <p>
-        Teorie
-    </p>
+        <a href="wfa-apps.html">WFA Aplikace</a>
+<a href="projects.html">Projekty</a>
+<a href="glossary.html">Slovník</a>
+<a href="about.html">O projektu</a>
+<a href="evaluation.html">Hodnocení</a>
+</nav>
+</header><div class="theory-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <h3>Témata</h3>
+        <nav id="theory-nav">
+            <ul>
+                <li><a href="#" data-path="dokumenty/promenne" data-file="teoria.md">Proměnné a datové typy</a></li>
+                <li><a href="#" data-path="dokumenty/podminky" data-file="teoria.md">Podmínky (if, else, switch)</a></li>
+                <li><a href="#" data-path="dokumenty/cykly" data-file="teoria.md">Cykly (for, while, foreach)</a></li>
+                <li><a href="#" data-path="dokumenty/pole" data-file="teoria.md">Pole a kolekce</a></li>
+                <li><a href="#" data-path="dokumenty/vicerozmerne-pole" data-file="teoria.md">Vícerozměrné pole</a></li>
+                <li><a href="#" data-path="dokumenty/slovniky" data-file="teoria.md">Slovníky (Dictionary)</a></li>
+                <li><a href="#" data-path="dokumenty/funkce" data-file="teoria.md">Metody a funkce</a></li>
+                <li><a href="#" data-path="dokumenty/oop" data-file="teoria.md">OOP - základy</a></li>
+                <li><a href="#" data-path="dokumenty/tridy" data-file="teoria.md">Třídy a objekty</a></li>
+                <li><a href="#" data-path="dokumenty/dedicnost" data-file="teoria.md">Dědičnost</a></li>
+            </ul>
+        </nav>
+    </aside><!-- Content Area -->
+<main class="theory-content" id="theory-content">
+    <h2>Vítej v sekci Teorie</h2>
+    <p>Vyber téma z menu vlevo pro zobrazení obsahu.</p>
+    <p>Materiály jsou načítány přímo z repozitáře, takže vždy vidíš aktuální verzi.</p>
 </main>
-
-<footer>
-    <p>&copy; 2026</p>
-</footer>
-
-</body>
+</div><footer>
+    <p>&copy; 2026 | Programování v C#</p>
+</footer><script src="../assets/js/marked.min.js"></script>
+<script src="../assets/js/prism.js"></script>
+<script>
+    // Konfigurace
+    const REPO_BASE = 'https://raw.githubusercontent.com/USERNAME/REPO/main/';// Načti konkrétní markdown soubor
+async function loadTheory(path, filename = 'teoria.md') {
+    const content = document.getElementById('theory-content');
+    content.innerHTML = '<div class="loading">Načítám</div>';    const url = `${REPO_BASE}${path}/${filename}`;    try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error('Soubor nenalezen');        const markdown = await response.text();
+        const html = marked.parse(markdown);
+        content.innerHTML = html;        // Zvýrazni kód
+        Prism.highlightAllUnder(content);
+    } catch (error) {
+        content.innerHTML = `
+            <h2>Materiál není dostupný</h2>
+            <p>Tento materiál ještě nebyl přidán do repozitáře.</p>
+            <p class="error">${error.message}</p>
+        `;
+    }
+}// Event listenery na odkazy
+document.querySelectorAll('#theory-nav a').forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();        // Odstranit active ze všech
+        document.querySelectorAll('#theory-nav a').forEach(a => a.classList.remove('active'));
+        // Přidat active na kliknutý
+        link.classList.add('active');        const path = link.dataset.path;
+        const file = link.dataset.file;
+        loadTheory(path, file);
+    });
+});
+</script></body>
 </html>
