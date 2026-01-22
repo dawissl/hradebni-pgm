@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35828.75 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClanManagerWFA", "ClanManagerWFA\ClanManagerWFA.csproj", "{7A8AE7FB-85CB-4A95-A7C3-E3127E5E4F7E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7A8AE7FB-85CB-4A95-A7C3-E3127E5E4F7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A8AE7FB-85CB-4A95-A7C3-E3127E5E4F7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A8AE7FB-85CB-4A95-A7C3-E3127E5E4F7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A8AE7FB-85CB-4A95-A7C3-E3127E5E4F7E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A5A1C616-CD66-40D8-AB76-8E51B90C0BC8}
+	EndGlobalSection
+EndGlobal
