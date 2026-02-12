@@ -29,23 +29,35 @@
         private void InitializeComponent()
         {
             LblOut = new Label();
+            LblPancir = new Label();
             SuspendLayout();
             // 
             // LblOut
             // 
             LblOut.AutoSize = true;
             LblOut.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            LblOut.Location = new Point(78, 46);
+            LblOut.Location = new Point(68, 76);
             LblOut.Name = "LblOut";
             LblOut.Size = new Size(78, 32);
             LblOut.TabIndex = 0;
             LblOut.Text = "label1";
+            // 
+            // LblPancir
+            // 
+            LblPancir.AutoSize = true;
+            LblPancir.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
+            LblPancir.Location = new Point(68, 25);
+            LblPancir.Name = "LblPancir";
+            LblPancir.Size = new Size(78, 32);
+            LblPancir.TabIndex = 1;
+            LblPancir.Text = "label1";
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(LblPancir);
             Controls.Add(LblOut);
             Name = "Form1";
             Text = "Form1";
@@ -57,5 +69,6 @@
         #endregion
 
         private Label LblOut;
+        private Label LblPancir;
     }
 }
