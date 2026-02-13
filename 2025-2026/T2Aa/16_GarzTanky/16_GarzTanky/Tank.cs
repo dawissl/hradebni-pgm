@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _16_GarazTanky
+namespace _16_GarzTanky
 {
     class Tank : IComparable<Tank>
     {
@@ -57,5 +57,16 @@ namespace _16_GarazTanky
             // nasobime -1 abychom obrátili pořadí řazení první je lvl 10 
             return -1 * uroven.CompareTo(other.uroven);
         }
+
+        public override bool Equals(object? obj)
+        {
+            Tank tank = obj as Tank;
+            if (tank == null) return false;
+            return nazev == tank.nazev &&
+                uroven == tank.uroven &&
+                narod == tank.narod &&
+                typ == tank.typ;
+        }
+
     }
 }

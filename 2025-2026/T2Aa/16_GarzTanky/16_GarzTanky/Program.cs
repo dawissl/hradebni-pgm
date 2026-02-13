@@ -1,4 +1,4 @@
-namespace _16_GarazTanky
+namespace _16_GarzTanky
 {
     internal static class Program
     {

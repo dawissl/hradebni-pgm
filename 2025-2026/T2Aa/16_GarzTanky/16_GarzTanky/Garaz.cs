@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _16_GarazTanky
+namespace _16_GarzTanky
 {
     class Garaz : IEnumerable<Tank>
     {
@@ -25,6 +25,7 @@ namespace _16_GarazTanky
         {
             if (novyTank == null) return 403;
             if (items.Contains(novyTank)) return 404;
+
             items.Add(novyTank);
             return 200;
         }
@@ -38,6 +39,7 @@ namespace _16_GarazTanky
 
         public Tank NejsilnejsiPancirGaraze()
         {
+            if (items.Count == 0) return null;
             items.Sort(new TankComparerPancir());
             return items[0];
         }

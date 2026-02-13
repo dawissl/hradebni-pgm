@@ -33,6 +33,7 @@ namespace _16_GarazTanky
         public bool PridejTank(Tank novyTank)
         {
             if (novyTank == null) return false;
+            if(items.Contains(novyTank)) return false;
             items.Add(novyTank);
             return true;
         }
@@ -47,6 +48,7 @@ namespace _16_GarazTanky
 
         public Tank NejsilnejsiPancirVHangaru()
         {
+            if (items.Count == 0) return null; 
             items.Sort(new TankComparatorPancir());
             return items[0];
         }

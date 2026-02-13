@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _16_GarazTanky
+namespace _16_GarzTanky
 {
     class TankComparerPancir : IComparer<Tank>
     {

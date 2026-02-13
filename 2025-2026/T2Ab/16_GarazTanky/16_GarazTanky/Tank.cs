@@ -48,5 +48,16 @@ namespace _16_GarazTanky
         {
             return $"[{typ} - {uroven}. úroveň] {nazev} ({narod})";
         }
+
+        public override bool Equals(object? obj)
+        {
+            if(!(obj is Tank)) return false;
+            Tank t = obj as Tank;
+            //& = alt + 38
+            return narod == t.narod 
+                && typ == t.typ 
+                && uroven == t.uroven 
+                && nazev == t.nazev;
+        }
     }
 }

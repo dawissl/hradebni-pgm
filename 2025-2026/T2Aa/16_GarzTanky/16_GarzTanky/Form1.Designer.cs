@@ -1,8 +1,4 @@
-﻿using static System.Net.Mime.MediaTypeNames;
-using System.Windows.Forms;
-using System.Xml.Linq;
-
-namespace _16_GarazTanky
+﻿namespace _16_GarzTanky
 {
     partial class Form1
     {
@@ -69,13 +65,14 @@ namespace _16_GarazTanky
             groupBox1.Controls.Add(ComboNarod);
             groupBox1.Controls.Add(ComboTyp);
             groupBox1.Controls.Add(TxtName);
-            groupBox1.Font = new System.Drawing.Font("Segoe UI", 15.75F);
+            groupBox1.Font = new Font("Segoe UI", 15.75F);
             groupBox1.Location = new Point(33, 18);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(296, 555);
             groupBox1.TabIndex = 2;
             groupBox1.TabStop = false;
             groupBox1.Text = "Vytvoření nového tanku";
+            groupBox1.Enter += groupBox1_Enter;
             // 
             // BtnAdd
             // 
@@ -192,7 +189,7 @@ namespace _16_GarazTanky
             // groupBox2
             // 
             groupBox2.Controls.Add(LblPrehled);
-            groupBox2.Font = new System.Drawing.Font("Segoe UI", 15.75F);
+            groupBox2.Font = new Font("Segoe UI", 15.75F);
             groupBox2.Location = new Point(352, 18);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(385, 555);
