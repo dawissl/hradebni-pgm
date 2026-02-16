@@ -33,6 +33,14 @@ namespace _14_Pokemon
             return $"[{type} - {level}. úroveň] {name}";
         }
 
+        public override bool Equals(object? obj)
+        {           
+            if(obj == null) return false ;
+            if (!(obj is Pokemon)) return false; 
+            Pokemon p = obj as Pokemon;
+            return name == p.name && level == p.level && type == p.type;
+        }
+
         public int CompareTo(Pokemon? other)
         {
             if(level.CompareTo(other.level) == 0)

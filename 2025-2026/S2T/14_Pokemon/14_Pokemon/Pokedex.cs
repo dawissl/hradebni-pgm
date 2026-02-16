@@ -33,6 +33,7 @@ namespace _14_Pokemon
         public void PridejPokemona(Pokemon pokemon)
         {
             if (pokemon == null) return;
+            if (items.Contains(pokemon)) return;
             items.Add(pokemon);
             items.Sort();
         }
@@ -57,13 +58,22 @@ namespace _14_Pokemon
         {
             items.Sort();
             string vystup = $"Počet pokemonů v pokedexu: {Count()}{Environment.NewLine}";
-          
+
             foreach (Pokemon p in items)
             {
                 vystup += $"{p.ToString()}{Environment.NewLine}";
             }
             return vystup;
 
+        }
+
+        public string Overview()
+        {
+            string vystup = ToString() + Environment.NewLine;
+            if (NejsilnejsiPokemon() == null) return vystup;
+
+            return $"{vystup}Nejsilnější pokemon:" +
+                $"{Environment.NewLine}{NejsilnejsiPokemon()}";
         }
     }
 }

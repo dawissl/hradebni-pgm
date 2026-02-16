@@ -1,4 +1,8 @@
-﻿namespace _14_Pokemon
+﻿using static System.Net.Mime.MediaTypeNames;
+using System.Windows.Forms;
+using System.Xml.Linq;
+
+namespace _14_Pokemon
 {
     partial class Form1
     {
@@ -28,47 +32,206 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
+            groupBox1 = new GroupBox();
+            BtnAdd = new Button();
+            label4 = new Label();
+            TrackHP = new TrackBar();
+            label3 = new Label();
+            TrackRychlost = new TrackBar();
             label2 = new Label();
+            TrackSila = new TrackBar();
+            label1 = new Label();
+            TrackUroven = new TrackBar();
+            ComboTyp = new ComboBox();
+            TxtName = new TextBox();
+            groupBox2 = new GroupBox();
+            LblPrehled = new Label();
+            groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)TrackHP).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)TrackRychlost).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)TrackSila).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)TrackUroven).BeginInit();
+            groupBox2.SuspendLayout();
             SuspendLayout();
             // 
-            // label1
+            // groupBox1
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            label1.Location = new Point(61, 110);
-            label1.Name = "label1";
-            label1.Size = new Size(78, 32);
-            label1.TabIndex = 0;
-            label1.Text = "label1";
+            groupBox1.Controls.Add(BtnAdd);
+            groupBox1.Controls.Add(label4);
+            groupBox1.Controls.Add(TrackHP);
+            groupBox1.Controls.Add(label3);
+            groupBox1.Controls.Add(TrackRychlost);
+            groupBox1.Controls.Add(label2);
+            groupBox1.Controls.Add(TrackSila);
+            groupBox1.Controls.Add(label1);
+            groupBox1.Controls.Add(TrackUroven);
+            groupBox1.Controls.Add(ComboTyp);
+            groupBox1.Controls.Add(TxtName);
+            groupBox1.Font = new System.Drawing.Font("Segoe UI", 15.75F);
+            groupBox1.Location = new Point(33, 18);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(296, 527);
+            groupBox1.TabIndex = 2;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Ulož pokemona";
+            // 
+            // BtnAdd
+            // 
+            BtnAdd.Location = new Point(21, 453);
+            BtnAdd.Name = "BtnAdd";
+            BtnAdd.Size = new Size(230, 55);
+            BtnAdd.TabIndex = 11;
+            BtnAdd.Text = "Vložit";
+            BtnAdd.UseVisualStyleBackColor = true;
+            BtnAdd.Click += BtnAdd_Click;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(21, 369);
+            label4.Name = "label4";
+            label4.Size = new Size(70, 30);
+            label4.TabIndex = 10;
+            label4.Text = "Zdraví";
+            // 
+            // TrackHP
+            // 
+            TrackHP.Location = new Point(21, 402);
+            TrackHP.Maximum = 100;
+            TrackHP.Minimum = 1;
+            TrackHP.Name = "TrackHP";
+            TrackHP.Size = new Size(246, 45);
+            TrackHP.TabIndex = 9;
+            TrackHP.Value = 1;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(21, 302);
+            label3.Name = "label3";
+            label3.Size = new Size(91, 30);
+            label3.TabIndex = 8;
+            label3.Text = "Rychlost";
+            label3.TextAlign = ContentAlignment.TopCenter;
+            // 
+            // TrackRychlost
+            // 
+            TrackRychlost.Location = new Point(21, 335);
+            TrackRychlost.Maximum = 50;
+            TrackRychlost.Minimum = 1;
+            TrackRychlost.Name = "TrackRychlost";
+            TrackRychlost.Size = new Size(246, 45);
+            TrackRychlost.TabIndex = 7;
+            TrackRychlost.Value = 1;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            label2.Location = new Point(61, 38);
+            label2.Location = new Point(21, 235);
             label2.Name = "label2";
-            label2.Size = new Size(78, 32);
-            label2.TabIndex = 1;
-            label2.Text = "label2";
+            label2.Size = new Size(45, 30);
+            label2.TabIndex = 6;
+            label2.Text = "Síla";
+            // 
+            // TrackSila
+            // 
+            TrackSila.Location = new Point(21, 268);
+            TrackSila.Maximum = 100;
+            TrackSila.Minimum = 1;
+            TrackSila.Name = "TrackSila";
+            TrackSila.Size = new Size(246, 45);
+            TrackSila.TabIndex = 5;
+            TrackSila.Value = 1;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(21, 162);
+            label1.Name = "label1";
+            label1.Size = new Size(79, 30);
+            label1.TabIndex = 4;
+            label1.Text = "Úroveň";
+            // 
+            // TrackUroven
+            // 
+            TrackUroven.Location = new Point(21, 195);
+            TrackUroven.Minimum = 1;
+            TrackUroven.Name = "TrackUroven";
+            TrackUroven.Size = new Size(246, 45);
+            TrackUroven.TabIndex = 3;
+            TrackUroven.Value = 1;
+            // 
+            // ComboTyp
+            // 
+            ComboTyp.FormattingEnabled = true;
+            ComboTyp.Items.AddRange(new object[] { "travní", "ohnivý", "hmyzí", "zemní" });
+            ComboTyp.Location = new Point(21, 99);
+            ComboTyp.Name = "ComboTyp";
+            ComboTyp.Size = new Size(224, 38);
+            ComboTyp.TabIndex = 1;
+            // 
+            // TxtName
+            // 
+            TxtName.Location = new Point(21, 46);
+            TxtName.Name = "TxtName";
+            TxtName.PlaceholderText = "Název";
+            TxtName.Size = new Size(224, 35);
+            TxtName.TabIndex = 0;
+            // 
+            // groupBox2
+            // 
+            groupBox2.Controls.Add(LblPrehled);
+            groupBox2.Font = new System.Drawing.Font("Segoe UI", 15.75F);
+            groupBox2.Location = new Point(352, 18);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(385, 527);
+            groupBox2.TabIndex = 3;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Přehled pokedexu";
+            // 
+            // LblPrehled
+            // 
+            LblPrehled.AutoSize = true;
+            LblPrehled.Location = new Point(23, 46);
+            LblPrehled.Name = "LblPrehled";
+            LblPrehled.Size = new Size(0, 30);
+            LblPrehled.TabIndex = 0;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(label2);
-            Controls.Add(label1);
+            ClientSize = new Size(752, 557);
+            Controls.Add(groupBox2);
+            Controls.Add(groupBox1);
             Name = "Form1";
             Text = "Form1";
             Load += Form1_Load;
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)TrackHP).EndInit();
+            ((System.ComponentModel.ISupportInitialize)TrackRychlost).EndInit();
+            ((System.ComponentModel.ISupportInitialize)TrackSila).EndInit();
+            ((System.ComponentModel.ISupportInitialize)TrackUroven).EndInit();
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
-
-        private Label label1;
+        private GroupBox groupBox1;
+        private Label label4;
+        private TrackBar TrackHP;
+        private Label label3;
+        private TrackBar TrackRychlost;
         private Label label2;
+        private TrackBar TrackSila;
+        private Label label1;
+        private TrackBar TrackUroven;
+        private ComboBox ComboTyp;
+        private TextBox TxtName;
+        private GroupBox groupBox2;
+        private Button BtnAdd;
+        private Label LblPrehled;
     }
 }
