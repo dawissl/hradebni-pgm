@@ -1,0 +1,13 @@
+- hádání neznámého èísla/slova (wordle)
+- èetnost znakù v textu (analýza)
+- fibonaciho posloupnost s rekurzí / bez rekurze
+- Výpis prvoèísel v daném intervalu
+- Euklidovy algoritmy (NSD, NSN)
+- Pøevody mezi èíselnými soustavami
+
+- graf lineární funkce
+- kryptografie (caesarova šifra)
+- statistika datové sady
+
+- vážený prùmìr
+- stopky (timer) 
