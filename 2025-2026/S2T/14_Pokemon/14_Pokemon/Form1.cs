@@ -26,6 +26,12 @@ namespace _14_Pokemon
 
             LblPrehled.Text = pokedex.Overview();
 
+            foreach(Pokemon x in pokedex)
+            {
+                
+                MessageBox.Show(x.ToString());
+            }
+
         }
     }
 }

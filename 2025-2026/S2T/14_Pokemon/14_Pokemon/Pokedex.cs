@@ -32,7 +32,7 @@ namespace _14_Pokemon
         /// Implementace IEnumerable<Pokemon> – umožňuje iteraci přes foreach.
         /// Delegujeme přímo na enumerátor vnitřního listu.
         /// </summary>
-        public IEnumerator<Pokemon> GetEnumerator()
+       public IEnumerator<Pokemon> GetEnumerator()
         {
             return items.GetEnumerator();
         }
