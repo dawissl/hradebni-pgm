@@ -48,6 +48,7 @@
   - Připravenost na jednotlivé hodiny
   - Vypracování dobrovolných úkolů
   - Chování v hodinách
+- Pro hranici neúspěšnosti je nerozhodné pásmo rozšířeno na interval 4,35–4,60
 
 ---
 
