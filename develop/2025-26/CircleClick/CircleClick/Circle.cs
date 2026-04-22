@@ -23,7 +23,7 @@ namespace CircleClick
             this.color = color;
             this.number = number;
             // radius of circle is avalible from 10px to 200px
-            radius = (10 + (int)(190 * GetCoefficient(number))) / 2;
+            radius = 2;
             topLeftCorner = new Point(center.X - radius, center.Y - radius);
         }
 
@@ -31,7 +31,7 @@ namespace CircleClick
 
         private double GetCoefficient(int number)
         {
-            return (number - 500.0) / (1000000.0 - 500.0);
+            return 0.2;
         }
 
         public Rectangle GetArea()
@@ -41,8 +41,7 @@ namespace CircleClick
 
         public bool IsInCircle(Point cp)
         {
-            double distance = Math.Sqrt((cp.X - center.X) * (cp.X - center.X) + (cp.Y - center.Y) * (cp.Y - center.Y));
-            return distance < radius;
+            return false;
         }
 
         public override string ToString()
