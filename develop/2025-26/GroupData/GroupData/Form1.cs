@@ -31,41 +31,13 @@ namespace GroupData
 
         private void GroupCity()
         {
-            // vytvoøení skupin, centroidy oblastí jsou pouze krajská mìsta
-            foreach (City c in ListCity.Items)
-            {
-                if (c.IsCounty) groups.Add(new Group(c));
-            }
-            foreach (City c in ListCity.Items)
-            {
-                if (c.IsCounty) continue; // pokud je krajské, již existuje v nìjaké skupinì
-                double dist = groups[0].GetDistance(c.Center); // vezememe vzdálenost od prvního centroidu ve skupinách
-                int groupIndex = 0;
-                for (int i = 0; i < groups.Count; i++)
-                {
-                    double d = groups[i].GetDistance(c.Center);
-                    if (d < dist)
-                    {
-                        groupIndex = i;
-                        dist = d;
-                    }
-                }
-                groups[groupIndex].AddCity(c);
-            }
+           // TODO
         }
 
         private void PanelCity_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            foreach (Group gr in groups) { 
-                SolidBrush sb = new SolidBrush(gr.Color);
-                g.FillEllipse(sb,gr.GetArea());
-            }
-            foreach (City c in ListCity.Items) {
-                g.FillEllipse(new SolidBrush(Color.FromArgb(150,0,255,0)), c.GetCityArea());
-                g.DrawString(c.Name, new Font("Arial", 14), Brushes.Black, c.Center);
-
-            }
+            // TODO
         }
 
         private void PanelCity_MouseDown(object sender, MouseEventArgs e)
