@@ -1,0 +1,15 @@
+- title: Úvod
+  url: /docs/00_uvod/
+  subfolderitems:
+    - title: Jak se učí programování
+      url: /docs/00_uvod/jak-se-uci-programovani/
+    - title: Algoritmus
+      url: /docs/00_uvod/algoritmus/
+    - title: Pseudokód
+      url: /docs/00_uvod/pseudokod/
+
+- title: Základy C#
+  url: /docs/01_zaklady_csharp/
+  subfolderitems:
+    - title: Proměnné
+      url: /docs/01_zaklady_csharp/promenne/
