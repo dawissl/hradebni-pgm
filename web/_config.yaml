@@ -1,0 +1,77 @@
+title: Hradební programování
+description: Online učebnice programování (C#, OOP, WinForms)
+lang: cs
+
+baseurl: ""
+url: ""
+
+remote_theme: sighingnow/jekyll-gitbook
+
+# =========================
+# PLUGINS
+# =========================
+plugins:
+  - jekyll-remote-theme
+  - jekyll-seo-tag
+  - jekyll-feed
+  - jekyll-sitemap
+
+# =========================
+# MARKDOWN + SYNTAX HIGHLIGHT
+# =========================
+markdown: kramdown
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: "highlight"
+    guess_lang: true
+    span:
+      line_numbers: false
+    block:
+      line_numbers: false
+
+# =========================
+# SITE SETTINGS
+# =========================
+timezone: Europe/Prague
+
+permalink: pretty
+
+# =========================
+# SEO / SOCIAL
+# =========================
+author: Dawis
+
+twitter:
+  username: ""
+
+social:
+  name: Hradební programování
+  links:
+    - https://github.com/dawissl/hradebni-pgm
+
+# =========================
+# NAVIGATION BEHAVIOR (GitBook)
+# =========================
+toc:
+  enabled: true
+  min_level: 2
+  max_level: 4
+
+# =========================
+# BUILD EXCLUDES
+# =========================
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - README.md
+
+# =========================
+# FEED CONFIG
+# =========================
+feed:
+  path: feed.xml
