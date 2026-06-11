@@ -2,8 +2,8 @@ title: Hradební programování
 description: Online učebnice programování (C#, OOP, WinForms)
 lang: cs
 
-baseurl: ""
-url: ""
+baseurl: "/hradebni-pgm"
+url: "https://dawissl.github.io"
 
 remote_theme: sighingnow/jekyll-gitbook
 
