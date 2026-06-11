@@ -1,11 +1,20 @@
 title: Hradební programování
 description: Online učebnice programování (C#, OOP, WinForms)
 lang: cs
-
 baseurl: "/hradebni-pgm"
 url: "https://dawissl.github.io"
-
 remote_theme: sighingnow/jekyll-gitbook
+
+# =========================
+# COLLECTIONS
+# =========================
+collections:
+  docs:
+    output: true
+    sort_by: order
+
+ordered_collections:
+  - docs
 
 # =========================
 # PLUGINS
@@ -20,9 +29,9 @@ plugins:
 # MARKDOWN + SYNTAX HIGHLIGHT
 # =========================
 markdown: kramdown
-
 kramdown:
   input: GFM
+  auto_ids: true
   syntax_highlighter: rouge
   syntax_highlighter_opts:
     css_class: "highlight"
@@ -36,29 +45,26 @@ kramdown:
 # SITE SETTINGS
 # =========================
 timezone: Europe/Prague
-
 permalink: pretty
 
 # =========================
 # SEO / SOCIAL
 # =========================
 author: Dawis
-
 twitter:
   username: ""
-
 social:
   name: Hradební programování
   links:
     - https://github.com/dawissl/hradebni-pgm
 
 # =========================
-# NAVIGATION BEHAVIOR (GitBook)
+# TOC (in-page obsah)
 # =========================
 toc:
   enabled: true
-  min_level: 2
-  max_level: 4
+  h_min: 1
+  h_max: 3
 
 # =========================
 # BUILD EXCLUDES
