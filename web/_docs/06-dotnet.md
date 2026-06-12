@@ -1,9 +1,8 @@
 ---
 layout: post
-title: ".NET C#"
+title: ".NET C# a vývojové prostředí"
 order: 6
 ---
-# .NET a vývojové prostředí
 
 ## Co je .NET?
 

@@ -4,8 +4,6 @@ title: "Metody"
 order: 18
 ---
 
-# Metody
-
 Jak program roste, začíná být obtížné udržovat veškerý kód na jednom místě. Opakující se části programu zhoršují přehlednost a zvyšují riziko chyb.
 
 Řešením jsou **metody** – pojmenované bloky kódu, které vykonávají konkrétní úkol. Metody umožňují rozdělit program na menší, přehlednější a znovupoužitelné části.

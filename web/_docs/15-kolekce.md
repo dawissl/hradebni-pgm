@@ -4,8 +4,6 @@ title: "List a Dictionary"
 order: 15
 ---
 
-# List a Dictionary
-
 Kromě polí (`array`) nabízí C# i generické kolekce, které umožňují flexibilnější práci s daty. Nejčastěji se používají `List<T>` a `Dictionary<TKey, TValue>`.
 
 Písmeno `T` v názvu `List<T>` je **typový parametr** – při deklaraci ho nahradíš

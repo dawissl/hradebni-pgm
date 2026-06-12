@@ -3,7 +3,6 @@ layout: post
 title: "Datové struktury a kolekce"
 order: 13
 ---
-# Datové struktury
 
 Když program pracuje s jediným číslem nebo řetězcem, stačí jedna proměnná. Jenže reálné programy potřebují uchovávat **mnoho hodnot najednou** – seznam studentů, výsledky měření, položky košíku, historii tahů ve hře.
 

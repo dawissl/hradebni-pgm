@@ -4,8 +4,6 @@ title: "Základy jazyka C#"
 order: 5
 ---
 
-# Základy jazyka C#
-
 ## Co je C#?
 
 C# (čti „C sharp") je objektově orientovaný programovací jazyk vyvinutý společností **Microsoft** na začátku 2000. let. Vede ho Anders Hejlsberg a je součástí ekosystému **.NET**. Používá se pro vývoj konzolových aplikací, desktopových aplikací (Windows Forms, WPF), webových aplikací (ASP.NET) i mobilních aplikací (Xamarin / MAUI).

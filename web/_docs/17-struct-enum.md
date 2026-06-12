@@ -4,8 +4,6 @@ title: "Struktura a enumerace"
 order: 17
 ---
 
-# Struct a Enum
-
 Dosud jsme pracovali s vestavěnými datovými typy (`int`, `string`, `bool`…) a s třídami. C# nabízí ještě dva uživatelsky definované typy, které se hodí v konkrétních situacích: **`struct`** a **`enum`**.
 
 ---

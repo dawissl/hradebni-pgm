@@ -4,8 +4,6 @@ title: "Práce s řetězcem"
 order: 16
 ---
 
-# Řetězce
-
 Řetězec (`string`) je posloupnost znaků uzavřená v dvojitých uvozovkách. V C# je `string` referenční typ, ale chová se jako hodnotový – při porovnávání se porovnává obsah, ne adresa v paměti.
 
 ```csharp

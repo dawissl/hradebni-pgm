@@ -4,8 +4,6 @@ title: "Cykly"
 order: 12
 ---
 
-# Cykly
-
 Cyklus umožňuje **opakovat blok kódu** – buď pevně daný počet opakování, nebo dokud platí nějaká podmínka. Bez cyklů by opakování muselo být psáno ručně řádek po řádku.
 
 ---

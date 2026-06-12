@@ -4,8 +4,6 @@ title: "Operátory a výrazy"
 order: 9
 ---
 
-# Operátory
-
 Operátor je symbol, který provádí operaci s jednou nebo více hodnotami (**operandy**). Výsledkem operace je nová hodnota.
 
 ---

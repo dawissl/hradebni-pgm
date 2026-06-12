@@ -4,8 +4,6 @@ title: "Proměnné a datové typy"
 order: 8
 ---
 
-# Proměnné
-
 ## Co je proměnná?
 
 Proměnná je **pojmenované místo v paměti**, kde program ukládá data, se kterými pracuje.

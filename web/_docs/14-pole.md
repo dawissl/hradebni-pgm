@@ -4,8 +4,6 @@ title: "Pole"
 order: 14
 ---
 
-# Pole
-
 Pole (`array`) je datová struktura, která uchovává **pevný počet prvků stejného datového typu** pod jedním názvem. Prvky jsou uloženy v paměti za sebou a přístup k nim probíhá přes **index** – celé číslo udávající pozici.
 
 ---

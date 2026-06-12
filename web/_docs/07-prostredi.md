@@ -4,8 +4,6 @@ title: "Vývojové prostředí"
 order: 7
 ---
 
-# Vývojové prostředí
-
 ## Instalace Visual Studia
 
 Pro vývoj v C# budeme používat **Visual Studio Community** – profesionální IDE od Microsoftu, které je zdarma pro studenty a jednotlivce.
