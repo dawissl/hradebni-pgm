@@ -5,6 +5,7 @@
 - Prezentace z hodin (pdf, ppt)
 - Zadání a implementace aplikací vytvářených v hodinách
 - Dodatečné materiály k výuce
+- [Online učebnice](https://dawissl.github.io/hradebni-pgm/)
 
 ---
 
