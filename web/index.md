@@ -1,9 +1,7 @@
 ---
 layout: home
-title: Učebnice programování
+title: Učebnice programování v C#
 ---
-
-# Učebnice programování v C#
 
 Vítejte v online učebnici programování pro SPŠ, SOŠ a SOU Hradební.
 
@@ -18,3 +16,7 @@ Každá kapitola obsahuje **teorii**, **příklady kódu** a **cvičení**.
 ---
 
 *Materiály jsou průběžně doplňovány. Kapitoly označené 🚧 se teprve připravují.*
+
+---
+
+Pokud v učebnici objevíte nesrovnalosti, zastaralé informace nebo máte podnět pro vylepšení, kontaktujte mě na sladecek@hradebni.cz
