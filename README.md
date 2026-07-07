@@ -6,6 +6,7 @@
 - Zadání a implementace aplikací vytvářených v hodinách
 - Dodatečné materiály k výuce
 - [Online učebnice](https://dawissl.github.io/hradebni-pgm/)
+- [Zásady používání AI nástrojů](./AI.md)- [Zásady používání AI nástrojů](./AI.md)
 
 ---
 
