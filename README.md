@@ -7,6 +7,7 @@
 - Dodatečné materiály k výuce
 - [Online učebnice](https://dawissl.github.io/hradebni-pgm/)
 - [Zásady používání AI nástrojů](./AI.md)
+- [Šablona pro vlastní repositář](https://github.com/dawissl/pgm-template)
 
 ---
 
