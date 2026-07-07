@@ -303,3 +303,50 @@ do { ... } while (podmínka);
 // break  – ukončí cyklus
 // continue – přeskočí zbytek průchodu
 ```
+
+---
+
+## Otázky k zamyšlení
+
+1. Proč `foreach` neumožňuje měnit hodnoty prvků pole, zatímco `for` ano?
+2. V jaké situaci by `do-while` mohl způsobit chybu, kterou by `while` neudělal?
+3. Máme vnořené dva cykly a `break` v tom vnitřním. Co přesně se ukončí a co poběží dál?
+4. Kdy je nekonečný cyklus (`while (true)`) žádoucí návrhový prvek, a ne chyba?
+
+---
+
+## Procvičení
+
+### Řešený příklad
+
+**Zadání:** Napište program, který načte 5 celých čísel od uživatele a na konci vypíše jejich součet a průměr.
+
+<details markdown="1">
+<summary>💡 Zobrazit řešení</summary>
+
+Použijeme `for` s pevným počtem opakování (5), protože počet vstupů předem známe — ideální případ pro tento typ cyklu.
+
+```csharp
+int sum = 0;
+int count = 5;
+
+for (int i = 0; i < count; i++)
+{
+    Console.Write($"Zadej číslo {i + 1}: ");
+    int number = Convert.ToInt32(Console.ReadLine());
+    sum += number;
+}
+
+Console.WriteLine($"Součet: {sum}");
+Console.WriteLine($"Průměr: {(double)sum / count}");
+```
+
+Přetypování na `double` u průměru je důležité — bez něj by C# provedl celočíselné dělení a desetinná část by se ztratila.
+
+</details>
+
+### Samostatná cvičení
+
+1. **Základní** — Upravte program tak, aby uživatel na začátku sám zadal, kolik čísel chce zadávat (použijte `while` nebo `for` s proměnným počtem opakování).
+2. **Pokročilejší** — Napište program, který opakovaně žádá o zadání čísla, dokud uživatel nezadá záporné číslo (to je signál pro ukončení). Po skončení vypište, kolik kladných čísel bylo zadáno.
+3. **Bonus (*)** — Vytvořte "hádej číslo" hru: program si "myslí" číslo 1–100, uživatel hádá a program pomocí `do-while` cyklu radí "více"/"méně", dokud uživatel neuhodne.
