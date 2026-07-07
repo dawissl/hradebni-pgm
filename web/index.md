@@ -11,7 +11,7 @@ Učebnice pokrývá vše od základů algoritmizace přes syntaxi jazyka C#, gra
 
 Kapitoly jsou seřazeny od jednodušších témat ke složitějším. Pokud hledáte konkrétní téma, použijte postranní navigaci nebo vyhledávání.
 
-Každá kapitola obsahuje **teorii**, **příklady kódu** a **cvičení**.
+Každá kapitola obsahuje **teorii**, ve většině případů **příklady kódu** a postupně přibudou i cvičení **cvičení**.
 
 ---
 
