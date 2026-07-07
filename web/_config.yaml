@@ -3,7 +3,7 @@ description: Online učebnice programování (C#, OOP, WinForms)
 lang: cs
 baseurl: "/hradebni-pgm"
 url: "https://dawissl.github.io"
-remote_theme: sighingnow/jekyll-gitbook
+remote_theme: jasongrimes/jekyll-chapterbook
 
 # =========================
 # COLLECTIONS
