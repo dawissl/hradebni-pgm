@@ -22,7 +22,7 @@ Než začneš psát kód, je užitečné si algoritmus nakreslit. Vývojový dia
 
 Každý symbol má přesně daný tvar a význam. Standardizuje je norma ISO 5807.
 
-![tabulka symbolů: ovál, obdélník, rovnoběžník, kosočtverec, šipka, s popisky](assets/vd-symboly.png)
+![tabulka symbolů: ovál, obdélník, rovnoběžník, kosočtverec, šipka, s popisky](../assets/vd-symboly.png)
 
 | Symbol | Tvar | Použití |
 |---|---|---|
@@ -68,7 +68,7 @@ Cyklus se ve vývojovém diagramu pozná šipkou, která se **vrací zpět** na 
 
 Algoritmus, který vypisuje čísla 1 až 5:
 
-![vývojový diagram se smyčkou: Start → i = 1 → kosočtverec "i ≤ 5?" → Ano: Výstup i → i = i + 1 → šipka zpět na podmínku; Ne: Konec](./assets/vd-priklad-cyklus.png)
+![vývojový diagram se smyčkou: Start → i = 1 → kosočtverec "i ≤ 5?" → Ano: Výstup i → i = i + 1 → šipka zpět na podmínku; Ne: Konec](../assets/vd-priklad-cyklus.png)
 
 Zpětná šipka (smyčka) je klíčový vizuální signál — říká: tenhle blok se bude opakovat.
 
