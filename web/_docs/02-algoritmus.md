@@ -48,7 +48,7 @@ Algoritmus musí pro každý platný vstup produkovat **správný výsledek**. T
 2. Pokud linka jede, jdi na zastávku
 3. Nastup do autobusu směr Centrum
 4. Sleduj zastávky
-5. Pokud aktuální zastávka = Náměstí, vystup
+5. Pokud je aktuální zastávka Náměstí, vystup
 6. Jinak pokračuj krokem 4
 ```
 
@@ -83,3 +83,38 @@ Tento algoritmus splňuje všechny vlastnosti: je hromadný (funguje pro jakéko
 | Konečnost | Algoritmus vždy skončí |
 | Rezultativnost | Vždy dospěje k výsledku |
 | Správnost | Výsledek je pro daný vstup správný |
+
+---
+
+## Otázky k zamyšlení
+
+1. Vyjmenujte vlastnosti algoritmu (konečnost, určitost, ...) a ke každé uveďte, co by se stalo, kdyby ji algoritmus neměl.
+2. Je kuchařský recept algoritmus? Které vlastnosti splňuje a které ne?
+3. Dva algoritmy řeší stejnou úlohu, ale jeden potřebuje 10× více kroků. Je horší? Kdy na tom záleží a kdy ne?
+
+---
+
+## Procvičení
+
+### Řešený příklad
+
+**Zadání (teoretické):** Máte tento postup: "Vezmi číslo. Pokud je hezké, vyděl ho. Opakuj." Vysvětlete, které vlastnosti algoritmu tento postup porušuje a jak by ho šlo opravit?
+
+<details markdown="1">
+<summary>💡 Zobrazit řešení</summary>
+
+Postup porušuje hned tři vlastnosti:
+
+- **Určitost (determinovanost):** "pokud je hezké" není jednoznačné kritérium — každý vykonavatel by se rozhodl jinak. Oprava: např. "pokud je sudé".
+- **Určitost podruhé:** "vyděl ho" neříká čím. Oprava: "vyděl ho dvěma".
+- **Konečnost:** "Opakuj" bez ukončovací podmínky znamená nekonečné opakování. Oprava: "opakuj, dokud číslo není 1".
+
+Opravená verze: *"Vezmi celé kladné číslo. Pokud je sudé, vyděl ho dvěma. Opakuj, dokud číslo není rovno 1."* — teď je postup jednoznačný a (pro mocniny dvojky) konečný.
+
+</details>
+
+### Samostatná cvičení
+
+1. **Základní** — Napište vlastní příklad "špatného algoritmu", který porušuje alespoň dvě vlastnosti, a nechte spolužáka, ať chyby najde.
+2. **Pokročilejší** — Slovně popište algoritmus, který najde největší číslo ze tří zadaných čísel. Ověřte, že splňuje všechny vlastnosti algoritmu.
+3. **Bonus (*)** — Zamyslete se nad opravenou verzí z řešeného příkladu: je konečná pro *každé* kladné celé číslo, nebo jen pro některá? Zdůvodněte.

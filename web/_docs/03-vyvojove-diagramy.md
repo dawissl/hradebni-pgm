@@ -26,7 +26,7 @@ Každý symbol má přesně daný tvar a význam. Standardizuje je norma ISO 580
 
 | Symbol | Tvar | Použití |
 |---|---|---|
-| Začátek / Konec | Ovál (zaoblený obdélník) | Každý diagram má právě jeden Start a jeden (nebo více) Konec |
+| Začátek / Konec | Ovál (zaoblený obdélník) | Každý diagram má právě jeden Start a jeden Konec (občas pro přehlednost píšeme více konců) |
 | Operace | Obdélník | Výpočet, přiřazení hodnoty, libovolná akce |
 | Vstup / Výstup | Rovnoběžník (šikmé strany) | Načtení hodnoty od uživatele nebo výpis výsledku |
 | Podmínka | Kosočtverec | Otázka s odpovědí Ano / Ne — zde se diagram větví |
@@ -93,3 +93,44 @@ Zpětná šipka (smyčka) je klíčový vizuální signál — říká: tenhle b
 | Vstup / Výstup | Rovnoběžník | Komunikace s uživatelem |
 | Podmínka | Kosočtverec | Větví tok na Ano / Ne |
 | Šipka | Čára | Určuje pořadí kroků |
+
+---
+
+## Otázky k zamyšlení
+
+1. Proč má vývojový diagram různé tvary značek (obdélník, kosočtverec, rovnoběžník)? Co by se stalo, kdyby vše bylo v obdélnících?
+2. Z kosočtverce (rozhodování) vedou vždy dvě šipky. Může jich vést víc? A může vést jen jedna?
+3. Kdy je vhodnější vývojový diagram a kdy slovní popis (pseudokód)?
+
+---
+
+## Procvičení
+
+### Řešený příklad
+
+**Zadání:** Na obrázku je vývojový diagram. Vytrasujte ho pro vstup `n = 4` — do tabulky si zapisujte hodnoty proměnných `i` a `s` po každém průchodu — a určete, co algoritmus počítá a co vypíše.
+
+![Vývojový diagram k trasování](assets/03-diagram-trasovani.png)
+
+<details markdown="1">
+<summary>💡 Zobrazit řešení</summary>
+
+Trasovací tabulka pro `n = 4`:
+
+| krok | i | s | podmínka i ≤ n |
+|------|---|---|----------------|
+| start | 1 | 0 | 1 ≤ 4 → ANO |
+| 1. průchod | 2 | 1 | 2 ≤ 4 → ANO |
+| 2. průchod | 3 | 3 | 3 ≤ 4 → ANO |
+| 3. průchod | 4 | 6 | 4 ≤ 4 → ANO |
+| 4. průchod | 5 | 10 | 5 ≤ 4 → NE |
+
+Algoritmus sčítá čísla od 1 do n — vypíše **10** (protože 1+2+3+4 = 10).
+
+</details>
+
+### Samostatná cvičení
+
+1. **Základní** — Nakreslete vývojový diagram algoritmu, který načte číslo a vypíše, zda je kladné, záporné, nebo nula.
+2. **Pokročilejší** — Nakreslete vývojový diagram algoritmu, který načítá čísla tak dlouho, dokud uživatel nezadá nulu, a pak vypíše jejich součet.
+3. **Bonus (*)** — Upravte diagram z řešeného příkladu tak, aby počítal faktoriál čísla n. Které značky se změní a které zůstanou?
