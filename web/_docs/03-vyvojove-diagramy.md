@@ -49,7 +49,7 @@ Každý symbol má přesně daný tvar a význam. Standardizuje je norma ISO 580
 
 Algoritmus, který zjistí, zda je číslo kladné, záporné nebo nula.
 
-![vývojový diagram: Start → Vstup x → kosočtverec "x > 0?" → Ano: Výstup "kladné" → Konec; Ne → kosočtverec "x < 0?" → Ano: Výstup "záporné" → Konec; Ne: Výstup "nula" → Konec](assets/vd-priklad-cislo.png)
+![vývojový diagram: Start → Vstup x → kosočtverec "x > 0?" → Ano: Výstup "kladné" → Konec; Ne → kosočtverec "x < 0?" → Ano: Výstup "záporné" → Konec; Ne: Výstup "nula" → Konec](../assets/vd-priklad-cislo.png)
 
 Postup čtení diagramu:
 
@@ -68,7 +68,7 @@ Cyklus se ve vývojovém diagramu pozná šipkou, která se **vrací zpět** na 
 
 Algoritmus, který vypisuje čísla 1 až 5:
 
-![vývojový diagram se smyčkou: Start → i = 1 → kosočtverec "i ≤ 5?" → Ano: Výstup i → i = i + 1 → šipka zpět na podmínku; Ne: Konec](assets/vd-priklad-cyklus.png)
+![vývojový diagram se smyčkou: Start → i = 1 → kosočtverec "i ≤ 5?" → Ano: Výstup i → i = i + 1 → šipka zpět na podmínku; Ne: Konec](./assets/vd-priklad-cyklus.png)
 
 Zpětná šipka (smyčka) je klíčový vizuální signál — říká: tenhle blok se bude opakovat.
 
@@ -110,7 +110,7 @@ Zpětná šipka (smyčka) je klíčový vizuální signál — říká: tenhle b
 
 **Zadání:** Na obrázku je vývojový diagram. Vytrasujte ho pro vstup `n = 4` — do tabulky si zapisujte hodnoty proměnných `i` a `s` po každém průchodu — a určete, co algoritmus počítá a co vypíše.
 
-![Vývojový diagram k trasování](assets/03-diagram-trasovani.png)
+![Vývojový diagram k trasování](./../assets/03-diagram-trasovani.png)
 
 <details markdown="1">
 <summary>💡 Zobrazit řešení</summary>
