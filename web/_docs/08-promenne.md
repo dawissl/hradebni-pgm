@@ -8,7 +8,7 @@ order: 8
 
 Proměnná je **pojmenované místo v paměti**, kde program ukládá data, se kterými pracuje.
 
-Představ si ji jako krabičku s popiskem – popisek je název proměnné, obsah krabičky je její hodnota.
+Představte si ji jako krabičku s popiskem – popisek je název proměnné, obsah krabičky je její hodnota.
 
 ```csharp
 int userAge = 20;
@@ -124,7 +124,7 @@ double accountBalance = 1500.50;
 
 ## Typová konverze (přetypování)
 
-Někdy potřebuješ hodnotu jednoho typu uložit do proměnné jiného typu.
+Někdy potřebujete hodnotu jednoho typu uložit do proměnné jiného typu.
 
 ### Implicitní konverze (automatická)
 
@@ -137,7 +137,7 @@ double myDouble = myInt; // int → double, bez ztráty
 
 ### Explicitní konverze (přetypování)
 
-Nutná, pokud hrozí ztráta dat. Píšeš cílový typ do závorek před hodnotu:
+Nutná, pokud hrozí ztráta dat. Píšete cílový typ do závorek před hodnotu:
 
 ```csharp
 double price = 20.9;
@@ -156,7 +156,7 @@ decimal m = (decimal)d;
 
 ## Konstanta
 
-Pokud se hodnota proměnné **nesmí změnit**, použij klíčové slovo `const`:
+Pokud se hodnota proměnné **nesmí změnit**, používejte klíčové slovo `const`:
 
 ```csharp
 const double Pi = 3.14159;
@@ -178,3 +178,43 @@ Pokus o změnu konstanty skončí chybou při kompilaci.
 | camelCase | Konvence pojmenování v C# |
 | Přetypování | Převod hodnoty na jiný datový typ |
 | `const` | Proměnná, jejíž hodnota se nemůže měnit |
+
+---
+
+## Otázky k zamyšlení
+
+1. Proč má C# více celočíselných typů (`byte`, `short`, `int`, `long`), když by "stačil" ten největší?
+2. Co se stane, když do proměnné `byte` (max 255) uložíte výsledek `200 + 100`? A proč překladač nevaruje vždy?
+3. Kdy použijete `double` a kdy `decimal`? Proč se pro částku nehodí `double`?
+
+---
+
+## Procvičení
+
+### Řešený příklad
+
+**Zadání:** Určete, jaký datový typ je nejvhodnější pro tyto údaje, a zdůvodněte: 
+(a) počet žáků ve třídě
+(b) výška člověka v metrech
+(c) cena zboží v e-shopu
+(d) zda je uživatel přihlášen
+(e) jedno písmeno klávesnice
+(f) rodné číslo.
+
+<details markdown="1">
+<summary>💡 Zobrazit řešení</summary>
+
+- **(a) počet žáků** → `int` — celé číslo, malý rozsah, `byte` by stačil, ale `int` je konvence a bezpečnější při výpočtech.
+- **(b) výška v metrech** → `double` — desetinné číslo, nepotřebujeme absolutní přesnost.
+- **(c) cena zboží** → `decimal` — u peněz vadí zaokrouhlovací chyby binárního `double` (0.1 + 0.2 ≠ 0.3), `decimal` počítá desítkově přesně.
+- **(d) přihlášen** → `bool` — dvě hodnoty, `true`/`false`.
+- **(e) jedno písmeno** → `char`.
+- **(f) rodné číslo** → `string`! Přestože vypadá jako číslo, nepočítáme s ním, může začínat nulou a obsahuje lomítko. Pravidlo: *co není určeno k počítání, není číslo.*
+
+</details>
+
+### Samostatná cvičení
+
+1. **Základní** — Deklarujte proměnné pro: své jméno, věk, výšku, znaménko tvého jména a informaci, zda splňujete podmínku plnoletosti. Všechny vypište v jedné větě pomocí interpolace (`$"..."`).
+2. **Pokročilejší** — Vyzkoušejte, co vypíše `Console.WriteLine(0.1 + 0.2 == 0.3);` a vysvětlete výsledek. Pak totéž s typem `decimal` (`0.1m + 0.2m == 0.3m`).
+3. **Bonus (*)** — Napište program, který demonstruje přetečení (overflow) typu `int`. Zjistěte, co dělá klíčové slovo `checked`.

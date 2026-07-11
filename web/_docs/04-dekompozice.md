@@ -10,9 +10,9 @@ Složité problémy se neřeší najednou — rozkládají se na menší, zvlád
 
 ## Proč dekompozice?
 
-Představ si, že máš napsat program, který spravuje knihovnu — přidávání knih, vyhledávání, výpůjčky, upomínky. Pokud se na to podíváš jako na jeden velký problém, nevíš kde začít.
+Představte si, že máte napsat program, který spravuje knihovnu — přidávání knih, vyhledávání, výpůjčky, upomínky. Pokud se na to podíváte jako na jeden velký problém, nevíte kde začít.
 
-Pokud to rozložíš:
+Pokud to rozložíte:
 
 ```
 Systém knihovny
@@ -36,7 +36,7 @@ Každá část je teď samostatný, srozumitelný úkol.
 
 ### 1. Formulace problému
 
-Nejdříve problém přesně popiš. Co je vstup? Co je výstup? Jaká jsou omezení?
+Nejdříve problém přesně popište. Co je vstup? Co je výstup? Jaká jsou omezení?
 
 > **Příklad:** Chci program, který spočítá průměrnou známku žáka ze zadaných hodnot.
 > - Vstup: seznam čísel (1–5)
@@ -45,7 +45,7 @@ Nejdříve problém přesně popiš. Co je vstup? Co je výstup? Jaká jsou omez
 
 ### 2. Analýza
 
-Rozlož problém na části. Ptej se: „Co všechno musím udělat, aby to fungovalo?"
+Rozložte problém na části. Ptejte se: „Co všechno musím udělat, aby to fungovalo?"
 
 ```
 Výpočet průměru
@@ -58,21 +58,21 @@ Výpočet průměru
 
 ### 3. Návrh algoritmu
 
-Pro každou část navrhni algoritmus — slovně, pseudokódem nebo vývojovým diagramem.
+Pro každou část navrhněte algoritmus — slovně, pseudokódem nebo vývojovým diagramem.
 
 ### 4. Implementace
 
-Přelož algoritmy do kódu. Díky dekompozici víš přesně, co každá část dělá — programuješ ji odděleně a pak skládáš dohromady.
+Přeložte algoritmy do kódu. Díky dekompozici víte přesně, co každá část dělá — programujete ji odděleně a pak skládáte dohromady.
 
 ### 5. Testování
 
-Otestuj každou část zvlášť i celý systém dohromady. Chybu je snazší najít v malé části než v celém programu.
+Otestujte každou část zvlášť i celý systém dohromady. Chybu je snazší najít v malé části než v celém programu.
 
 ---
 
 ## Příklad: Kalkulačka
 
-**Problém:** Napiš program, který od uživatele načte dvě čísla a operaci (+, -, *, /) a zobrazí výsledek.
+**Problém:** Napište program, který od uživatele načte dvě čísla a operaci (+, -, *, /) a zobrazí výsledek.
 
 **Dekompozice:**
 
@@ -99,7 +99,7 @@ Každý bod je teď jasný, ohraničený úkol. Bod 2c (dělení nulou) bychom b
 
 ## Dekompozice a funkce
 
-V programování se dekompozice přirozeně mapuje na **funkce** (metody) — každá část algoritmu se stane samostatnou funkcí. Ke struktuře funkcí se vrátíme podrobně v kapitolách 18–23.
+V programování se dekompozice přirozeně mapuje na **funkce** (metody) — každá část algoritmu se stane samostatnou funkcí. Ke struktuře funkcí se vrátíme podrobně v pozdějších kapitolách.
 
 ---
 
@@ -112,3 +112,48 @@ V programování se dekompozice přirozeně mapuje na **funkce** (metody) — ka
 | Návrh algoritmu | Pro každou část navrhnu postup |
 | Implementace | Napíšu kód |
 | Testování | Ověřím, že vše funguje správně |
+
+---
+
+## Otázky k zamyšlení
+
+1. Proč je snazší vyřešit deset malých problémů než jeden velký, i když je to "stejné množství práce"?
+2. Jak poznáte, že je podproblém už "dost malý" a nemá smysl ho dál dělit?
+3. Jak souvisí dekompozice s možností rozdělit práci v týmu?
+
+---
+
+## Procvičení
+
+### Řešený příklad
+
+**Zadání (návrhové):** Proveďte dekompozici problému "uspořádat školní turnaj v piškvorkách". Rozdělte ho na podproblémy alespoň do dvou úrovní.
+
+<details markdown="1">
+<summary>💡 Zobrazit řešení</summary>
+
+Jedna z možných dekompozic:
+
+1. **Registrace hráčů**
+   - sběr přihlášek (jméno, třída)
+   - kontrola duplicit
+2. **Rozlosování**
+   - určení systému (pavouk / skupiny)
+   - přiřazení dvojic do prvního kola
+3. **Průběh zápasů**
+   - pravidla jedné hry (kdo začíná, velikost hrací plochy)
+   - zaznamenání výsledku
+   - postup vítěze do dalšího kola
+4. **Vyhodnocení**
+   - určení pořadí
+   - vyhlášení výsledků
+
+Všimněte si, že každý podproblém jde řešit (a testovat!) samostatně — přesně to je cíl dekompozice. V programu by každý z bodů mohl být samostatnou metodou nebo třídou.
+
+</details>
+
+### Samostatná cvičení
+
+1. **Základní** — Proveďte dekompozici problému "napéct cukroví na Vánoce" do dvou úrovní.
+2. **Pokročilejší** — Proveďte dekompozici programu "jednoduchá kalkulačka pro dvě čísla". Ke každému podproblému napište, jaký má vstup a výstup.
+3. **Bonus (*)** — Vezměte svou dekompozici kalkulačky a najděte podproblém, který by šel znovu použít i v úplně jiném programu. Proč je znovupoužitelnost důležitá?
