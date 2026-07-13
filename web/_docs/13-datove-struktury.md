@@ -37,7 +37,7 @@ Pevně daný počet prvků stejného typu. Rychlé, jednoduché – velikost se 
 int[] scores = { 85, 92, 78, 90, 88 };
 ```
 
-→ Detailně v kapitole **[Pole](../14-pole.md)**
+→ Detailně v kapitole **[Pole](14-pole.md)**
 
 ---
 
@@ -50,7 +50,7 @@ List<string> names = new List<string> { "Kamil", "Jana" };
 names.Add("Tomáš");
 ```
 
-→ Detailně v kapitole **[Kolekce](../15-kolekce.md)**
+→ Detailně v kapitole **[Kolekce](/docs/15-kolekce.md)**
 
 ---
 
@@ -68,7 +68,7 @@ Console.WriteLine(grades["Kamil"]); // 90
 
 Typické použití: překlad slov, konfigurace, výsledky podle jména.
 
-→ Detailně v kapitole **[Kolekce](../15-kolekce.md)**
+→ Detailně v kapitole **[Kolekce](./15-kolekce.md)**
 
 ---
 
