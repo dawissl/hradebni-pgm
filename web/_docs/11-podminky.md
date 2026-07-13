@@ -74,7 +74,7 @@ if (age < 18)
     Console.WriteLine("Nezletilý."); // funguje, ale...
 ```
 
-> ⚠️ Vynechávání závorek je zdroj chyb. Doporučení: **vždy používej `{ }`**, i pro jednořádkové bloky.
+> ⚠️ Vynechávání závorek je zdroj chyb. Doporučení: **používejte `{ }`**, i pro jednořádkové bloky.
 
 ---
 
@@ -112,13 +112,13 @@ if (age >= 18 && hasTicket)
 }
 ```
 
-> 💡 Hlubokému vnořování (`if` uvnitř `if` uvnitř `if`…) se vyhýbej – kód je pak těžko čitelný. Jako orientační pravidlo: více než 2–3 úrovně jsou signál k refaktoringu.
+> 💡 Hlubokému vnořování (`if` uvnitř `if` uvnitř `if`…) se vyhýbejte – kód je pak těžko čitelný. Jako orientační pravidlo: více než 2–3 úrovně jsou signál k refaktoringu.
 
 ---
 
 ## Ternární operátor
 
-Zkrácený zápis podmínky na jeden řádek. Hodí se, když chceš přiřadit hodnotu nebo vrátit výsledek podle podmínky.
+Zkrácený zápis podmínky na jeden řádek. Hodí se, když chcete přiřadit hodnotu nebo vrátit výsledek podle podmínky.
 
 ```
 podmínka ? hodnota_když_true : hodnota_když_false
@@ -136,13 +136,13 @@ Nebo přímo uvnitř `WriteLine`:
 Console.WriteLine(score >= 50 ? "Prospěl" : "Neprospěl");
 ```
 
-> ⚠️ Ternární operátor je vhodný pro **jednoduché přiřazení**. Pokud logika složitější, použij `if/else` – čitelnost má přednost.
+> ⚠️ Ternární operátor je vhodný pro **jednoduché přiřazení**. Pokud logika složitější, použijte `if/else` – čitelnost má přednost.
 
 ---
 
 ## switch
 
-`switch` porovnává proměnnou s pevnými hodnotami (**cases**). Je přehlednější než dlouhý řetězec `else if`, pokud testuješ jednu proměnnou na konkrétní hodnoty.
+`switch` porovnává proměnnou s pevnými hodnotami (**cases**). Je přehlednější než dlouhý řetězec `else if`, pokud testujete jednu proměnnou na konkrétní hodnoty.
 
 ### Klasický `switch`
 
@@ -172,7 +172,7 @@ Klíčová pravidla:
 
 - Každý `case` musí končit `break` (nebo `return`, `throw`)
 - `default` je volitelný – provede se, pokud žádný `case` nevyhovuje
-- Více `case` na stejný blok (jako `"A"` a `"A+"` výše) – zapíšeš je za sebou bez `break` mezi nimi
+- Více `case` na stejný blok (jako `"A"` a `"A+"` výše) – zapíšete je za sebou bez `break` mezi nimi
 
 ### switch expression (moderní zápis, C# 8+)
 
@@ -201,7 +201,7 @@ Rozdíly oproti klasickému `switch`:
 | `default:` | `_` (discard pattern) |
 | Více řádků logiky v bloku | Jednořádkové větve |
 
-> 💡 Pro jednoduché přiřazení hodnoty preferuj `switch` expression – je kratší a čitelnější. Pro složitější logiku (více příkazů v každé větvi) zůstaň u klasického.
+> 💡 Pro jednoduché přiřazení hodnoty preferujte `switch` expression – je kratší a čitelnější. Pro složitější logiku (více příkazů v každé větvi) zůstaňte u klasického.
 
 ---
 
@@ -233,3 +233,49 @@ switch (x) { case 1: ...; break; default: ...; break; }
 // switch expression
 string s = x switch { 1 => "jedna", 2 => "dva", _ => "jiné" };
 ```
+
+---
+
+## Otázky k zamyšlení
+
+1. Jaký je rozdíl mezi řetězcem `if – else if – else` a několika samostatnými `if` za sebou? Kdy dají různý výsledek?
+2. Kdy je vhodnější `switch` než `if`? A kdy `switch` použít nejde?
+3. Co znamená "líné vyhodnocování" (short-circuit) u `&&` a `||`? Proč je užitečné v podmínce `if (pole != null && pole.Length > 0)`?
+
+---
+
+## Procvičení
+
+### Řešený příklad
+
+**Zadání:** Napište program, který načte bodový zisk z testu (0–100) a vypíše známku podle stupnice: 90+ → 1, 75+ → 2, 60+ → 3, 45+ → 4, jinak 5. Vstup mimo rozsah 0–100 odmítni.
+
+<details markdown="1">
+<summary>💡 Zobrazit řešení</summary>
+
+Klíčové je pořadí podmínek — od nejvyšší hranice dolů, díky `else if` se vyhodnotí jen první splněná:
+
+```csharp
+Console.Write("Zadej počet bodů (0-100): ");
+int body = Convert.ToInt32(Console.ReadLine());
+
+if (body < 0 || body > 100)
+{
+    Console.WriteLine("Body musí být v rozsahu 0-100.");
+}
+else if (body >= 90) Console.WriteLine("Známka: 1");
+else if (body >= 75) Console.WriteLine("Známka: 2");
+else if (body >= 60) Console.WriteLine("Známka: 3");
+else if (body >= 45) Console.WriteLine("Známka: 4");
+else Console.WriteLine("Známka: 5");
+```
+
+Kdybychom použili samostatné `if` bez `else`, vstup 95 by vypsal známky 1, 2, 3 i 4 — všechny podmínky by byly pravdivé.
+
+</details>
+
+### Samostatná cvičení
+
+1. **Základní** — Načtěte tři čísla a vypište největší z nich. Vyřešte jen pomocí `if`/`else`, bez `Math.Max()`.
+2. **Pokročilejší** — Napište program "kalkulačka": načtěte dvě čísla a operátor (+, -, *, /) a proveďte odpovídající operaci. Použijte `switch`. Ošetřete dělení nulou a neznámý operátor.
+3. **Bonus (*)** — Načtěte rok a rozhodněte, zda je přestupný (dělitelný 4, ale ne 100, ledaže 400). Napište dvě verze: s vnořenými `if` a s jedinou složenou podmínkou. Která je čitelnější?

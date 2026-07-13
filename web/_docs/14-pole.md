@@ -34,7 +34,7 @@ scores = new int[5];      // vytvoření pole
 scores = new[] { 85, 92, 78, 90, 88 }; // inicializace hodnotami
 ```
 
-> 💡 Velikost pole se po vytvoření **nedá změnit**. Pokud potřebuješ dynamicky přidávat prvky, použij `List<T>` (kapitola 15).
+> 💡 Velikost pole se po vytvoření **nedá změnit**. Pokud potřebujete dynamicky přidávat prvky, použijte `List<T>`. Více v následující kapitole.
 
 ---
 
@@ -75,7 +75,7 @@ for (int i = 0; i < scores.Length; i++)
 }
 ```
 
-**Pomocí `foreach`** – čistší zápis, pokud index nepotřebuješ:
+**Pomocí `foreach`** – čistší zápis, pokud index nepotřebujete:
 
 ```csharp
 foreach (int score in scores)
@@ -84,7 +84,7 @@ foreach (int score in scores)
 }
 ```
 
-> 💡 `foreach` neumožňuje prvky pole měnit. Potřebuješ-li modifikovat hodnoty při průchodu, použij `for` s indexem.
+> 💡 `foreach` neumožňuje prvky pole měnit. Potřebujete-li modifikovat hodnoty při průchodu, použijte `for` s indexem.
 
 ---
 
@@ -294,3 +294,54 @@ Console.WriteLine($"Průměr: {average:F1}");
 | Hledání | `Array.IndexOf(arr, hodnota)` |
 | Pravoúhlé 2D pole | `int[,] m = new int[3, 4];` → `m[i, j]` |
 | Zubaté pole | `int[][] j = new int[3][];` → `j[i][k]` |
+
+---
+
+## Otázky k zamyšlení
+
+1. Proč pole indexujeme od 0, a ne od 1? Jaký index má poslední prvek pole o délce n?
+2. Co se stane při přístupu na `pole[pole.Length]`? Proč je to nejčastější chyba u polí vůbec?
+3. Když napíšete `int[] b = a;`, vzniknou dvě pole? Co se stane s `a` po změně `b[0]`?
+
+---
+
+## Procvičení
+
+### Řešený příklad
+
+**Zadání:** Na obrázku je pole `cisla`. Bez spouštění určete hodnoty výrazů: `cisla[0]`, `cisla[3]`, `cisla[cisla.Length - 1]`, `cisla[2] + cisla[4]` a `cisla[6]`. Pak napište kód, který najde největší prvek tohoto pole.
+
+![Pole s indexy](../assets/14-pole-indexy.png)
+
+<details markdown="1">
+<summary>💡 Zobrazit řešení</summary>
+
+- `cisla[0]` → **12** (první prvek má index 0)
+- `cisla[3]` → **42**
+- `cisla[cisla.Length - 1]` → **15** (poslední prvek, Length je 6, index 5)
+- `cisla[2] + cisla[4]` → **-3 + 0 = -3**
+- `cisla[6]` → **chyba za běhu** `IndexOutOfRangeException` — platné indexy jsou 0–5!
+
+Hledání největšího prvku — kandidáta inicializujeme prvním prvkem, ne nulou (pole může obsahovat jen záporná čísla):
+
+```csharp
+int[] cisla = { 12, 7, -3, 42, 0, 15 };
+int max = cisla[0];
+
+for (int i = 1; i < cisla.Length; i++)
+{
+    if (cisla[i] > max)
+    {
+        max = cisla[i];
+    }
+}
+Console.WriteLine($"Největší prvek: {max}");
+```
+
+</details>
+
+### Samostatná cvičení
+
+1. **Základní** — Vytvořte pole 10 čísel, naplňte ho druhými mocninami (1, 4, 9, ...) pomocí cyklu a vypište ho.
+2. **Pokročilejší** — Napište program, který otočí pole (první prvek bude poslední atd.) bez použití `Array.Reverse` — jen prohazováním prvků.
+3. **Bonus (*)** — Vytvořte dvourozměrné pole 5×5 a naplňte ho násobilkou. Vypište ho jako přehlednou tabulku se zarovnanými sloupci.

@@ -10,7 +10,7 @@ Cyklus umožňuje **opakovat blok kódu** – buď pevně daný počet opakován
 
 ## for
 
-Ideální, když **předem víš, kolikrát** se má kód opakovat.
+Ideální, když **předem víte, kolikrát** se má kód opakovat.
 
 ```
 for (inicializace; podmínka; krok)
@@ -57,7 +57,7 @@ for (int i = 0; i < scores.Length; i++)
 
 ## foreach
 
-Určen pro **procházení kolekcí** (pole, listy…). Jednodušší zápis než `for` – nepotřebuješ index.
+Určen pro **procházení kolekcí** (pole, listy…). Jednodušší zápis než `for` – nepotřebujete index.
 
 ```
 foreach (typ proměnná in kolekce)
@@ -75,7 +75,7 @@ foreach (string name in names)
 }
 ```
 
-> ⚠️ `foreach` je **pouze pro čtení** – hodnotu prvku uvnitř cyklu nelze změnit. Pokud potřebuješ prvky pole modifikovat, použij `for` s indexem.
+> ⚠️ `foreach` je **pouze pro čtení** – hodnotu prvku uvnitř cyklu nelze změnit. Pokud potřebujete prvky pole modifikovat, použijte `for` s indexem.
 
 ---
 
@@ -101,7 +101,7 @@ while (counter > 0)
 // výstup: 5 4 3 2 1
 ```
 
-> ⚠️ Nezapomeň na krok uvnitř těla (`counter--`). Bez něj podmínka nikdy nepřestane platit a vznikne **nekonečná smyčka**.
+> ⚠️ Nezapomeňte na krok uvnitř těla (`counter--`). Bez něj podmínka nikdy nepřestane platit a vznikne **nekonečná smyčka**.
 
 Typické použití – čekání na správný vstup:
 
@@ -251,7 +251,7 @@ Výstup:
 [3,1] [3,2] [3,3] [3,4]
 ```
 
-> ⚠️ `break` uvnitř vnořeného cyklu ukončí **jen vnitřní** cyklus, ne vnější. Pokud potřebuješ ukončit oba, je potřeba další logika (příznaková proměnná nebo refaktoring do metody).
+> ⚠️ `break` uvnitř vnořeného cyklu ukončí **jen vnitřní** cyklus, ne vnější. Pokud potřebujete ukončit oba, je potřeba další logika (příznaková proměnná nebo refaktoring do metody).
 
 ```csharp
 bool found = false;
@@ -270,7 +270,7 @@ for (int i = 0; i < 3 && !found; i++)
 }
 ```
 
-> 💡 Hluboké vnořování (3+ úrovně) výrazně snižuje čitelnost. Pokud se k němu dostaneš, zamysli se nad přesunem vnitřní logiky do samostatné metody.
+> 💡 Hluboké vnořování (3+ úrovně) výrazně snižuje čitelnost. Pokud se k němu dostanete, zamyslete se nad přesunem vnitřní logiky do samostatné metody.
 
 ---
 
