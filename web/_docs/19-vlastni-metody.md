@@ -4,7 +4,7 @@ title: "Vlastní metody"
 order: 19
 ---
 
-V kapitole [Metody](./18-metody.md) jsme si ukázali, jak metodu definovat, zavolat a vrátit z ní hodnotu. Teď se podíváme na to, jak metody **navrhovat** – jak vypadá dobře rozdělený program – a na dvě věci, které ti ušetří práci při volání: **výchozí hodnoty parametrů** a **pojmenované argumenty**.
+V kapitole **Metody** jsme si ukázali, jak metodu definovat, zavolat a vrátit z ní hodnotu. Teď se podíváme na to, jak metody **navrhovat** – jak vypadá dobře rozdělený program – a na dvě věci, které ušetří práci při volání: **výchozí hodnoty parametrů** a **pojmenované argumenty**.
 
 ---
 
@@ -25,7 +25,7 @@ void ProcessOrder()
 }
 ```
 
-Pokud bys chtěl později cenu jen *spočítat* (bez vstupu a výstupu), např. v jiné části programu, nemůžeš – všechno je slité do jedné metody.
+Pokud byste chtěli později cenu jen *spočítat* (bez vstupu a výstupu), např. v jiné části programu, tak to nepůjde – všechno je slité do jedné metody.
 
 ```csharp
 // ✅ Tři metody, každá s jasnou odpovědností
@@ -54,30 +54,30 @@ PrintTotal(total);
 
 Výhoda: `AddVat()` lze nyní použít i v testu, v jiném výpočtu, na seznamu cen v cyklu – bez konzole, bez vstupu uživatele.
 
-> 💡 Otestuj si metodu jednou větou: *"Tato metoda dělá ___."* Pokud do té věty potřebuješ slovo „a", je čas ji rozdělit.
+> 💡 Otestujte si metodu jednou větou: *"Tato metoda dělá ___."* Pokud do té věty potřebujte slovo „a", je nejspíš čas ji rozdělit.
 
 ---
 
 ## Signatura jako smlouva
 
-**Signatura** metody (název + parametry + návratový typ) je „smlouva" mezi metodou a tím, kdo ji volá – říká, co metoda potřebuje na vstupu a co dostaneš na výstupu, bez nutnosti znát její vnitřní implementaci.
+**Signatura** metody (název + parametry + návratový typ) je „smlouva" mezi metodou a tím, kdo ji volá – říká, co metoda potřebuje na vstupu a co dostaneš na výstupu, bez nutnosti znát její vnitřní implementaci. V některých textech můžete narazit na pojmenování **hlavička**.
 
 ```csharp
 double CalculateAverage(int[] scores)
 ```
 
-Z této jediné řádky víš:
+Z této jediné řádky víme:
 
-- potřebuješ pole celých čísel
-- dostaneš zpět desetinné číslo
+- potřebujeme pole celých čísel
+- dostaneme zpět desetinné číslo
 
-Díky tomu může metodu používat kdokoliv (i ty sám za měsíc), aniž by musel číst její tělo.
+Díky tomu můžete metodu používat kdokoliv, aniž by musel číst její tělo.
 
 ---
 
 ## Parametry s výchozí hodnotou
 
-Parametru lze přiřadit hodnotu, která se použije, pokud argument při volání nepředáš.
+Parametru lze přiřadit hodnotu, která se použije, pokud argument při volání není předán.
 
 ```csharp
 string FormatPrice(double price, string currency = "Kč")
@@ -122,7 +122,7 @@ CreateUser("Kamil", role: "teacher");         // přeskočili jsme "age", použi
 CreateUser(age: 30, name: "Jana");            // pořadí argumentů obráceně – funguje
 ```
 
-Pojmenované argumenty se hodí zejména tehdy, když metoda má víc parametrů s výchozími hodnotami a ty chceš změnit jen jeden z nich – bez nich bys museli vypsat i ty, které se nemění.
+Pojmenované argumenty se hodí zejména tehdy, když metoda má víc parametrů s výchozími hodnotami a chcete změnit jen jeden z nich – bez nich je třeba vypsat i ty, které se nemění.
 
 ---
 
@@ -187,4 +187,59 @@ Metoda("text"); // použije se výchozí hodnota 10
 | Výchozí hodnota | `typ param = hodnota` – argument lze při volání vynechat |
 | Pojmenovaný argument | `Metoda(param: hodnota)` – umožní vynechat parametry uprostřed |
 
-Modifikátory `ref` a `out` a detailní práci s `return` probereme v následující kapitole.
+> Modifikátory `ref` a `out` a detailní práci s `return` probereme v následující kapitole.
+---
+
+## Otázky k zamyšlení
+
+1. Proč musí být metody volané ze statické metody `Main` také statické? Co znamená `static`?
+2. Jak se liší lokální proměnná uvnitř metody od proměnné v `Main`? Kde která "žije" a kdy zaniká?
+3. Co se stane, když metoda s návratovým typem `int` neobsahuje `return` na všech cestách kódu?
+
+---
+
+## Procvičení
+
+### Řešený příklad
+
+**Zadání:** Napište metodu `VykresliObdelnik(int sirka, int vyska)`, která vykreslí na konzoli obdélník z hvězdiček — plný okraj, prázdný vnitřek. Zavolejte ji z `Main` s několika různými rozměry.
+
+<details markdown="1">
+<summary>💡 Zobrazit řešení</summary>
+
+Uvnitř metody rozhodujeme pro každou pozici: okraj (první/poslední řádek či sloupec) → hvězdička, jinak mezera:
+
+```csharp
+class Program
+{
+    static void Main()
+    {
+        VykresliObdelnik(8, 4);
+        Console.WriteLine();
+        VykresliObdelnik(5, 5);
+    }
+
+    static void VykresliObdelnik(int sirka, int vyska)
+    {
+        for (int r = 0; r < vyska; r++)
+        {
+            for (int s = 0; s < sirka; s++)
+            {
+                bool okraj = r == 0 || r == vyska - 1 || s == 0 || s == sirka - 1;
+                Console.Write(okraj ? "*" : " ");
+            }
+            Console.WriteLine();
+        }
+    }
+}
+```
+
+Díky parametrům je metoda univerzální — jeden kód, libovolné rozměry. To je hlavní síla vlastních metod: napsat jednou, používat opakovaně.
+
+</details>
+
+### Samostatná cvičení
+
+1. **Základní** — Napište metodu `PozdravUzivatele(string jmeno, int hodina)`, která podle hodiny vypíše "Dobré ráno/odpoledne/večer, {jmeno}".
+2. **Pokročilejší** — Napište metodu `VykresliTrojuhelnik(int vyska)`, která vykreslí trojúhelník z hvězdiček. Pak přidej druhou variantu obrácenou vzhůru nohama.
+3. **Bonus (*)** — Napište metodu `JePrvocislo(int n)` vracející `bool` a s její pomocí vypište všechna prvočísla do 100. Všimněte si, jak volání `if (JePrvocislo(i))` zpřehledňuje kód.

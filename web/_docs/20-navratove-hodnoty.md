@@ -6,7 +6,7 @@ order: 20
 
 # Parametry a návratové hodnoty
 
-V kapitole [Metody](./18-metody.md) jsme používali `return` k vrácení jedné hodnoty a krátce jsme se dotkli `ref`/`out`. Teď se na všechny tři možnosti, jak metoda komunikuje výsledek ven, podíváme detailně – a ukážeme, kdy se která hodí.
+V kapitole **Metody** jsme používali `return` k vrácení jedné hodnoty. Teď se na `return` podíváme detailněji a doplníme dvě další techniky, jak metoda může komunikovat výsledek ven – `ref` a `out`.
 
 ---
 
@@ -103,7 +103,7 @@ void PrintIfPositive(int number)
 
 ### Metoda musí vrátit hodnotu na každé cestě
 
-Pokud má metoda návratový typ jiný než `void`, kompilátor vyžaduje, aby **každá možná cesta kódu** skončila `return`em s hodnotou:
+Pokud má metoda návratový typ jiný než `void`, kompilátor vyžaduje, aby **každá možná cesta kódu** skončila `return` s hodnotou:
 
 ```csharp
 // ❌ CHYBA – pokud age == 18, metoda nic nevrátí
@@ -145,7 +145,7 @@ Increase(value);
 Console.WriteLine(value); // 10 – beze změny
 ```
 
-Pokud chceš, aby metoda **změnila proměnnou, kterou jí předáš**, použij `ref` – metoda pak pracuje přímo s originálem, ne s kopií.
+Pokud chcete, aby metoda **změnila proměnnou, kterou jí předáte**, použijte `ref` – metoda pak pracuje přímo s originálem, ne s kopií.
 
 ```csharp
 void Increase(ref int number)
@@ -238,7 +238,7 @@ else
 
 ### Doporučení
 
-Ve **většině případů použij `return`** – je nejčitelnější a nejméně náchylný na chyby. `ref` a `out` mají svá specifická místa, ale zneužívání vede k nepřehlednému kódu (není na první pohled vidět, že volání metody změní tvé proměnné).
+Ve **většině případů použijte `return`** – je nejčitelnější a nejméně náchylný na chyby. `ref` a `out` mají svá specifická místa, ale zneužívání vede k nepřehlednému kódu (není na první pohled vidět, že volání metody změní používané proměnné).
 
 ```csharp
 // ❌ Zneužití ref tam, kde stačí return
@@ -346,3 +346,68 @@ void Divide(int a, int b, out int q, out int r)
 | `ref` | Předání odkazem – metoda mění originál (musí být inicializovaný) |
 | `out` | Metoda vrací další hodnoty navíc (nemusí být inicializované, ale musí být přiřazeny) |
 | `TryParse` | Typický `out` vzor – bezpečná konverze bez výjimky |
+---
+
+## Otázky k zamyšlení
+
+1. Jaký je rozdíl mezi předáním parametru hodnotou a přes `ref`? Co se děje s původní proměnnou?
+2. K čemu slouží `out` a čím se liší od `ref`? Proč ho používá `int.TryParse`?
+3. Metoda může vrátit jen jednu hodnotu. Jaké máme možnosti, když potřebujeme vrátit dvě? (Nápověda: out, struktura, tuple.)
+
+---
+
+## Procvičení
+
+### Řešený příklad
+
+**Zadání:** Napište metodu `AnalyzujPole`, která pro pole čísel vrátí zároveň minimum i maximum. Vyřešte dvěma způsoby: pomocí `out` parametrů a pomocí tuple `(int min, int max)`.
+
+<details markdown="1">
+<summary>💡 Zobrazit řešení</summary>
+
+**Varianta s `out`:** metoda "vrací" hodnoty skrze parametry, které musí před návratem naplnit:
+
+```csharp
+static void AnalyzujPole(int[] pole, out int min, out int max)
+{
+    min = pole[0];
+    max = pole[0];
+    foreach (int x in pole)
+    {
+        if (x < min) min = x;
+        if (x > max) max = x;
+    }
+}
+
+// volání:
+AnalyzujPole(cisla, out int nejmensi, out int nejvetsi);
+```
+
+**Varianta s tuple:** modernější, metoda má normální návratovou hodnotu:
+
+```csharp
+static (int min, int max) AnalyzujPole(int[] pole)
+{
+    int min = pole[0], max = pole[0];
+    foreach (int x in pole)
+    {
+        if (x < min) min = x;
+        if (x > max) max = x;
+    }
+    return (min, max);
+}
+
+// volání:
+var vysledek = AnalyzujPole(cisla);
+Console.WriteLine($"Min: {vysledek.min}, Max: {vysledek.max}");
+```
+
+Tuple je čitelnější a doporučuje se pro nový kód; `out` potkáš hlavně u starších API jako `TryParse`.
+
+</details>
+
+### Samostatná cvičení
+
+1. **Základní** — Napište metodu `int Mocnina(int zaklad, int exponent)` počítající mocninu cyklem (bez `Math.Pow`) a otestuj ji.
+2. **Pokročilejší** — Napište metodu `bool Vydel(int a, int b, out double vysledek)`, která vrátí `false` při dělení nulou, jinak `true` a výsledek přes `out`. Použij ji v `Main` se srozumitelným výpisem.
+3. **Bonus (*)** — Ověřte rozdíl hodnotového předání a `ref`: napište metodu `Zdvojnasob(int x)` a `Zdvojnasob(ref int x)` a sledujte, co se stane s původní proměnnou.

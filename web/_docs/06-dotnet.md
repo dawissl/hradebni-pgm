@@ -48,61 +48,7 @@ Pro vývoj v C# se nejčastěji používá **Visual Studio** od Microsoftu.
 | **Rider** (JetBrains) | Placené IDE, oblíbené u profesionálů |
 | **dotnet CLI** | Příkazová řádka – tvorba a spouštění projektů bez IDE |
 
----
-
-## Vytvoření prvního projektu ve Visual Studiu
-
-1. Otevřete Visual Studio → **Vytvořit nový projekt**
-2. Vyberte šablonu **Console App** (konzolová aplikace)
-3. Pojmenujte projekt (např. `HelloWorld`) a zvolte umístění
-4. Klikněte **Vytvořit**
-
-V některých mezikrocích je možné vybrat variantu Frameworku a zda používat příkazy nejvyšší úrovně. Tato nastavení lze ignorovat a pokračovat dál.
-
-Visual Studio vygeneruje základní strukturu:
-
-```
-HelloWorld/
-├── HelloWorld.sln        ← solution soubor (otevírá projekt)
-└── HelloWorld/
-    ├── HelloWorld.csproj ← konfigurace projektu
-    └── Program.cs        ← tvůj kód
-```
-
-> ⚠️ Pro znovuotevření projektu vždy otevírejte soubor `.sln`, ne `.cs`.
-
----
-
-## Spuštění programu
-
-- Tlačítko ▶ **Start** (nebo `F5`) – spustí program s debuggerem
-- `Ctrl + F5` – spustí bez debuggeru (konzolové okno zůstane otevřené)
-
-Pokud program obsahuje chybu, Visual Studio ukáže chybu v **Error List** a označí problematický řádek.
-
----
-
-## IntelliSense
-
-Při psaní kódu Visual Studio nabízí automatické doplňování:
-
-```csharp
-Console.  // ← po napsání tečky se zobrazí seznam dostupných metod
-```
-
-Klávesa `Tab` nebo `Enter` doplní vybranou možnost.
-
----
-
-## Struktura solution vs. projekt
-
-| Pojem | Popis |
-|---|---|
-| **Solution** (`.sln`) | Kontejner – může obsahovat více projektů |
-| **Project** (`.csproj`) | Jeden program nebo knihovna |
-| **Program.cs** | Hlavní soubor s kódem |
-
-U jednoduchých cvičení bude solution i projekt jedno a to samé.
+> 💡 Konkrétní instalaci Visual Studia, vytvoření prvního projektu a jeho spuštění si krok za krokem projdeme v následující kapitole **Vývojové prostředí**. Tady jde jen o to, zorientovat se v tom, co .NET a IDE vlastně jsou.
 
 ---
 
@@ -113,7 +59,6 @@ U jednoduchých cvičení bude solution i projekt jedno a to samé.
 | .NET | Platforma pro běh C# programů |
 | CLR | Runtime – spouští zkompilovaný kód |
 | Visual Studio | Hlavní IDE pro C# vývoj |
-| `.sln` | Solution soubor – otevírá celý projekt |
 | IntelliSense | Automatické doplňování kódu v IDE |
 
 ---

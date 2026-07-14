@@ -187,7 +187,7 @@ string name = Console.ReadLine();
 Console.Write("Zadej rok narození: ");
 int birthYear = Convert.ToInt32(Console.ReadLine());
 
-int age = 2025 - birthYear;
+int age = 2026 - birthYear;
 
 Console.WriteLine($"Ahoj, {name}! Je ti přibližně {age} let.");
 ```
@@ -196,7 +196,7 @@ Ukázkový běh:
 ```
 Zadej jméno: Kamil
 Zadej rok narození: 2007
-Ahoj, Kamil! Je ti přibližně 18 let.
+Ahoj, Kamil! Je ti přibližně 19 let.
 ```
 
 ---

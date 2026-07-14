@@ -99,7 +99,7 @@ catch (Exception e)
 }
 ```
 
-> 💡 Zachytávej od **nejspecifičtější** k **nejobecnější**. `Exception` na konci slouží jako záchranná síť pro vše, co jsi nečekal.
+> 💡 Zachytávejte od **nejspecifičtější** k **nejobecnější**. `Exception` na konci slouží jako záchranná síť pro vše, co jste nečekali.
 
 ### Časté typy výjimek v C#
 
@@ -158,7 +158,7 @@ if (value < 0)
     throw new NegativeNumberException($"Hodnota {value} nesmí být záporná.");
 ```
 
-Vlastní výjimky se hodí u větších projektů, kde chceš odlišit chyby aplikační logiky od systémových chyb.
+Vlastní výjimky se hodí u větších projektů, kde chcete odlišit chyby aplikační logiky od systémových chyb.
 
 ---
 
@@ -189,3 +189,59 @@ finally
 | `catch` | Zachytí výjimku a zpracuje ji |
 | `finally` | Vždy se provede — pro úklid |
 | `throw` | Ručně vyhodí výjimku |
+---
+
+## Otázky k zamyšlení
+
+1. Proč je `try-catch` lepší mechanismus než návratové "chybové kódy" (např. vracet -1 při chybě)?
+2. Co dělá blok `finally` a proč se provede i při výjimce? K čemu se typicky používá?
+3. Proč je špatný nápad psát `catch (Exception) { }` s prázdným tělem — tzv. "spolknout výjimku"?
+
+---
+
+## Procvičení
+
+### Řešený příklad
+
+**Zadání:** Napište program, který načte od uživatele dvě čísla a vydělí je. Ošetřete pomocí `try-catch` obě typické výjimky (nečíselný vstup, dělení nulou) tak, aby uživatel dostal pokaždé srozumitelnou zprávu.
+
+<details markdown="1">
+<summary>💡 Zobrazit řešení</summary>
+
+Pořadí `catch` bloků je od nejkonkrétnější výjimky k obecné — první vyhovující blok vyhraje:
+
+```csharp
+try
+{
+    Console.Write("Zadej dělenec: ");
+    int a = int.Parse(Console.ReadLine());
+
+    Console.Write("Zadej dělitel: ");
+    int b = int.Parse(Console.ReadLine());
+
+    int vysledek = a / b;
+    Console.WriteLine($"{a} / {b} = {vysledek}");
+}
+catch (FormatException)
+{
+    Console.WriteLine("Chyba: zadal jsi něco, co není celé číslo.");
+}
+catch (DivideByZeroException)
+{
+    Console.WriteLine("Chyba: nulou dělit nelze.");
+}
+catch (Exception ex)
+{
+    Console.WriteLine($"Neočekávaná chyba: {ex.Message}");
+}
+```
+
+Poslední obecný `catch` je záchranná síť pro chyby, na které jsme nepomysleli. Poznámka: pro *očekávaný* nevalidní vstup je čistší `int.TryParse` — výjimky si šetřete pro výjimečné situace.
+
+</details>
+
+### Samostatná cvičení
+
+1. **Základní** — Napište program, který načte index a vypíše prvek pole na tomto indexu. Ošetřete `IndexOutOfRangeException` i nečíselný vstup.
+2. **Pokročilejší** — Napište metodu `int NactiCislo(string vyzva, int min, int max)`, která se ptá opakovaně, dokud uživatel nezadá platné číslo v rozsahu. Rozhodněte, zda uvnitř použít `TryParse`, nebo `try-catch`, a zdůvodněte.
+3. **Bonus (*)** — Vytvořte vlastní výjimku `ZapornaHodnotaException` (dědí z `Exception`) a metodu `Odmocnina`, která ji vyhodí (`throw`) pro záporný vstup. Zachyťte ji ve volajícím kódu.

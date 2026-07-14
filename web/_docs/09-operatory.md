@@ -212,6 +212,8 @@ Console.WriteLine(a >> 1); // 0011 = 3   (posun vpravo = /2)
 
 Typické využití jsou **flags** (příznaky) – kombinace více `bool` hodnot do jednoho čísla pomocí výčtového typu s atributem `[Flags]`:
 
+> 💡 `enum` (výčtový typ) si podrobně vysvětlíme až v kapitole **Struktura a enumerace**. Pro tuto chvíli stačí vědět, že jde jen o sadu pojmenovaných celočíselných konstant – `Permissions.Read` je „hezčí jméno" pro číslo `1`.
+
 ```csharp
 [Flags]
 enum Permissions
@@ -345,7 +347,7 @@ decimal dec  = Convert.ToDecimal(input);
 | `Convert.ToDecimal()` | `decimal` |
 | `Convert.ToSingle()` | `float` |
 | `Convert.ToString()` | `string` |
-| `Convert.ToBool()` | `bool` |
+| `Convert.ToBoolean()` | `bool` |
 
 > 💡 `Convert.ToInt32("42")` **zaokrouhluje** (`"42.9"` → `43`), zatímco `(int)42.9` ořezává (`→ 42`). Pozor na rozdíl.
 

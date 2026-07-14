@@ -6,7 +6,7 @@ order: 15
 
 Kromě polí (`array`) nabízí C# i generické kolekce, které umožňují flexibilnější práci s daty. Nejčastěji se používají `List<T>` a `Dictionary<TKey, TValue>`.
 
-Písmeno `T` v názvu `List<T>` je **typový parametr** – při deklaraci ho nahradíš
+Písmeno `T` v názvu `List<T>` je **typový parametr** – při deklaraci ho nahradíte
 konkrétním datovým typem (`int`, `string`, vlastní třída…). Kompilátor pak
 zajistí, že do listu nepůjde vložit nic jiného. `List<int>` přijme jen celá čísla,
 `List<string>` jen řetězce. Tomuto principu se říká **generické programování**
@@ -95,11 +95,12 @@ for (int i = 0; i < scores.Count; i++)
 ### Užitečné metody Listu
 
 ```csharp
-scores.Contains(92);
-scores.IndexOf(78);
 
-scores.Sort();
-scores.Reverse();
+scores.Contains(92); // ověří, zda se v kolekci nachází hodnota 92
+scores.IndexOf(78); // vrátí pozici (index) hodnoty 78
+
+scores.Sort(); // vzestupné seřazení hodnot
+scores.Reverse(); // přeskládání hodnot odzadu
 ```
 
 ---
@@ -195,15 +196,15 @@ foreach (var pair in students)
 ### List<T>
 
 - když záleží na pořadí
-- když pracuješ se sekvencí hodnot
-- když nepotřebuješ klíče
+- když pracujete se sekvencí hodnot
+- když nepotřebujete klíče
 
 Příklad: seznam známek, úkolů, jmen
 
 ### Dictionary<TKey, TValue>
 
-- když potřebuješ rychlé vyhledávání
-- když pracuješ s mapováním (např. ID → objekt)
+- když potřebujete rychlé vyhledávání
+- když pracujete s mapováním (např. ID → objekt)
 - když klíč musí být unikátní
 
 Příklad: studenti podle ID, slovník, konfigurace
@@ -244,8 +245,59 @@ foreach (var student in grades)
 
 ## Závěr
 
-`List<T>` je přirozeným rozšířením pole pro situace, kdy neznáš předem velikost dat.
+`List<T>` je přirozeným rozšířením pole pro situace, kdy neznáte předem velikost dat.
 
 `Dictionary<TKey, TValue>` umožňuje modelovat vztahy mezi daty a poskytuje velmi rychlé vyhledávání.
 
 Obě struktury jsou základním stavebním kamenem práce s daty v C#.
+---
+
+## Otázky k zamyšlení
+
+1. Co udělá `List<T>` "pod kapotou", když přidáte prvek a vnitřní pole už je plné?
+2. Co se stane, když do `Dictionary` přidáte klíč, který už existuje? A co při čtení klíče, který neexistuje?
+3. Proč nesmíte odebírat prvky z Listu uvnitř `foreach`, který ten samý List prochází? Jak to vyřešit?
+
+---
+
+## Procvičení
+
+### Řešený příklad
+
+**Zadání:** Napište program, který spočítá četnost slov ve větě. Načtěte větu, rozdělte ji na slova a pomocí `Dictionary<string, int>` vypište, kolikrát se každé slovo vyskytlo.
+
+<details markdown="1">
+<summary>💡 Zobrazit řešení</summary>
+
+Dictionary je pro četnosti ideální: klíč = slovo, hodnota = počet výskytů. Před přičtením musíme ověřit, zda klíč existuje:
+
+```csharp
+Console.Write("Zadej větu: ");
+string veta = Console.ReadLine().ToLower();
+string[] slova = veta.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
+Dictionary<string, int> cetnost = new Dictionary<string, int>();
+
+foreach (string slovo in slova)
+{
+    if (cetnost.ContainsKey(slovo))
+        cetnost[slovo]++;
+    else
+        cetnost[slovo] = 1;
+}
+
+foreach (KeyValuePair<string, int> par in cetnost)
+{
+    Console.WriteLine($"{par.Key}: {par.Value}x");
+}
+```
+
+`ToLower()` zajistí, že "Pes" a "pes" se počítají jako stejné slovo. `RemoveEmptyEntries` ošetří dvojité mezery.
+
+</details>
+
+### Samostatná cvičení
+
+1. **Základní** — Vytvořte `List<string>` se jmény spolužáků. Umožněte uživateli přidávat jména, dokud nezadá prázdný řádek, pak vypište seznam seřazený abecedně (`Sort`).
+2. **Pokročilejší** — Vytvořte slovníček pojmů: `Dictionary<string, string>` (pojem → vysvětlení). Program v cyklu nabízí: přidat pojem, vyhledat pojem, vypsat vše, konec.
+3. **Bonus (*)** — Upravte program četnosti slov tak, aby výsledky vypsal seřazené od nejčastějšího slova. (Nápověda: `OrderByDescending` nebo převod na List a vlastní řazení.)

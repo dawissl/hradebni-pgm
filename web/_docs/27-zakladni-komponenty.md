@@ -12,6 +12,8 @@ Komponenty přidáváme na formulář pomocí okna **Toolbox**. Každá komponen
 - **metody (Methods)** – provádějí určité akce,
 - **události (Events)** – reagují na činnost uživatele.
 
+> 💡 Jak přesně události a jejich obsluha (event handlery) funguje, si podrobně vysvětlíme v příští kapitole. Tady si jen u každé komponenty ukážeme, jak typický zápis vypadá.
+
 ---
 
 ## Label
@@ -25,7 +27,7 @@ Používá se například pro:
 - zobrazení výsledků výpočtů.
 
 ```csharp
-LblResult.Text = "Hotovo";
+lblResult.Text = "Hotovo";
 ```
 
 ### Důležité vlastnosti
@@ -53,7 +55,7 @@ Tlačítko sloužící ke spuštění akce.
 Nejčastěji reaguje na událost `Click`.
 
 ```csharp
-private void BtnSave_Click(object sender, EventArgs e)
+private void btnSave_Click(object sender, EventArgs e)
 {
     MessageBox.Show("Data byla uložena.");
 }
@@ -88,7 +90,7 @@ private void BtnSave_Click(object sender, EventArgs e)
 Komponenta pro zadávání textu.
 
 ```csharp
-string name = TxtName.Text;
+string name = txtName.Text;
 ```
 
 ### Důležité vlastnosti
@@ -121,7 +123,7 @@ string name = TxtName.Text;
 Komponenta představující přepínač typu Ano/Ne.
 
 ```csharp
-if (ChkTerms.Checked)
+if (chkTerms.Checked)
 {
     MessageBox.Show("Souhlas potvrzen.");
 }
@@ -154,7 +156,7 @@ if (ChkTerms.Checked)
 Komponenta umožňující výběr jedné možnosti z více.
 
 ```csharp
-if (RadMale.Checked)
+if (radMale.Checked)
 {
     MessageBox.Show("Vybrán muž.");
 }
@@ -188,15 +190,15 @@ if (RadMale.Checked)
 Rozbalovací seznam položek.
 
 ```csharp
-string city = CmbCity.Text;
+string city = cmbCity.Text;
 ```
 
 ### Přidání položek
 
 ```csharp
-CmbCity.Items.Add("Praha");
-CmbCity.Items.Add("Brno");
-CmbCity.Items.Add("Ostrava");
+cmbCity.Items.Add("Praha");
+cmbCity.Items.Add("Brno");
+cmbCity.Items.Add("Ostrava");
 ```
 
 ### Důležité vlastnosti
@@ -227,8 +229,8 @@ CmbCity.Items.Add("Ostrava");
 Komponenta zobrazující seznam položek.
 
 ```csharp
-LstStudents.Items.Add("Kamil");
-LstStudents.Items.Add("Jana");
+lstStudents.Items.Add("Kamil");
+lstStudents.Items.Add("Jana");
 ```
 
 ### Důležité vlastnosti
@@ -258,7 +260,7 @@ LstStudents.Items.Add("Jana");
 Komponenta pro zobrazení obrázků.
 
 ```csharp
-PicLogo.Image = Image.FromFile("logo.png");
+picLogo.Image = Image.FromFile("logo.png");
 ```
 
 ### Důležité vlastnosti
@@ -322,18 +324,18 @@ Mnoho komponent sdílí stejné vlastnosti.
 
 ## Doporučení pro pojmenování
 
-Při vytváření aplikací používej smysluplné názvy komponent.
+Při vytváření aplikací používejte smysluplné názvy komponent.
 
 | Komponenta | Doporučený název |
 |---|---|
-| Button | `BtnSave` |
-| Label | `LblResult` |
-| TextBox | `TxtName` |
-| CheckBox | `ChkTerms` |
-| RadioButton | `RadMale` |
-| ComboBox | `CmbCity` |
-| ListBox | `LstStudents` |
-| PictureBox | `PicLogo` |
+| Button | `btnSave` |
+| Label | `lblResult` |
+| TextBox | `txtName` |
+| CheckBox | `chkTerms` |
+| RadioButton | `radMale` |
+| ComboBox | `cmbCity` |
+| ListBox | `lstStudents` |
+| PictureBox | `picLogo` |
 
 Díky správnému pojmenování je kód přehlednější a snadněji se udržuje.
 
@@ -359,4 +361,51 @@ Díky správnému pojmenování je kód přehlednější a snadněji se udržuje
 Základní komponenty tvoří stavební kameny každé aplikace Windows Forms. Jejich správné použití umožňuje vytvářet přehledná a snadno ovladatelná uživatelská rozhraní.
 
 Před tvorbou složitějších aplikací je důležité dobře porozumět vlastnostem, metodám a událostem jednotlivých komponent.
+
+---
+
+## Otázky k zamyšlení
+
+1. Kdy použijete `Label` a kdy `TextBox` s `ReadOnly = true`? V čem se liší pro uživatele?
+2. Jaký je rozdíl mezi `RadioButton` a `CheckBox`? Jak zajistíte dvě nezávislé skupiny radiobuttonů na jednom formuláři?
+3. Hodnota z `TextBox` je vždy `string`. Jaké kroky musí program udělat, než s ní může počítat?
+
+---
+
+## Procvičení
+
+### Řešený příklad
+
+**Zadání:** Vytvořte formulář "objednávka pizzy": `ComboBox` s výběrem pizzy, `RadioButton` pro velikost (malá/velká), `CheckBox` "krabice navíc" a tlačítko, které sestaví a zobrazí souhrn objednávky.
+
+<details markdown="1">
+<summary>💡 Zobrazit řešení</summary>
+
+Položky ComboBoxu vyplňte v designeru (vlastnost `Items`) nebo v konstruktoru formuláře. Obsluha tlačítka:
+
+```csharp
+private void btnObjednat_Click(object sender, EventArgs e)
+{
+    if (cmbPizza.SelectedIndex == -1)
+    {
+        MessageBox.Show("Vyber si pizzu.", "Chybí výběr");
+        return;
+    }
+
+    string pizza = cmbPizza.SelectedItem.ToString();
+    string velikost = rbVelka.Checked ? "velká" : "malá";
+    string krabice = chbKrabice.Checked ? " + krabice navíc" : "";
+
+    lblSouhrn.Text = $"Objednávka: {velikost} {pizza}{krabice}";
+}
 ```
+
+Tři typické vzory: kontrola `SelectedIndex == -1` (nic nevybráno), čtení `Checked` u radio/checkboxů, a **předčasný návrat** (`return`) při nevalidním stavu, aby zbytek metody nemusel být ve vnořeném `if`.
+
+</details>
+
+### Samostatná cvičení
+
+1. **Základní** — Vytvořte formulář se dvěma `TextBox` pro čísla a čtyřmi tlačítky (+, −, ×, ÷). Výsledek zobrazte v `Label`. Ošetřete nečíselný vstup a dělení nulou.
+2. **Pokročilejší** — Vytvořte formulář "anketa": jméno (`TextBox`), třída (`ComboBox`), oblíbené předměty (více `CheckBox`ů) a tlačítko, které přidá souhrn do `ListBox`u.
+3. **Bonus (*)** — Přidejte k anketě tlačítko "Smazat vybrané", které odstraní označenou položku z `ListBox`u, a zajistěte, že je aktivní jen když je něco vybráno (událost `SelectedIndexChanged`).

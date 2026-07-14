@@ -41,16 +41,16 @@ private void buttonGreet_Click(object sender, EventArgs e)
 }
 ```
 
-> 💡 Tomuto modelu se říká **event-driven programming** (programování řízené událostmi). K samotným událostem se dostaneme detailně v kapitole 28 – tahle kapitola je o tom, jak okno a komponenty vůbec vzniknou.
+> 💡 Tomuto modelu se říká **event-driven programming** (programování řízené událostmi). K samotným událostem se dostaneme detailně v kapitole **Události** – tahle kapitola je o tom, jak okno a komponenty vůbec vzniknou.
 
 ---
 
 ## Vytvoření WinForms projektu
 
-1. Ve Visual Studiu klikni na **Vytvořit nový projekt**
-2. Vyhledej šablonu **Windows Forms App** a vyber tu s jazykem **C#**
-3. Pojmenuj projekt (např. `MojeAplikace`)
-4. Klikni **Vytvořit**
+1. Ve Visual Studiu klikněte na **Vytvořit nový projekt**
+2. Vyhledejte šablonu **Windows Forms App** a vyberte tu s jazykem **C#**
+3. Pojmenujte projekt (např. `MojeAplikace`)
+4. Klikněte **Vytvořit**
 
 Visual Studio vygeneruje novou strukturu souborů – víc než u konzolové aplikace.
 
@@ -68,25 +68,28 @@ MojeAplikace/
 
 ## Co je `Form`?
 
-`Form` reprezentuje jedno **okno** aplikace. Při vytvoření projektu dostaneš automaticky `Form1` – výchozí (a často hlavní) okno.
+`Form` reprezentuje jedno **okno** aplikace. Při vytvoření projektu dostanete automaticky `Form1` – výchozí (a často hlavní) okno.
 
 ### `Program.cs`
 
 ```csharp
 namespace MojeAplikace
 {
-    static class Program
+    internal static class Program
     {
         [STAThread]
         static void Main()
         {
+            ApplicationConfiguration.Initialize();
             Application.Run(new Form1());
         }
     }
 }
 ```
 
-`Application.Run(new Form1())` vytvoří instanci okna `Form1` a spustí **smyčku zpráv** (message loop) – nekonečný cyklus, který čeká na události (kliknutí, stisk klávesy...) a předává je odpovídajícím metodám. Tuto smyčku nikdy nepíšeš ručně – stará se o ni `Application.Run()`.
+`ApplicationConfiguration.Initialize()` nastaví výchozí konfiguraci aplikace (např. podporu vysokého rozlišení DPI a výchozí písmo) – Visual Studio tento řádek vygeneruje automaticky, není potřeba mu rozumět do detailu.
+
+`Application.Run(new Form1())` vytvoří instanci okna `Form1` a spustí **smyčku zpráv** (message loop) – nekonečný cyklus, který čeká na události (kliknutí, stisk klávesy...) a předává je odpovídajícím metodám. Tuto smyčku nikdy nepíšete ručně – stará se o ni `Application.Run()`.
 
 ### `Form1.cs`
 
@@ -105,9 +108,9 @@ namespace MojeAplikace
 
 Důležité prvky:
 
-- `: Form` – `Form1` **dědí** od třídy `Form` (k dědičnosti se vrátíme v kapitole 44, zatím stačí: `Form1` *je* okno se vším, co k oknu patří)
+- `: Form` – `Form1` **dědí** od třídy `Form` (k dědičnosti se vrátíme v kapitole **Dědičnost**, zatím stačí: `Form1` *je* okno se vším, co k oknu patří)
 - `partial class` – třída je rozdělena do **dvou souborů** (`Form1.cs` a `Form1.Designer.cs`) – víc o tom dále
-- `InitializeComponent()` – metoda, která nastaví všechny komponenty okna podle toho, co jsi navrhl v designeru
+- `InitializeComponent()` – metoda, která nastaví všechny komponenty okna podle toho, co jste navrhli v designeru
 
 ---
 
@@ -119,16 +122,16 @@ Co znamená `public partial class Form1`?
 
 | Soubor | Co obsahuje | Kdo ho upravuje |
 |---|---|---|
-| `Form1.cs` | Tvůj kód – obsluha událostí, logika | **Ty** |
+| `Form1.cs` | Váš kód – obsluha událostí, logika | **Vy** |
 | `Form1.Designer.cs` | Definice komponent (tlačítka, textová pole...), jejich vlastnosti a pozice | **Visual Studio** (designer) |
 
-Tohle rozdělení existuje z jednoho důvodu: když v designeru (vizuálním editoru) přidáš tlačítko nebo upravíš pozici komponenty, Visual Studio přegeneruje `Form1.Designer.cs`. Tvůj kód v `Form1.cs` zůstane nedotčen.
+Tohle rozdělení existuje z jednoho důvodu: když v designeru (vizuálním editoru) přidáte tlačítko nebo upravíte pozici komponenty, Visual Studio přegeneruje `Form1.Designer.cs`. Váš kód v `Form1.cs` zůstane nedotčen.
 
-> ⚠️ **`Form1.Designer.cs` neupravuj ručně.** Při další úpravě v designeru by se tvé změny mohly přepsat nebo rozbít. Vlastní kód patří do `Form1.cs`.
+> ⚠️ **`Form1.Designer.cs` neupravujte ručně.** Při další úpravě v designeru by se vaše změny mohly přepsat nebo rozbít. Vlastní kód patří do `Form1.cs`.
 
 ### Náhled designeru
 
-Ve Visual Studiu otevřeš okno v **návrhovém zobrazení** (Design view) poklepáním na `Form1.cs` v Solution Exploreru, nebo pravým tlačítkem → "View Designer". Zobrazí se okno, na které lze z **Toolboxu** (postranní panel s komponentami) přetahovat tlačítka, textová pole a další prvky.
+Ve Visual Studiu otevřete okno v **návrhovém zobrazení** (Design view) poklepáním na `Form1.cs` v Solution Exploreru, nebo pravým tlačítkem → "View Designer". Zobrazí se okno, na které lze z **Toolboxu** (postranní panel s komponentami) přetahovat tlačítka, textová pole a další prvky.
 
 ```
 ┌─────────────────────────────┐
@@ -144,7 +147,7 @@ Ve Visual Studiu otevřeš okno v **návrhovém zobrazení** (Design view) pokle
 └─────────────────────────────┘
 ```
 
-K Toolboxu, vlastnostem komponent (panel **Properties**) a konkrétním komponentám se podrobně dostaneme v kapitole 27.
+K Toolboxu, vlastnostem komponent (panel **Properties**) a konkrétním komponentám se podrobně dostaneme v kapitole **Základní komponenty**.
 
 ---
 
@@ -152,7 +155,7 @@ K Toolboxu, vlastnostem komponent (panel **Properties**) a konkrétním komponen
 
 Stejně jako u konzolové aplikace – `F5` (s debuggerem) nebo `Ctrl+F5` (bez debuggeru). Místo černého okna konzole se otevře **prázdné okno** (`Form1`) – bez komponent zatím nic neumí, ale je to plnohodnotná aplikace.
 
-> 💡 I prázdné okno už umí to, co každé okno Windows – přesouvat se, minimalizovat, maximalizovat, zavřít. To všechno dostáváš "zdarma" díky dědičnosti od `Form`.
+> 💡 I prázdné okno už umí to, co každé okno Windows – přesouvat se, minimalizovat, maximalizovat, zavřít. To všechno dostáváte "zdarma" díky dědičnosti od `Form`.
 
 ---
 
@@ -172,7 +175,7 @@ public Form1()
 }
 ```
 
-> 💡 `this` odkazuje na aktuální instanci okna – `Form1`. K `this` a instancím se vrátíme v kapitole o třídách a objektech.
+> 💡 `this` odkazuje na aktuální instanci okna – `Form1`. K `this` a instancím se vrátíme v kapitole **Třída a objekt**.
 
 ---
 
@@ -189,4 +192,36 @@ public Form1()
 | `InitializeComponent()` | Nastaví komponenty podle návrhu v designeru |
 | Designer / Toolbox | Vizuální editor okna a panel s komponentami |
 
-V následující kapitole se podíváme na samotný proces návrhu okna a princip UX/UI při tvorbě formulářových aplikací.
+V následující kapitole se podíváme na WinForms v širším kontextu – jako na jednu z technologií pro tvorbu desktopových aplikací – a na to, jak `partial` třída funguje obecně v C#. Principy UX/UI, tedy jak formulář navrhnout, aby byl pro uživatele příjemný, přijde v následné kapitole.
+---
+
+## Otázky k zamyšlení
+
+1. Čím se zásadně liší běh konzolové aplikace od aplikace s grafickým rozhraním? (Nápověda: kdo řídí pořadí akcí?)
+2. Co znamená, že GUI aplikace je "řízená událostmi" (event-driven)?
+3. Proč logika programu (výpočty) nemá být napsaná přímo v obslužných metodách tlačítek?
+
+---
+
+## Procvičení
+
+### Řešený příklad
+
+**Zadání (teoretické):** Porovnejte průběh stejné úlohy ("sečti dvě čísla") v konzolové aplikaci a ve WinForms. Popište, kdo v kterém případě určuje pořadí kroků a co dělá program, když uživatel zrovna nic nedělá.
+
+<details markdown="1">
+<summary>💡 Zobrazit řešení</summary>
+
+**Konzole:** program diktuje scénář. Kód běží shora dolů: vyzve k zadání prvního čísla → čeká (`ReadLine` blokuje) → vyzve k druhému → spočítá → vypíše → skončí. Uživatel jen odpovídá na otázky v pořadí, které určil programátor.
+
+**WinForms:** scénář diktuje uživatel. Po spuštění se zobrazí okno se dvěma textovými poli a tlačítkem a program vstoupí do **smyčky zpráv** — nečinně čeká, dokud nenastane událost. Uživatel může vyplnit pole v libovolném pořadí, okno přesunout, zavřít... Teprve kliknutí na tlačítko vyvolá událost `Click` a spustí náš kód, který přečte hodnoty, sečte je a zobrazí výsledek. Pak program zase čeká.
+
+Shrnutí: v konzoli se **program ptá uživatele**, ve WinForms **uživatel říká programu**, co a kdy se má stát.
+
+</details>
+
+### Samostatná cvičení
+
+1. **Základní** — Vyjmenujte pět událostí, které mohou v okně aplikace nastat (kromě kliknutí na tlačítko), a kdy by se hodilo na ně reagovat.
+2. **Pokročilejší** — Vezměte svůj návrh úkolníčku z předchozí kapitoly a rozmyslete, jak by vypadal jako okno: jaké komponenty, jaké události. Nakreslete si okno na papír.
+3. **Bonus (*)** — Zjistěte, co dělá `Application.Run(new Form1());` v souboru Program.cs a co by se stalo, kdyby tam nebylo.

@@ -38,7 +38,7 @@ Ahoj světe!
 Bez metod:
 
 ```csharp
-Console.WriteLine("Ahoj Davide!");
+Console.WriteLine("Ahoj Kamile!");
 Console.WriteLine("Vítej v programu.");
 
 Console.WriteLine("Ahoj Jano!");
@@ -48,7 +48,7 @@ Console.WriteLine("Vítej v programu.");
 S metodou:
 
 ```csharp
-WelcomeUser("David");
+WelcomeUser("Kamil");
 WelcomeUser("Jana");
 
 void WelcomeUser(string name)
@@ -73,7 +73,7 @@ Výhody metod:
 Základní tvar metody:
 
 ```csharp
-returnType MethodName(parameters)
+[visibility] returnType MethodName(parameters)
 {
     // tělo metody
 }
@@ -93,6 +93,30 @@ Volání:
 ```csharp
 PrintLine();
 ```
+
+---
+
+### Viditelnost metody
+
+První část deklarace metody určuje její **viditelnost** – tedy odkud lze metodu volat.
+
+```csharp
+public void PrintLine()
+{
+    Console.WriteLine("--------------------");
+}
+```
+
+Nejčastější modifikátory viditelnosti jsou:
+
+| Modifikátor | Význam |
+|---|---|
+| `public` | Metodu lze volat odkudkoliv. |
+| `private` | Metodu lze volat pouze uvnitř stejné třídy. |
+| `internal` | Metodu lze volat pouze v rámci stejného projektu (assembly). |
+| `protected` | Metodu mohou volat daná třída a její potomci. |
+
+> 💡 V této kapitole budeme většinu metod psát bez modifikátoru viditelnosti. Důvod je jednoduchý – používáme **lokální metody** uvnitř programu. Jakmile se v dalších kapitolách naučíme vytvářet vlastní třídy, začneme běžně používat především `public` a `private`.
 
 ---
 
@@ -402,71 +426,7 @@ double Add(double a, double b)
 
 > 💡 Přetěžování umožňuje používat stejný název metody pro podobné operace.
 
-## Předávání pomocí `ref`
-
-Ve výchozím stavu se parametry předávají hodnotou. Pokud chceme, aby metoda mohla změnit původní proměnnou, použijeme klíčové slovo `ref`.
-
-```csharp
-
-void Increase(ref int number)
-{
-    number++;
-}
-```
-
-Použití:
-
-```csharp
-int value = 10;
-
-Increase(ref value);
-
-Console.WriteLine(value);
-```
-
-Výstup:
-
-11
-
-> 💡 Parametr označený jako ref musí být inicializovaný ještě před voláním metody.
-
-## Předávání pomocí out
-
-Klíčové slovo `out` umožňuje metodě vrátit více hodnot.
-
-```csharp
-void Divide(int a, int b, out int result, out int remainder)
-{
-    result = a / b;
-    remainder = a % b;
-}
-```
-
-Použití:
-
-```csharp
-
-Divide(17, 5, out int quotient, out int remainder);
-
-Console.WriteLine($"Podíl: {quotient}");
-Console.WriteLine($"Zbytek: {remainder}");
-```
-
-Výstup:
-
-Podíl: 3
-Zbytek: 2
-
-> ⚠️ Parametr out nemusí být před voláním inicializován, ale metoda mu musí přiřadit hodnotu.
-
-### Kdy použít return, ref a out?
-|Technika	|Použití|
-|return|	metoda vrací jeden výsledek|
-|ref	|metoda upravuje existující proměnnou|
-|out	|metoda vrací více výsledků|
-
-Ve většině případů je nejlepší použít return. Konstrukce ref a out používej pouze tehdy, když dávají jasný smysl.
-
+> 📌 Zatím jsme parametry vždy jen *četli* uvnitř metody. Co dělat, když metoda potřebuje změnit proměnnou volajícího, nebo vrátit víc než jednu hodnotu? K tomu slouží klíčová slova `ref` a `out` – podrobně se jim budeme věnovat v kapitole **Parametry a návratové hodnoty**.
 
 ---
 
@@ -480,9 +440,9 @@ Ve většině případů je nejlepší použít return. Konstrukce ref a out pou
 | Bez návratové hodnoty | `void ShowMenu()` |
 | Volání metody | `Add(5, 3)` |
 | Návrat výsledku | `return result;` |
-|Přetížení	|`Add(int, int) a Add(int, int, int)`|
-|ref	|`Increase(ref number)`|
-|out	|`Divide(..., out result)`|
+| Přetížení | `Add(int, int) a Add(int, int, int)` |
+
+> `ref` a `out` navazují v kapitole **Parametry a návratové hodnoty**.
 
 ---
 
@@ -491,3 +451,41 @@ Ve většině případů je nejlepší použít return. Konstrukce ref a out pou
 Metody patří mezi nejdůležitější nástroje pro tvorbu kvalitního kódu. Umožňují rozdělit program na menší části, omezit opakování kódu a vytvářet přehlednější aplikace.
 
 Při návrhu programu se vyplatí přemýšlet nad tím, které části kódu dávají smysl oddělit do samostatných metod. Čím lépe je program rozdělen, tím snadněji se rozšiřuje, testuje a opravuje.
+---
+
+## Otázky k zamyšlení
+
+1. Jaké tři hlavní přínosy má rozdělení programu do metod? (Nápověda: opakování, čitelnost, testování.)
+2. Co je "signatura" metody a proč mohou vedle sebe existovat dvě metody stejného jména?
+3. Jak poznáte, že je metoda "moc dlouhá" a měla by se rozdělit? Existuje objektivní hranice?
+
+---
+
+## Procvičení
+
+### Řešený příklad
+
+**Zadání (návrhové):** Máte program, který v `Main` na 60 řádcích: načte 10 čísel, spočítá průměr, najde maximum, najde minimum a vše vypíše. Navrhněte, na jaké metody by jej šlo rozdělit — u každé uveď název, parametry a návratový typ. Kód psát nemusíte.
+
+<details markdown="1">
+<summary>💡 Zobrazit řešení</summary>
+
+Rozumné rozdělení podle jednotlivých odpovědností:
+
+| Metoda | Parametry | Vrací | Odpovědnost |
+|--------|-----------|-------|-------------|
+| `NactiCisla` | `int pocet` | `int[]` | načtení vstupu od uživatele |
+| `SpocitejPrumer` | `int[] cisla` | `double` | výpočet průměru |
+| `NajdiMaximum` | `int[] cisla` | `int` | nalezení největšího prvku |
+| `NajdiMinimum` | `int[] cisla` | `int` | nalezení nejmenšího prvku |
+| `VypisVysledky` | `double prumer, int max, int min` | `void` | formátovaný výstup |
+
+`Main` se pak smrskne na pět čitelných řádků volání. Každá metoda dělá **jednu věc** (single responsibility), dá se testovat samostatně a `NajdiMaximum` lze znovu použít kdekoli jinde.
+
+</details>
+
+### Samostatná cvičení
+
+1. **Základní** — Najděte ve svém starším programu (např. kalkulačce) tři místa, která by šla vytáhnout do metody. Napište jejich navrhované signatury.
+2. **Pokročilejší** — Navrhněte sadu metod pro program "piškvorky na papíře 3×3": vykreslení hrací plochy, tah hráče, kontrola vítěze. U každé určete parametry a návratový typ.
+3. **Bonus (*)** — Vysvětlete, proč metoda `NajdiMaximum` nemá sama nic vypisovat na konzoli, ale jen vrátit hodnotu. Jak se tomu principu říká? (Nápověda: oddělení výpočtu a prezentace.)

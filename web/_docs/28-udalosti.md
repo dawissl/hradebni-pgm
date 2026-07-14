@@ -12,7 +12,7 @@ WinForms aplikace nefunguje jako konzolový program — nespouští příkazy sh
 
 Každá komponenta (Button, TextBox, Form…) má sadu událostí, které může vyvolat. Když uživatel provede akci, komponenta „vyvolá" příslušnou událost — a pokud je k ní připojená obslužná metoda, ta se spustí.
 
-![Schéma: Uživatel klikne na tlačítko → Button vyvolá událost Click → spustí se event handler buttonOK_Click](assets/udalosti-schema.png)
+![Schéma: Uživatel klikne na tlačítko → Button vyvolá událost Click → spustí se event handler buttonOK_Click](../assets/udalosti-schema.png)
 
 Obslužná metoda se nazývá **event handler**.
 
@@ -46,17 +46,17 @@ Dvojklikem na komponentu v Designeru Visual Studio automaticky:
 ```csharp
 private void buttonOK_Click(object sender, EventArgs e)
 {
-    // sem píšeš kód
+    // sem píšeme kód
 }
 ```
 
 ### Způsob 2 — přes panel Properties
 
-1. Vyber komponentu v Designeru
-2. V panelu Properties klikni na ikonu blesku ⚡ (Events)
-3. Najdi požadovanou událost a dvojklikni na prázdné pole vedle ní
+1. Vyberte komponentu v Designeru
+2. V panelu Properties klikněte na ikonu blesku ⚡ (Events)
+3. Najděte požadovanou událost a dvojklikněte na prázdné pole vedle ní
 
-Tento způsob použij, když potřebuješ jiný event než výchozí (např. `MouseEnter`, `KeyDown`).
+Tento způsob použijte, když potřebujete jiný event než výchozí (např. `MouseEnter`, `KeyDown`).
 
 ---
 
@@ -72,9 +72,9 @@ private void názevKomponenty_NázevUdálosti(object sender, EventArgs e)
 ```
 
 - `object sender` — komponenta, která událost vyvolala (lze přetypovat na konkrétní typ)
-- `EventArgs e` — informace o události (u některých události obsahuje užitečná data)
+- `EventArgs e` — informace o události (u některých událostí obsahuje užitečná data)
 
-Pojmenování `buttonOK_Click` je konvence Visual Studia — název lze změnit, ale nepomíchej ho s napojením v Designeru.
+Pojmenování `buttonOK_Click` je konvence Visual Studia — název lze změnit, ale nepomíchejte ho s napojením v Designeru.
 
 ---
 
@@ -140,3 +140,55 @@ private void Form1_Load(object sender, EventArgs e)
 | `sender` | Komponenta, která událost vyvolala |
 | `EventArgs e` | Doplňující informace o události |
 | Designer / Properties | Vizuální způsob napojení handleru na událost |
+---
+
+## Otázky k zamyšlení
+
+1. Co přesně znamená řádek `button1.Click += button1_Click;`? Co je na levé a co na pravé straně?
+2. K čemu slouží parametr `object sender`? Jak ho využijete, když deset tlačítek sdílí jednu obslužnou metodu?
+3. Jaký je rozdíl mezi událostmi `TextChanged`, `KeyPress` a `Leave` u textového pole? Pro jakou validaci se hodí která?
+
+---
+
+## Procvičení
+
+### Řešený příklad
+
+**Zadání:** Vytvořte formulář s deseti tlačítky s čísly 0–9 (jako numerická klávesnice), všechna obsluhovaná **jedinou** metodou, která zmáčknutou číslici připojí k textu v `Label` (jako displej kalkulačky).
+
+<details markdown="1">
+<summary>💡 Zobrazit řešení</summary>
+
+Klíčem je parametr `sender` — říká nám, *které* tlačítko událost vyvolalo:
+
+```csharp
+public Form1()
+{
+    InitializeComponent();
+
+    // všem tlačítkům přiřadíme stejnou obsluhu
+    foreach (Control c in this.Controls)
+    {
+        if (c is Button btn && btn.Text.Length == 1 && char.IsDigit(btn.Text[0]))
+        {
+            btn.Click += Cislice_Click;
+        }
+    }
+}
+
+private void Cislice_Click(object sender, EventArgs e)
+{
+    Button stisknute = (Button)sender;      // přetypování sender na Button
+    lblDisplej.Text += stisknute.Text;      // připojení číslice
+}
+```
+
+Bez `sender` bychom potřebovali deset skoro totožných metod. Takhle logika existuje jednou — a přidání jedenáctého tlačítka nevyžaduje žádný nový kód obsluhy.
+
+</details>
+
+### Samostatná cvičení
+
+1. **Základní** — Přidejte k "displeji" tlačítko C (smazat vše) a ⌫ (smazat poslední znak). U mazání posledního znaku ošetřete prázdný displej.
+2. **Pokročilejší** — Vytvořte `TextBox`, který přes událost `KeyPress` povolí psát jen číslice (nápověda: `e.Handled = true` pro zakázané znaky, nezapomeňte povolit Backspace).
+3. **Bonus (*)** — Vytvořte formulář, kde `Label` v reálném čase (`TextChanged`) ukazuje počet zbývajících znaků do limitu 140, a při překročení zčervená.

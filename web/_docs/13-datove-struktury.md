@@ -21,9 +21,9 @@ int score3 = 78;
 // ... až score30
 ```
 
-To je nespravovatelné. Nemůžete to procházet cyklem, nemůžešte snadno přidat dalšího studenta, nemůžete třídit.
+To je nespravovatelné. Nemůžete to procházet cyklem, nemůžete snadno přidat dalšího studenta ani data jednoduše třídit.
 
-Řešení: **jedna proměnná, která drží víc hodnot najednou**.
+Řešení: **jedna proměnná, která drží více hodnot najednou**.
 
 ---
 
@@ -37,7 +37,7 @@ Pevně daný počet prvků stejného typu. Rychlé, jednoduché – velikost se 
 int[] scores = { 85, 92, 78, 90, 88 };
 ```
 
-→ Detailně v kapitole **[Pole](14-pole.md)**
+→ Detailně v kapitole **Pole**
 
 ---
 
@@ -50,7 +50,7 @@ List<string> names = new List<string> { "Kamil", "Jana" };
 names.Add("Tomáš");
 ```
 
-→ Detailně v kapitole **[Kolekce](/docs/15-kolekce.md)**
+→ Detailně v kapitole **Kolekce**
 
 ---
 
@@ -66,15 +66,15 @@ grades["Jana"]  = 85;
 Console.WriteLine(grades["Kamil"]); // 90
 ```
 
-Typické použití: překlad slov, konfigurace, výsledky podle jména.
+Typické použití: překlad slov, konfigurace nebo výsledky podle jména.
 
-→ Detailně v kapitole **[Kolekce](./15-kolekce.md)**
+→ Detailně v kapitole **Kolekce**
 
 ---
 
 ### Fronta (`Queue<T>`)
 
-Prvky se přidávají na konec a odebírají ze začátku – princip **FIFO** (first in, first out). Jako fronta u pokladny.
+Prvky se přidávají na konec a odebírají ze začátku – princip **FIFO** (*First In, First Out*). Jako fronta u pokladny.
 
 ```csharp
 Queue<string> queue = new Queue<string>();
@@ -87,7 +87,7 @@ Console.WriteLine(queue.Dequeue()); // "první"
 
 ### Zásobník (`Stack<T>`)
 
-Prvky se přidávají i odebírají ze stejného konce – princip **LIFO** (last in, first out). Jako hromádka talířů.
+Prvky se přidávají i odebírají ze stejného konce – princip **LIFO** (*Last In, First Out*). Jako hromádka talířů.
 
 ```csharp
 Stack<int> stack = new Stack<int>();
@@ -124,13 +124,41 @@ Console.WriteLine(name.Length);    // 5
 Console.WriteLine(name.ToUpper()); // KAMIL
 ```
 
-→ Detailně v kapitole **[Řetězce](../16-retezce.md)**
+→ Detailně v kapitole **Řetězce**
+
+---
+
+## Klíčové slovo `new`
+
+V některých ukázkách jste si možná všimli klíčového slova `new`:
+
+```csharp
+int[] scores = new int[5];
+List<string> names = new List<string>();
+Dictionary<string, int> grades = new Dictionary<string, int>();
+```
+
+Klíčové slovo **`new`** říká C#, že má **vytvořit nový objekt nebo datovou strukturu v paměti**.
+
+Například:
+
+```csharp
+int[] scores = new int[5];
+```
+
+znamená:
+
+- vytvoř nové pole,
+- bude obsahovat 5 prvků typu `int`,
+- proměnná `scores` na toto pole bude odkazovat.
+
+Stejný princip platí i pro ostatní datové struktury, například `List<T>` nebo `Dictionary<TKey, TValue>`. Později se se slovem `new` setkáte znovu při vytváření vlastních objektů a tříd. Princip ale zůstává stejný – **`new` vytvoří něco nového, se čím bude program pracovat**.
 
 ---
 
 ## Hodnotové vs. referenční typy
 
-Všechny datové struktury v C# jsou buď **hodnotový** nebo **referenční** typ – a toto rozlišení ovlivňuje, jak se chovají při přiřazení nebo předávání do metod.
+Všechny datové struktury v C# jsou buď **hodnotový**, nebo **referenční** typ. Toto rozlišení ovlivňuje, jak se chovají při přiřazení nebo předávání do metod.
 
 ### Hodnotové typy
 
@@ -160,9 +188,9 @@ b[0] = 99;
 Console.WriteLine(a[0]); // 99 – změna přes b se projevila i v a!
 ```
 
-Referenční typy: `string`, pole (`array`), `List<T>`, `Dictionary`, všechny třídy
+Referenční typy: `string`, pole (`array`), `List<T>`, `Dictionary<TKey, TValue>` a všechny třídy.
 
-> ⚠️ Toto chování překvapí mnoho začátečníků. Pokud chcete skutečnou kopii pole, nestačí `b = a` – musíte pole zkopírovat explicitně, např. pomocí `Array.Copy()` nebo `a.ToArray()`.
+> ⚠️ Toto chování překvapí mnoho začátečníků. Pokud chcete skutečnou kopii pole, nestačí `b = a` – musíte pole zkopírovat explicitně, například pomocí `Array.Copy()` nebo `a.ToArray()`.
 
 ---
 
@@ -171,7 +199,7 @@ Referenční typy: `string`, pole (`array`), `List<T>`, `Dictionary`, všechny t
 | Potřebuji... | Použij |
 |---|---|
 | Pevný počet prvků stejného typu | `array` |
-| Dynamický seznam s přidáváním/odebíráním | `List<T>` |
+| Dynamický seznam s přidáváním a odebíráním | `List<T>` |
 | Vyhledávání podle klíče | `Dictionary<TKey, TValue>` |
 | Zpracování v pořadí příchodu (FIFO) | `Queue<T>` |
 | Zásobník – poslední dovnitř, první ven (LIFO) | `Stack<T>` |
@@ -182,7 +210,7 @@ Referenční typy: `string`, pole (`array`), `List<T>`, `Dictionary`, všechny t
 
 ## Shrnutí
 
-Datové struktury jsou nástroje pro organizaci dat. Volba správné struktury ovlivňuje přehlednost kódu i výkon programu. Nejčastěji budeš pracovat s polem (`array`), listem (`List<T>`) a slovníkem (`Dictionary`). Ostatní se hodí pro specifické situace.
+Datové struktury jsou nástroje pro organizaci dat. Volba správné struktury ovlivňuje přehlednost kódu i výkon programu. Nejčastěji budete pracovat s polem (`array`), seznamem (`List<T>`) a slovníkem (`Dictionary<TKey, TValue>`). Ostatní se hodí pro specifičtější situace.
 
 Detailní práce s polem, kolekcemi a řetězci přijde v následujících kapitolách.
 
@@ -192,7 +220,7 @@ Detailní práce s polem, kolekcemi a řetězci přijde v následujících kapit
 
 1. Proč nestačí ukládat všechna data do samostatných proměnných? Kde je hranice, za kterou už potřebujete kolekci?
 2. Jaký je zásadní rozdíl mezi polem a `List<T>` z pohledu velikosti?
-3. Podle čeho se rozhodujete mezi polem, Listem a Dictionary? Zformulujte pravidlo jednou větou pro každou strukturu.
+3. Podle čeho se rozhodujete mezi polem, Listem a `Dictionary<TKey, TValue>`? Zformulujte pravidlo jednou větou pro každou strukturu.
 
 ---
 
@@ -200,26 +228,31 @@ Detailní práce s polem, kolekcemi a řetězci přijde v následujících kapit
 
 ### Řešený příklad
 
-**Zadání (návrhové):** Pro každou situaci vyberte nejvhodnější datovou strukturu (pole / `List<T>` / `Dictionary<K,V>`) a zdůvodněte: 
-(a) známky žáka z jednoho předmětu přibývající během roku
-(b) šachovnice 8×8
-(c) telefonní seznam — hledání čísla podle jména
-(d) 12 průměrných teplot po měsících.
+**Zadání (návrhové):** Pro každou situaci vyberte nejvhodnější datovou strukturu (pole / `List<T>` / `Dictionary<TKey, TValue>`) a zdůvodněte:
+
+(a) známky žáka z jednoho předmětu přibývající během roku  
+(b) šachovnice 8×8  
+(c) telefonní seznam — hledání čísla podle jména  
+(d) 12 průměrných teplot po měsících
 
 <details markdown="1">
 <summary>💡 Zobrazit řešení</summary>
 
-- **(a) známky během roku** → `List<int>` — počet předem neznáme a průběžně přidáváme; přesně na to je List stavěný.
-- **(b) šachovnice** → dvourozměrné pole `char[8,8]` — velikost je pevně daná pravidly a nikdy se nezmění.
-- **(c) telefonní seznam** → `Dictionary<string, string>` — potřebujeme rychle najít hodnotu (číslo) podle klíče (jména), ne procházet vše popořadě.
-- **(d) teploty po měsících** → pole `double[12]` — pevný počet (12 měsíců), index 0–11 přirozeně odpovídá měsíci.
+- **(a) známky během roku** → `List<int>` — počet předem neznáme a průběžně přidáváme.
+- **(b) šachovnice** → dvourozměrné pole `char[8,8]` — velikost je pevně daná pravidly.
+- **(c) telefonní seznam** → `Dictionary<string, string>` — potřebujeme rychle najít hodnotu podle klíče.
+- **(d) teploty po měsících** → pole `double[12]` — pevný počet měsíců.
 
-Obecné pravidlo: **pevný počet → pole, proměnlivý počet → List, vyhledávání podle klíče → Dictionary.**
+Obecné pravidlo:
+
+- **pevný počet → pole**
+- **proměnlivý počet → List**
+- **vyhledávání podle klíče → Dictionary**
 
 </details>
 
 ### Samostatná cvičení
 
-1. **Základní** — Vymyslete ke každé ze tří struktur (pole, List, Dictionary) jeden vlastní příklad ze života školy a zdůvodněte volbu.
-2. **Pokročilejší** — Navrhněte datové struktury pro program "evidence knihovny": knihy, čtenáři, výpůjčky. U každé napište typ a co bude klíčem/prvkem.
-3. **Bonus (*)** — Zjistěte, co je `HashSet<T>` a `Queue<T>`, a vymyslete situaci, kde by se hodily lépe než List.
+1. **Základní** — Vymyslete ke každé ze tří struktur (pole, `List<T>`, `Dictionary<TKey, TValue>`) jeden vlastní příklad ze života školy a zdůvodněte volbu.
+2. **Pokročilejší** — Navrhněte datové struktury pro program „evidence knihovny“: knihy, čtenáři a výpůjčky. U každé napište typ a co bude klíčem nebo prvkem.
+3. **Bonus (*)** — Zjistěte, co je `HashSet<T>` a `Queue<T>`, a vymyslete situaci, kde by se hodily lépe než `List<T>`.

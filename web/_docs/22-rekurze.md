@@ -191,7 +191,7 @@ MethodA(4);
 // B: 1
 ```
 
-> 💡 Nepřímá rekurze se v praxi vyskytuje méně často, ale je dobré ji rozpoznat – jinak může v kódu vypadat jako "obyčejné" volání metod a skrytou rekurzi si nevšimneš.
+> 💡 Nepřímá rekurze se v praxi vyskytuje méně často, ale je dobré ji rozpoznat – jinak může v kódu vypadat jako "obyčejné" volání metod a skrytou rekurzi si nevšimnete.
 
 ---
 
@@ -254,7 +254,7 @@ int FactorialIterative(int n)
 | Paměť | spotřebovává zásobník | konstantní |
 | Riziko | `StackOverflowException` | nekonečná smyčka |
 
-> 💡 Pro `Factorial` a podobné jednoduché posloupnosti je v praxi cyklus efektivnější. Rekurze ukáže svou silu hlavně u **stromových a vnořených struktur** (např. procházení složek a podsložek, nebo struktur typu strom v pokročilejších tématech).
+> 💡 Pro `Factorial` a podobné jednoduché posloupnosti je v praxi cyklus efektivnější. Rekurze ukáže svou sílu hlavně u **stromových a vnořených struktur** (např. procházení složek a podsložek, nebo struktur typu strom v pokročilejších tématech).
 
 ---
 
@@ -300,10 +300,12 @@ namespace RecursionDemo
 
 Ukázkový běh:
 ```
-Zadej kladné celé číslo: 1234
-Faktoriál: 51090942171709440000
-Číslice pozpátku: 4321
+Zadej kladné celé číslo: 12
+Faktoriál: 479001600
+Číslice pozpátku: 21
 ```
+
+> ⚠️ Zkuste do programu zadat větší číslo, například 15. Výsledek faktoriálu bude vypadat podivně – typ `int` má omezený rozsah a od jistého `n` už *přeteče* (viz cvičení 1 níže).
 
 ---
 
@@ -328,3 +330,52 @@ TYP Metoda(parametry)
 | Přímá rekurze | Metoda volá sama sebe |
 | Nepřímá rekurze | Metoda A volá B, B volá A |
 | `StackOverflowException` | Důsledek chybějícího/nesprávného base case |
+---
+
+## Otázky k zamyšlení
+
+1. Každá správná rekurze má dvě části: základní případ a rekurzivní krok. Co se stane, když jedna z nich chybí?
+2. Co je `StackOverflowException` a proč ji způsobí právě rekurze bez ukončení?
+3. Každou rekurzi lze přepsat na cyklus a naopak. Kdy je rekurzivní zápis přirozenější? Uveďte příklad.
+
+---
+
+## Procvičení
+
+### Řešený příklad
+
+**Zadání:** Napište rekurzivní metodu `Secti(int n)`, která vrátí součet čísel 1 až n. Pak vysvětlete, co přesně se děje na zásobníku při volání `Secti(4)`.
+
+<details markdown="1">
+<summary>💡 Zobrazit řešení</summary>
+
+```csharp
+static int Secti(int n)
+{
+    if (n <= 1)        // základní případ
+        return 1;
+    return n + Secti(n - 1);   // rekurzivní krok
+}
+```
+
+Průběh volání `Secti(4)`:
+
+```
+Secti(4) = 4 + Secti(3)
+                Secti(3) = 3 + Secti(2)
+                                Secti(2) = 2 + Secti(1)
+                                                Secti(1) = 1   ← základní případ
+                                Secti(2) = 2 + 1 = 3
+                Secti(3) = 3 + 3 = 6
+Secti(4) = 4 + 6 = 10
+```
+
+Každé volání "čeká" na zásobníku, dokud se nevrátí to vnořené — nejdřív se zanořujeme až k základnímu případu, pak se výsledky skládají cestou zpět.
+
+</details>
+
+### Samostatná cvičení
+
+1. **Základní** — Napište rekurzivní metodu `Faktorial(int n)`. Vyzkoušejte, pro jak velké n ještě funguje s typem `int` a kdy začne „vracet nesmysly" (přetečení).
+2. **Pokročilejší** — Napište rekurzivní metodu, která vypíše číslo v binární soustavě. (Nápověda: binární zápis n = binární zápis n/2 + zbytek n%2.)
+3. **Bonus (*)** — Naprogramujte Fibonacciho posloupnost rekurzivně a změřte (`Stopwatch`), jak dlouho trvá `Fib(40)`. Proč je to tak pomalé? Jak by to řešil cyklus?

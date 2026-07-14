@@ -4,7 +4,7 @@ title: "Animace a časovač"
 order: 33
 ---
 
-Animace ve WinForms stojí na jednoduchém principu: v pravidelných intervalech aktualizuješ stav (pozici, barvu, velikost) a překreslíš scénu. K tomu slouží `Timer` z kapitoly 29 v kombinaci s `Graphics` z kapitoly 32.
+Animace ve WinForms stojí na jednoduchém principu: v pravidelných intervalech aktualizujete stav (pozici, barvu, velikost) a překreslíte scénu. K tomu slouží `Timer` z kapitoly 29 v kombinaci s `Graphics` z kapitoly 32.
 
 ---
 
@@ -69,12 +69,12 @@ public partial class Form1 : Form
 
 ## DoubleBuffered — zbavení se blikání
 
-Bez `DoubleBuffered = true` WinForms kreslí přímo na obrazovku — při každém překreslení chvíli vidíš prázdné pozadí, což způsobí blikání.
+Bez `DoubleBuffered = true` WinForms kreslí přímo na obrazovku — při každém překreslení chvíli vidíte prázdné pozadí, což způsobí blikání.
 
 S `DoubleBuffered = true` se celý snímek nejprve složí do paměti a teprve hotový se zobrazí.
 
 ```csharp
-this.DoubleBuffered = true;  // vždy zapni u animací
+this.DoubleBuffered = true;  // vždy zapněte u animací
 ```
 
 ---
@@ -159,10 +159,71 @@ private void Form1_Paint(object sender, PaintEventArgs e)
 
 ## Shrnutí
 
-| Krok | Co uděláš |
+| Krok | Co uděláte |
 |---|---|
-| Nastav `Timer.Interval` | Určuje rychlost animace (16 ms ≈ 60 FPS) |
+| Nastavte `Timer.Interval` | Určuje rychlost animace (16 ms ≈ 60 FPS) |
 | `DoubleBuffered = true` | Zabrání blikání |
-| V `Tick` aktualizuj stav | Přepočítej pozice, fyziku |
-| Zavolej `Invalidate()` | Vyžádá překreslení |
-| V `Paint` nakresli scénu | Od pozadí k popředí (malířův algoritmus) |
+| V `Tick` aktualizujte stav | Přepočítejte pozice, fyziku |
+| Zavolejte `Invalidate()` | Vyžádá překreslení |
+| V `Paint` nakreslete scénu | Od pozadí k popředí (malířův algoritmus) |
+---
+
+## Otázky k zamyšlení
+
+1. Jak vzniká na obrazovce dojem pohybu? Jaké dvě věci se musí pravidelně opakovat?
+2. Co dělá vlastnost `Interval` u komponenty `Timer` a jaký interval odpovídá zhruba 30 snímkům za sekundu?
+3. Proč se poloha animovaného objektu drží v proměnných formuláře, a ne v lokálních proměnných metody `Tick`?
+
+---
+
+## Procvičení
+
+### Řešený příklad
+
+**Zadání:** Vytvořte animaci míčku, který se pohybuje po formuláři a odráží se od jeho okrajů.
+
+<details markdown="1">
+<summary>💡 Zobrazit řešení</summary>
+
+Stav animace = poloha a rychlost. `Tick` časovače stav posune a vyžádá překreslení; `Paint` jen kreslí aktuální stav:
+
+```csharp
+private int x = 50, y = 50;      // poloha míčku
+private int dx = 4, dy = 3;      // rychlost (posun na 1 tik)
+private const int R = 30;        // průměr míčku
+
+public Form1()
+{
+    InitializeComponent();
+    this.DoubleBuffered = true;  // odstraní blikání
+    timer1.Interval = 20;        // ~50 fps
+    timer1.Start();
+}
+
+private void timer1_Tick(object sender, EventArgs e)
+{
+    x += dx;
+    y += dy;
+
+    // odrazy od stěn: otočíme znaménko rychlosti
+    if (x <= 0 || x + R >= ClientSize.Width) dx = -dx;
+    if (y <= 0 || y + R >= ClientSize.Height) dy = -dy;
+
+    Invalidate();
+}
+
+private void Form1_Paint(object sender, PaintEventArgs e)
+{
+    e.Graphics.FillEllipse(Brushes.OrangeRed, x, y, R, R);
+}
+```
+
+Dva detaily, které rozhodují o kvalitě: `DoubleBuffered = true` (bez něj animace bliká) a použití `ClientSize` místo `Width`/`Height` (rozměry bez rámečku a titulku okna).
+
+</details>
+
+### Samostatná cvičení
+
+1. **Základní** — Přidejte dvě tlačítka: Start/Stop animace a "Zrychlit" (zmenšení `Interval` nebo zvětšení rychlosti).
+2. **Pokročilejší** — Přidejte druhý míček s jinou rychlostí a barvou. Pak zobecněte: `List` míčků (poloha, rychlost, barva) a cykly v `Tick` i `Paint`.
+3. **Bonus (*)** — Udělejte z míčku jednoduchou hru: dole se pohybuje pálka ovládaná šipkami (událost `KeyDown`), míček se od ní odráží; když propadne dolů, hra končí.

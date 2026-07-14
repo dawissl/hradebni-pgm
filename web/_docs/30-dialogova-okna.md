@@ -4,7 +4,7 @@ title: "Dialogová okna"
 order: 30
 ---
 
-Dialogová okna jsou specializovaná okna, která vyžadují od uživatele reakci nebo výběr — potvrzení akce, výběr souboru, volbu barvy. WinForms nabízí sadu hotových dialogů, takže je nemusíš navrhovat od nuly.
+Dialogová okna jsou specializovaná okna, která vyžadují od uživatele reakci nebo výběr — potvrzení akce, výběr souboru, volbu barvy. WinForms nabízí sadu hotových dialogů, takže je nemusíte navrhovat od nuly.
 
 ---
 
@@ -39,7 +39,7 @@ MessageBox.Show("Data byla uložena.", "Úspěch");
 
 // S volbou Ano/Ne
 DialogResult result = MessageBox.Show(
-    "Opravdu chceš smazat záznam?",
+    "Opravdu chcete smazat záznam?",
     "Potvrzení",
     MessageBoxButtons.YesNo,
     MessageBoxIcon.Warning
@@ -68,7 +68,7 @@ if (dialog.ShowDialog() == DialogResult.OK)
 }
 ```
 
-Vlastnost `Filter` určuje typy souborů v rozevíracím seznamu dialogu. Formát: `"Popis (*.ext)|*.ext"`. Více typů odděluješ `|`.
+Vlastnost `Filter` určuje typy souborů v rozevíracím seznamu dialogu. Formát: `"Popis (*.ext)|*.ext"`. Více typů oddělujete `|`.
 
 ---
 
@@ -119,13 +119,13 @@ if (dialog.ShowDialog() == DialogResult.OK)
 
 ## Vlastní formulářové okno
 
-Někdy standardní dialogy nestačí — potřebuješ vlastní okno s konkrétními poli.
+Někdy standardní dialogy nestačí — potřebujete vlastní okno s konkrétními poli.
 
-**1. Přidej nový formulář:** pravý klik na projekt → Přidat → Formulář Windows Forms → pojmenuj ho (např. `FormNastaveni`).
+**1. Přidejte nový formulář:** pravý klik na projekt → Přidat → Formulář Windows Forms → pojmenujte ho (např. `FormNastaveni`).
 
-**2. Navrhni UI** v Designeru — přidej komponenty, tlačítka OK a Storno.
+**2. Navrhněte UI** v Designeru — přidejte komponenty, tlačítka OK a Storno.
 
-**3. Nastav `DialogResult` tlačítkům:**
+**3. Nastavte `DialogResult` tlačítkům:**
 
 ```csharp
 // V konstruktoru nebo Properties:
@@ -137,7 +137,7 @@ this.AcceptButton = buttonOK;      // Enter = OK
 this.CancelButton = buttonStorno;  // Escape = Storno
 ```
 
-**4. Předej data zpět přes veřejné properties:**
+**4. Předejte data zpět přes veřejné properties:**
 
 ```csharp
 // FormNastaveni.cs
@@ -145,7 +145,7 @@ public string JmenoUzivatele => textBoxJmeno.Text;
 public int MaxPocet => (int)numericUpDown1.Value;
 ```
 
-**5. Otevři dialog z hlavního formuláře:**
+**5. Otevřete dialog z hlavního formuláře:**
 
 ```csharp
 FormNastaveni dialog = new FormNastaveni();
@@ -169,3 +169,52 @@ if (dialog.ShowDialog() == DialogResult.OK)
 | Výběr barvy | `ColorDialog` | Nastavení barvy prvku |
 | Výběr písma | `FontDialog` | Nastavení písma textu |
 | Vlastní dialog | Nový formulář + `ShowDialog` | Složitější vstup od uživatele |
+---
+
+## Otázky k zamyšlení
+
+1. Jaký je rozdíl mezi modálním (`ShowDialog`) a nemodálním (`Show`) oknem? Kdy je modalita nutná?
+2. `MessageBox.Show` vrací hodnotu `DialogResult`. K čemu je a proč ji nestačí ignorovat u dotazu "Opravdu smazat?"
+3. Proč používat `OpenFileDialog`/`SaveFileDialog` místo textového pole, kam uživatel napíše cestu ručně?
+
+---
+
+## Procvičení
+
+### Řešený příklad
+
+**Zadání:** Do aplikace přidejte tlačítko "Konec", které se před zavřením zeptá "Opravdu chcete aplikaci ukončit?" s tlačítky Ano/Ne. Zajistěte stejné chování i při zavření okna křížkem.
+
+<details markdown="1">
+<summary>💡 Zobrazit řešení</summary>
+
+```csharp
+private void btnKonec_Click(object sender, EventArgs e)
+{
+    this.Close();   // jen vyvolá zavírání – dotaz řeší FormClosing
+}
+
+private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+{
+    DialogResult odpoved = MessageBox.Show(
+        "Opravdu chcete aplikaci ukončit?",
+        "Potvrzení",
+        MessageBoxButtons.YesNo,
+        MessageBoxIcon.Question);
+
+    if (odpoved == DialogResult.No)
+    {
+        e.Cancel = true;   // zavírání se zruší
+    }
+}
+```
+
+Trik je v tom, že dotaz **nepatří do tlačítka**, ale do události `FormClosing` — ta zachytí všechny cesty zavření (tlačítko, křížek, Alt+F4). `e.Cancel = true` řekne formuláři "nezavírej se". Tlačítko Konec pak jen zavolá `Close()` a o nic dalšího se nestará.
+
+</details>
+
+### Samostatná cvičení
+
+1. **Základní** — Přidejte do libovolné své aplikace tlačítko "O aplikaci", které zobrazí MessageBox s názvem, verzí a vaším jménem, s ikonou Information.
+2. **Pokročilejší** — Vytvořte aplikaci s `TextBox`em (Multiline) a tlačítky "Otevřít" a "Uložit", která pomocí `OpenFileDialog`/`SaveFileDialog` načte a uloží textový soubor. Nastavte `Filter` na textové soubory.
+3. **Bonus (*)** — Vytvořte vlastní dialogové okno (druhý formulář) pro zadání jména, otevírané přes `ShowDialog()`, které vrátí zadané jméno hlavnímu oknu. (Nápověda: vlastnost `DialogResult` tlačítek a veřejná property formuláře.)

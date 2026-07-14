@@ -68,7 +68,7 @@ Console.WriteLine(raw.TrimStart()); // "Ahoj světe!   "
 Console.WriteLine(raw.TrimEnd());   // "   Ahoj světe!"
 ```
 
-Nezbytné při zpracování uživatelského vstupu – mezery na začátku/konci jsou častý zdroj chyb.
+Nezbytné při zpracování uživatelského vstupu – mezery na začátku/konci jsou častý zdroj chyb. Tyto metody odstraňují všechny bílé znaky (whitespace).
 
 ---
 
@@ -98,7 +98,7 @@ Console.WriteLine(message.IndexOf("Java"));  // -1
 
 ### `Substring()` – výřez podřetězce
 
-Dva parametry: **startovní index** a **délka**. Pokud délku vynecháš, vrátí vše od startu do konce.
+Dva parametry: **startovní index** a **délka**. Pokud délku vynecháte, vrátí vše od startu do konce.
 
 ```csharp
 string message = "Hello World";
@@ -188,7 +188,7 @@ Console.WriteLine(a.Equals(b, StringComparison.OrdinalIgnoreCase)); // true
 
 ## Interpolace řetězců
 
-Moderní způsob vkládání proměnných do textu. Před uvozovky přidáš `$`:
+Moderní způsob vkládání proměnných do textu. Před uvozovky přidáte `$`:
 
 ```csharp
 string name = "Kamil";
@@ -262,13 +262,13 @@ Console.WriteLine(sb.ToString()); // převede na string
 
 ### Kdy použít `string`, kdy `StringBuilder`?
 
-| Situace | Použij |
+| Situace | Použití |
 |---|---|
 | Jednoduchá práce s textem, metody, porovnávání | `string` |
 | Skládání mnoha řetězců v cyklu (100+) | `StringBuilder` |
 | Postupné budování výstupu (generování HTML, CSV…) | `StringBuilder` |
 
-> 💡 Pro běžné programy rozdíl nepoznáš. `StringBuilder` oceníš při práci s velkými daty nebo generování textu v cyklech.
+> 💡 Pro běžné programy rozdíl nepoznáte. `StringBuilder` oceníte při práci s velkými daty nebo generování textu v cyklech.
 
 ---
 
@@ -314,7 +314,58 @@ s.Split(' ')        // pole slov
 $"Délka: {s.Length}"
 
 // StringBuilder pro cykly
-var sb = new StringBuilder();
+StringBuilder sb = new StringBuilder();
 sb.Append("text");
 string result = sb.ToString();
 ```
+
+---
+
+## Otázky k zamyšlení
+
+1. Řetězce v C# jsou *neměnné* (immutable). Co to znamená a co ve skutečnosti dělá `text.ToUpper()`?
+2. Proč se dva řetězce porovnávají přes `==` nebo `Equals`, ale u jiných referenčních typů `==` porovnává reference?
+3. Proč je skládání dlouhého textu v cyklu přes `+=` pomalé a co je `StringBuilder`?
+
+---
+
+## Procvičení
+
+### Řešený příklad
+
+**Zadání:** Napište program, který zjistí, zda je zadané slovo palindrom (čte se stejně zepředu i zezadu, např. "krk", "oko"). Ignorujte velikost písmen.
+
+<details markdown="1">
+<summary>💡 Zobrazit řešení</summary>
+
+Porovnáváme znaky od krajů ke středu — stačí projít polovinu slova:
+
+```csharp
+Console.Write("Zadej slovo: ");
+string slovo = Console.ReadLine().ToLower();
+
+bool jePalindrom = true;
+
+for (int i = 0; i < slovo.Length / 2; i++)
+{
+    if (slovo[i] != slovo[slovo.Length - 1 - i])
+    {
+        jePalindrom = false;
+        break;
+    }
+}
+
+Console.WriteLine(jePalindrom
+    ? $"\"{slovo}\" je palindrom."
+    : $"\"{slovo}\" není palindrom.");
+```
+
+K řetězci lze přistupovat přes index jako k poli znaků (`slovo[i]`). Jakmile najdeme první neshodu, `break` ukončí cyklus — dál nemá smysl hledat.
+
+</details>
+
+### Samostatná cvičení
+
+1. **Základní** — Načtěte jméno a příjmení v jednom řádku a vypište iniciály (např. "Jan Novák" → "J. N."). Použijte `Split` a indexaci.
+2. **Pokročilejší** — Napište program, který spočítá samohlásky v zadaném textu. (Nápověda: `"aeiouyáéíóúůý".Contains(znak)`.)
+3. **Bonus (*)** — Vytvořte jednoduchou šifru Caesar: posuňte každé písmeno abecedy o 3 pozice (a→d, b→e, ..., x→a). Napište i dešifrování.

@@ -4,9 +4,9 @@ title: "Předdefinované metody"
 order: 21
 ---
 
-C# a .NET nabízí ohromné množství hotových metod pro běžné úkoly – matematické výpočty, generování náhodných čísel, práci s datem a časem, konverze. Než cokoliv naprogramuješ sám, **stojí za to zkontrolovat, jestli to už neexistuje**.
+C# a .NET nabízí ohromné množství hotových metod pro běžné úkoly – matematické výpočty, generování náhodných čísel, práci s datem a časem, konverze. Než cokoliv naprogramujete sami, **stojí za to zkontrolovat, jestli to už neexistuje**.
 
-> 💡 Tato kapitola je přehled – nejde zapamatovat si vše najednou. Spíš si zapamatuj, **že tyto třídy existují**, a konkrétní metody si dohledávej v dokumentaci ([learn.microsoft.com](https://learn.microsoft.com/dotnet/api/)) nebo přes IntelliSense.
+> 💡 Tato kapitola je přehled – nejde zapamatovat si vše najednou. Spíš si zapamatujte, **že tyto třídy existují**, a konkrétní metody si dohledávejte v dokumentaci ([learn.microsoft.com](https://learn.microsoft.com/dotnet/api/)) nebo přes IntelliSense.
 
 ---
 
@@ -32,13 +32,13 @@ Math.PI;  // 3.14159265358979
 Math.E;   // 2.71828182845905
 ```
 
-> ⚠️ `Math.Round(2.5)` vrací `2`, ne `3` – výchozí pravidlo je zaokrouhlování na sudé číslo ("banker's rounding"). Pro klasické zaokrouhlování použij `Math.Round(2.5, MidpointRounding.AwayFromZero)`.
+> ⚠️ `Math.Round(2.5)` vrací `2`, ne `3` – výchozí pravidlo je zaokrouhlování na sudé číslo ("banker's rounding"). Pro klasické zaokrouhlování použijte `Math.Round(2.5, MidpointRounding.AwayFromZero)`.
 
 ---
 
 ## Random
 
-Generuje pseudonáhodná čísla. Nejprve vytvoříš instanci, pak z ní voláš metody.
+Generuje pseudonáhodná čísla. Nejprve vytvoříte instanci, pak z ní voláte metody.
 
 ```csharp
 Random random = new Random();
@@ -57,10 +57,10 @@ for (int i = 0; i < 5; i++)
 }
 ```
 
-> ⚠️ Vytvoř `Random` **jednou** a používej opakovaně. Pokud vytvoříš novou instanci v každé iteraci cyklu (`new Random()` uvnitř `for`), různé instance mohou dostat stejné "seed" a generovat stejná čísla.
+> ⚠️ Vytvořte `Random` **jednou** a používejte opakovaně. Vytváření nové instance v každé iteraci cyklu (`new Random()` uvnitř `for`) je zbytečně nákladné – a u starších verzí .NET Frameworku navíc hrozilo, že různé instance vytvořené v rychlém sledu dostanou stejné „seed" (odvozený z aktuálního času) a budou generovat **stejná čísla**. Moderní .NET toto konkrétní riziko řeší jinak, ale zvyk vytvářet `Random` jen jednou zůstává dobrou praxí.
 
 ```csharp
-// ❌ riziko stejných čísel
+// ❌ zbytečně nákladné, historicky i riziko stejných čísel
 for (int i = 0; i < 5; i++)
 {
     Random r = new Random();
@@ -104,7 +104,7 @@ Convert.ToBoolean("true");  // true     (string → bool)
 Convert.ToInt32(3.9);       // 4        – zaokrouhluje (na rozdíl od (int) castu)
 ```
 
-> 💡 Pro bezpečnou konverzi uživatelského vstupu, kde čekáš možnou chybu, použij raději `int.TryParse()` (kapitola 20) – `Convert` při neplatném vstupu vyhodí výjimku.
+> 💡 Pro bezpečnou konverzi uživatelského vstupu, kde čekáte možnou chybu, použijte raději `int.TryParse()` (kapitola 20) – `Convert` při neplatném vstupu vyhodí výjimku.
 
 ---
 
@@ -165,7 +165,7 @@ DateTime nextMonth = DateTime.Now.AddMonths(1);
 
 ## Předdefinované metody datových typů
 
-Každý datový typ má vlastní sadu metod. Tyto si často nevšimneš, dokud nenapíšeš `proměnná.` a IntelliSense ti nabídne seznam.
+Každý datový typ má vlastní sadu metod. Tyto si často nevšimnete, dokud nenapíšete `proměnná.` a IntelliSense vám nenabídne seznam.
 
 ### Číselné typy
 
@@ -214,7 +214,7 @@ ages["Kamil"] = 17;
 bool exists = ages.ContainsKey("Kamil");
 ```
 
-> 💡 Obecné pravidlo: než si napíšeš vlastní metodu pro řazení, hledání nebo transformaci dat, zkus napsat `proměnná.` a podívat se, co nabízí IntelliSense – pravděpodobnost, že už to existuje, je vysoká.
+> 💡 Obecné pravidlo: než si napíšete vlastní metodu pro řazení, hledání nebo transformaci dat, zkuste napsat `proměnná.` a podívat se, co nabízí IntelliSense – pravděpodobnost, že už to existuje, je vysoká.
 
 ---
 
@@ -229,3 +229,49 @@ bool exists = ages.ContainsKey("Kamil");
 | `DateTime` | Datum a čas | `DateTime.Now`, `.ToString("dd.MM.yyyy")` |
 | Datové typy | Vlastní metody (`ToString`, `CompareTo`...) | `number.ToString("F2")` |
 | Kolekce | `array`, `List`, `Dictionary` metody | `Array.Sort()`, `list.Add()` |
+---
+
+## Otázky k zamyšlení
+
+1. Proč se vyplatí znát obsah tříd `Math`, `String` a `Array`, i když byste si vše uměli naprogramovat sami?
+2. `Math.Round(2.5)` vrátí 2, ne 3. Zjistěte proč (bankovní zaokrouhlování) a kdy na tom záleží.
+3. Jak zjistíte, jaké metody třída nabízí, když nemáte internet? (Nápověda: IntelliSense, dokumentační komentáře.)
+
+---
+
+## Procvičení
+
+### Řešený příklad
+
+**Zadání:** Pomocí předdefinovaných metod vyřešte: načtěte od uživatele desetinné číslo a vypište (a) jeho absolutní hodnotu, (b) zaokrouhlení na 2 desetinná místa, (c) druhou odmocninu (pokud lze), (d) náhodné celé číslo od 1 do zadaného čísla.
+
+<details markdown="1">
+<summary>💡 Zobrazit řešení</summary>
+
+```csharp
+Console.Write("Zadej desetinné číslo: ");
+double x = Convert.ToDouble(Console.ReadLine());
+
+Console.WriteLine($"Absolutní hodnota: {Math.Abs(x)}");
+Console.WriteLine($"Zaokrouhleno: {Math.Round(x, 2)}");
+
+if (x >= 0)
+    Console.WriteLine($"Odmocnina: {Math.Sqrt(x)}");
+else
+    Console.WriteLine("Odmocnina ze záporného čísla není reálné číslo.");
+
+Random rnd = new Random();
+int horni = (int)Math.Abs(x);
+if (horni >= 1)
+    Console.WriteLine($"Náhodné číslo 1-{horni}: {rnd.Next(1, horni + 1)}");
+```
+
+Pozor na `rnd.Next(a, b)` — dolní mez je včetně, **horní mez nikoliv**, proto `horni + 1`. To je častý zdroj chyb "o jedničku".
+
+</details>
+
+### Samostatná cvičení
+
+1. **Základní** — Simulujte 20 hodů kostkou (`Random`), výsledky ukládejte do pole a vypište, kolikrát padlo které číslo.
+2. **Pokročilejší** — Načtěte větu a pomocí metod třídy `String` vypište: počet znaků, větu velkými písmeny, větu bez mezer na krajích a pozici prvního výskytu písmene „a".
+3. **Bonus (*)** — Prozkoumejte třídu `DateTime`: vypište dnešní datum, den v týdnu, kolik dní zbývá do konce školního roku a kolik dní jste na světě.

@@ -4,13 +4,13 @@ title: "Základy práce s grafikou"
 order: 32
 ---
 
-Tato kapitola navazuje na přehled z kapitoly 31. Naučíš se kreslit základní tvary, pracovat s barvami a textem a správně obsluhovat událost `Paint`.
+Tato kapitola navazuje na přehled z kapitoly 31. Naučíte se kreslit základní tvary, pracovat s barvami a textem a správně obsluhovat událost `Paint`.
 
 ---
 
 ## Pen a Brush
 
-Pro kreslení potřebuješ dva nástroje:
+Pro kreslení potřebujete dva nástroje:
 
 | Nástroj | Třída | Použití |
 |---|---|---|
@@ -29,13 +29,15 @@ using Pen pero = new Pen(Color.Blue, 3);
 using SolidBrush stetec = new SolidBrush(Color.LightYellow);
 ```
 
-> 💡 Vlastní `Pen` a `Brush` jsou `IDisposable` — použi `using`, aby se automaticky uvolnily po použití.
+> 💡 Vlastní `Pen` a `Brush` jsou `IDisposable` — použijte `using`, aby se automaticky uvolnily po použití.
+
+> 📌 Toto je jiný význam `using` než ten z kapitoly 5 (import jmenného prostoru). Tady `using Pen pero = ...;` znamená „až tato proměnná vypadne z platnosti, automaticky zavolej `pero.Dispose()`" — hodí se u objektů, které si berou omezené systémové prostředky (zde: kreslicí nástroj) a je potřeba je po použití uvolnit.
 
 ---
 
 ## Kreslicí metody
 
-Všechny metody volíš na objektu `Graphics`. Metody s `Draw` kreslí obrys, s `Fill` kreslí vyplněný tvar.
+Všechny metody voláte na objektu `Graphics`. Metody s `Draw` kreslí obrys, s `Fill` kreslí vyplněný tvar.
 
 ### Čára
 
@@ -117,7 +119,7 @@ private void Form1_Paint(object sender, PaintEventArgs e)
 }
 ```
 
-![Výsledek kreslení domečku na formuláři — hnědé stěny, červená střecha, modré okno, hnědé dveře](assets/grafika-domecek.png)
+![Výsledek kreslení domečku na formuláři — hnědé stěny, červená střecha, modré okno, hnědé dveře](../assets/grafika-domecek.png)
 
 ---
 
@@ -130,7 +132,7 @@ g.DrawImage(obrazek, 10, 10);                        // původní velikost
 g.DrawImage(obrazek, new Rectangle(10, 10, 100, 80)); // přizpůsobená velikost
 ```
 
-Pro opakované použití obrázku ho načti jednou (např. v `Form_Load`) do proměnné třídy — nevoláš `Image.FromFile` při každém překreslení.
+Pro opakované použití obrázku ho načtěte jednou (např. v `Form_Load`) do proměnné třídy — nevoláte `Image.FromFile` při každém překreslení.
 
 ---
 
@@ -144,3 +146,59 @@ Pro opakované použití obrázku ho načti jednou (např. v `Form_Load`) do pro
 | `DrawPolygon` / `FillPolygon` | Mnohoúhelník |
 | `DrawString` | Text |
 | `DrawImage` | Obrázek |
+---
+
+## Otázky k zamyšlení
+
+1. Jaký je rozdíl mezi `Pen` a `Brush`? Které metody `Graphics` používají který?
+2. Metody jako `DrawRectangle(x, y, sirka, vyska)` — co přesně znamenají parametry x a y? Kde je "kotva" obdélníku?
+3. Proč je dobré objekty `Pen`/`Brush` vytvořené přes `new` uzavírat do `using`?
+
+---
+
+## Procvičení
+
+### Řešený příklad
+
+**Zadání:** V události `Paint` nakreslete jednoduchý domeček: čtvercové tělo, trojúhelníková střecha, obdélníkové dveře a kruhové okno.
+
+<details markdown="1">
+<summary>💡 Zobrazit řešení</summary>
+
+```csharp
+private void Form1_Paint(object sender, PaintEventArgs e)
+{
+    Graphics g = e.Graphics;
+
+    // tělo domu
+    g.FillRectangle(Brushes.BurlyWood, 100, 150, 200, 150);
+    g.DrawRectangle(Pens.Black, 100, 150, 200, 150);
+
+    // střecha – trojúhelník ze tří bodů
+    Point[] strecha =
+    {
+        new Point(90, 150),    // levý okraj
+        new Point(310, 150),   // pravý okraj
+        new Point(200, 70)     // vrchol
+    };
+    g.FillPolygon(Brushes.Firebrick, strecha);
+    g.DrawPolygon(Pens.Black, strecha);
+
+    // dveře
+    g.FillRectangle(Brushes.SaddleBrown, 170, 220, 60, 80);
+
+    // okno
+    g.FillEllipse(Brushes.LightBlue, 120, 180, 40, 40);
+    g.DrawEllipse(Pens.Black, 120, 180, 40, 40);
+}
+```
+
+Všimněte si dvojice `Fill...` (výplň štětcem) + `Draw...` (obrys perem) — pro pěkný výsledek se často kombinují, výplň vždy dřív. Souřadnice si při návrhu klidně načrtněte na papír: (0,0) je levý horní roh, y roste dolů.
+
+</details>
+
+### Samostatná cvičení
+
+1. **Základní** — Rozšiřte domeček o slunce (žlutý kruh s čárami-paprsky přes `DrawLine`) a komín.
+2. **Pokročilejší** — Nakreslete šachovnici 8×8 pomocí dvou vnořených cyklů — barvu políčka určete z podmínky `(radek + sloupec) % 2`.
+3. **Bonus (*)** — Nakreslete terč z pěti soustředných kruhů. Kruhy musí být vystředěné na střed formuláře i po změně jeho velikosti (`ClientSize`, událost `Resize` + `Invalidate`).

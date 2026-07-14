@@ -10,7 +10,7 @@ Dosud jsme pracovali s vestavěnými datovými typy (`int`, `string`, `bool`…)
 
 ## Enum
 
-`enum` (zkratka z *enumerated type* – výčtový typ) umožňuje definovat **pojmenované konstanty** pro sadu příbuzných hodnot. Místo neprůhledných čísel pracuješ se čitelnými jmény.
+`enum` (zkratka z *enumerated type* – výčtový typ) umožňuje definovat **pojmenované konstanty** pro sadu příbuzných hodnot. Místo neprůhledných čísel pracujete s čitelnými jmény.
 
 ### Deklarace
 
@@ -103,8 +103,8 @@ Console.WriteLine(type); // víkend
 ### Kdy použít enum?
 
 - Proměnná může nabývat jen **omezeného počtu předem daných hodnot**
-- Chceš, aby kód byl **čitelný** bez komentářů (`Status.Active` je jasnější než `1`)
-- Chceš zabránit neplatným hodnotám (kompilátor odmítne `Status.Deleted`, pokud neexistuje)
+- Chcete, aby kód byl **čitelný** bez komentářů (`Status.Active` je jasnější než `1`)
+- Chcete zabránit neplatným hodnotám (kompilátor odmítne `Status.Deleted`, pokud neexistuje)
 
 Typické příklady: dny v týdnu, směry (sever/jih/východ/západ), stavy objednávky, kategorie, priority.
 
@@ -226,7 +226,7 @@ U třídy by obě proměnné sdílely stejný objekt. U struct každá drží vl
 - Data jsou **malá a jednoduchá** (2–4 pole)
 - Logicky reprezentují **jednu hodnotu** (bod, barva, souřadnice, rozměr)
 - Nepotřebuješ dědičnost
-- Potřebuješ kopírování hodnotou (nechceš sdílené reference)
+- Potřebujete kopírování hodnotou (nechcete sdílené reference)
 
 Typické příklady: `Point`, `Color`, `Size`, `Rectangle`, `Vector2D`.
 
@@ -235,9 +235,9 @@ Typické příklady: `Point`, `Color`, `Size`, `Rectangle`, `Vector2D`.
 ### Kdy zůstat u třídy?
 
 - Objekt má **složitou logiku a chování**
-- Potřebuješ **dědičnost** nebo polymorfismus
+- Potřebujete **dědičnost** nebo polymorfismus
 - Data jsou velká nebo se mění za běhu
-- Potřebuješ `null` jako platnou hodnotu
+- Potřebujete `null` jako platnou hodnotu
 
 ---
 
@@ -289,3 +289,68 @@ Console.WriteLine(t2); // [ ] Aktualizovat dokumentaci (Low)
 | `struct` | Hodnotový typ, kopírování hodnotou, bez dědičnosti |
 | `struct` vs `class` | Struct pro malá data, třída pro složité objekty |
 | Kdy `struct` | Bod, barva, souřadnice, rozměr – malé, neměnné hodnoty |
+
+---
+
+## Otázky k zamyšlení
+
+1. Proč je `enum DnyVTydnu { Pondeli, ... }` lepší než reprezentovat dny čísly 1–7 nebo řetězci?
+2. Struktura je hodnotový typ. Co to znamená pro předávání struktury do metody?
+3. Kdy zvolit `struct` a kdy `class`? Jaká doporučení pro tuto volbu platí?
+
+---
+
+## Procvičení
+
+### Řešený příklad
+
+**Zadání:** Vytvořte `enum Znamka` (Vyborny=1 ... Nedostatecny=5) a strukturu `Predmet` s názvem a známkou. Vytvořte pole tří předmětů a vypište vysvědčení včetně slovního hodnocení.
+
+<details markdown="1">
+<summary>💡 Zobrazit řešení</summary>
+
+Enum s explicitními hodnotami umožňuje převod na číslo pro výpočet průměru; jeho název zase slouží jako slovní popis:
+
+```csharp
+enum Znamka
+{
+    Vyborny = 1, Chvalitebny = 2, Dobry = 3, Dostatecny = 4, Nedostatecny = 5
+}
+
+struct Predmet
+{
+    public string Nazev;
+    public Znamka Znamka;
+}
+
+class Program
+{
+    static void Main()
+    {
+        Predmet[] vysvedceni =
+        {
+            new Predmet { Nazev = "Programování", Znamka = Znamka.Vyborny },
+            new Predmet { Nazev = "Matematika", Znamka = Znamka.Chvalitebny },
+            new Predmet { Nazev = "Čeština", Znamka = Znamka.Dobry }
+        };
+
+        double soucet = 0;
+        foreach (Predmet p in vysvedceni)
+        {
+            Console.WriteLine($"{p.Nazev,-15} {(int)p.Znamka} ({p.Znamka})");
+            soucet += (int)p.Znamka;
+        }
+        Console.WriteLine($"Průměr: {soucet / vysvedceni.Length:F2}");
+    }
+}
+```
+
+`(int)p.Znamka` převádí enum na číslo, `{p.Znamka}` samotné vypíše jeho název. Formát `{...,-15}` zarovná název doleva na 15 znaků.
+
+</details>
+
+### Samostatná cvičení
+
+1. **Základní** — Vytvořte `enum Mesic` (Leden=1 ... Prosinec=12) a program, který pro zadané číslo měsíce vypíše jeho název a roční období.
+2. **Pokročilejší** — Vytvořte strukturu `Bod` (X, Y) a napište metodu, která spočítá vzdálenost dvou bodů. Otestujte na třech bodech.
+3. **Bonus (*)** — Ověřte hodnotovou sémantiku: vytvořte strukturu, zkopírujte ji do druhé proměnné, změňte kopii a vypište obě. Pak totéž zopakujte s třídou. Vysvětlete rozdíl.
