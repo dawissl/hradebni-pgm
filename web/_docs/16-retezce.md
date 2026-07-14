@@ -262,7 +262,7 @@ Console.WriteLine(sb.ToString()); // převede na string
 
 ### Kdy použít `string`, kdy `StringBuilder`?
 
-| Situace | Použití |
+| Situace | Použijeme|
 |---|---|
 | Jednoduchá práce s textem, metody, porovnávání | `string` |
 | Skládání mnoha řetězců v cyklu (100+) | `StringBuilder` |

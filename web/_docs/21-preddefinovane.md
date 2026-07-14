@@ -243,7 +243,11 @@ bool exists = ages.ContainsKey("Kamil");
 
 ### Řešený příklad
 
-**Zadání:** Pomocí předdefinovaných metod vyřešte: načtěte od uživatele desetinné číslo a vypište (a) jeho absolutní hodnotu, (b) zaokrouhlení na 2 desetinná místa, (c) druhou odmocninu (pokud lze), (d) náhodné celé číslo od 1 do zadaného čísla.
+**Zadání:** Pomocí předdefinovaných metod vyřešte: načtěte od uživatele desetinné číslo a vypište:
+ (a) jeho absolutní hodnotu
+ (b) zaokrouhlení na 2 desetinná místa
+ (c) druhou odmocninu (pokud lze)
+ (d) náhodné celé číslo od 1 do zadaného čísla
 
 <details markdown="1">
 <summary>💡 Zobrazit řešení</summary>

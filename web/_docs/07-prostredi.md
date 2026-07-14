@@ -8,15 +8,15 @@ order: 7
 
 Pro vývoj v C# budeme používat **Visual Studio Community** – profesionální IDE od Microsoftu, které je zdarma pro studenty a jednotlivce.
 
-Stáhni instalátor na [visualstudio.microsoft.com](https://visualstudio.microsoft.com/cs/vs/community/) a spusť ho.
+Stáhněte instalátor na [visualstudio.microsoft.com](https://visualstudio.microsoft.com/cs/vs/community/) a spusťte ho.
 
-Během instalace vyber **workload** (sadu nástrojů):
+Během instalace vyberte **workload** (sadu nástrojů):
 
 - ✅ **.NET desktop development** – pro konzolové a Windows Forms aplikace
 
 Instalace stáhne potřebné komponenty a zabere cca 5–10 GB místa na disku. Po dokončení restartuj počítač.
 
-> 💡 Aktuální verze je **Visual Studio 2022**. Pokud máš starší, základní principy jsou stejné.
+> 💡 Aktuální verze je **Visual Studio 2026**. Pokud máte starší, základní principy jsou stejné.
 
 ---
 
@@ -43,24 +43,24 @@ HelloWorld/
 ├── HelloWorld.sln            ← solution soubor
 └── HelloWorld/
     ├── HelloWorld.csproj     ← konfigurace projektu
-    └── Program.cs            ← tvůj kód
+    └── Program.cs            ← váš kód
 ```
 
 | Soubor | Co to je |
 |---|---|
 | `.sln` | **Solution** – kontejner, který sdružuje projekty. Tento soubor otevírej pro znovuotevření práce. |
 | `.csproj` | **Projekt** – definuje nastavení jednoho programu nebo knihovny |
-| `Program.cs` | Zdrojový kód – sem píšeš C# |
+| `Program.cs` | Zdrojový kód – sem píšete C# |
 
-> ⚠️ Pro znovuotevření projektu vždy klikni na `.sln`, ne na `.cs`.
+> ⚠️ Pro znovuotevření projektu vždy klikněte na `.sln`, ne na `.cs`.
 
-Jedna solution může obsahovat více projektů – to využiješ např. u větších aplikací rozdělených na části.
+Jedna solution může obsahovat více projektů – to využijete např. u větších aplikací rozdělených na části.
 
 ---
 
 ## Hello World
 
-Visual Studio vygeneruje výchozí šablonu. Nahraď obsah `Program.cs` tímto kódem:
+Visual Studio vygeneruje výchozí šablonu. Nahraďte obsah `Program.cs` tímto kódem:
 
 ```csharp
 using System;
@@ -122,7 +122,7 @@ Nejčastější chyby začátečníků:
 
 ## Kde najít spustitelný soubor?
 
-Zkompilovaný `.exe` soubor tvého programu najdeš v:
+Zkompilovaný `.exe` soubor programu najdete v:
 
 ```
 HelloWorld > HelloWorld > bin > Debug > net8.0 > HelloWorld.exe
@@ -149,20 +149,20 @@ HelloWorld > HelloWorld > bin > Debug > net8.0 > HelloWorld.exe
 
 Postup (na příkladu Visual Studia, jinde je princip stejný):
 
-1. Klikni do šedého sloupce vlevo od řádku, kde chceš běh zastavit — objeví se červená tečka (**breakpoint**).
-2. Spusť program v režimu ladění (**F5** / Start Debugging), ne obyčejným spuštěním.
-3. Běh se na breakpointu zastaví. Hodnoty proměnných uvidíš:
+1. Klikněte do šedého sloupce vlevo od řádku, kde chcete běh zastavit — objeví se červená tečka (**breakpoint**).
+2. Spusťte program v režimu ladění (**F5** / Start Debugging), ne obyčejným spuštěním.
+3. Běh se na breakpointu zastaví. Hodnoty proměnných uvidíte:
    - najetím myší přímo na proměnnou v kódu,
    - v panelu **Locals** (lokální proměnné),
    - nebo zadáním výrazu do panelu **Watch**.
-4. Dál můžeš krokovat: **F10** (další řádek), **F11** (vstoupit do metody), **F5** (pokračovat do dalšího breakpointu).
+4. Dál můžete krokovat: **F10** (další řádek), **F11** (vstoupit do metody), **F5** (pokračovat do dalšího breakpointu).
 
-Výhoda proti `Console.WriteLine`: nemusíš měnit kód, vidíš *všechny* proměnné najednou a můžeš běh krokovat řádek po řádku.
+Výhoda proti `Console.WriteLine`: nemusíte měnit kód, vidíte *všechny* proměnné najednou a můžete běh krokovat řádek po řádku.
 
 </details>
 
 ### Samostatná cvičení
 
-1. **Základní** — Vytvoř program se třemi proměnnými, vlož breakpoint a pomocí krokování (F10) sleduj, jak se hodnoty postupně mění.
-2. **Pokročilejší** — Vyzkoušej rozdíl mezi F10 (Step Over) a F11 (Step Into) na programu, který volá vlastní metodu. Popiš vlastními slovy, co se stalo jinak.
-3. **Bonus (*)** — Najdi ve svém IDE tři klávesové zkratky, které jsi dosud neznal, a týden je používej (např. přejmenování proměnné, formátování kódu, rychlá oprava).
+1. **Základní** — Vytvořte program se třemi proměnnými, vložte breakpoint a pomocí krokování (F10) sledujte, jak se hodnoty postupně mění.
+2. **Pokročilejší** — Vyzkoušejte rozdíl mezi F10 (Step Over) a F11 (Step Into) na programu, který volá vlastní metodu. Popište vlastními slovy, co se stalo jinak.
+3. **Bonus (*)** — Najděte ve svém IDE tři klávesové zkratky, které jste dosud neznali, a týden je používejte (např. přejmenování proměnné, formátování kódu, rychlá oprava).
