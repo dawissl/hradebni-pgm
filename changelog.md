@@ -4,7 +4,7 @@ Sleduje pouze zásadní/větší úpravy napříč repozitářem (metodika prác
 
 Formát: `[oblast] co se změnilo`
 
-## 2026-14-07
+## 14. 7. 2026
 - [metodika AI] zavedeno číslování kapitol/bodů (1. / 1.1 / 1.1a) pro přesné odkazování na změny
 - [metodika AI] 2.1: doplněna poznámka o IDE autocomplete/IntelliCode/quick actions — nepovažuje se za "použití AI"
 - [metodika AI] 4.1: doplněn vzorový template pro dokumentaci AI použití u drobných úloh
