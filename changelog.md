@@ -4,6 +4,10 @@ Sleduje pouze zásadní/větší úpravy napříč repozitářem (metodika prác
 
 Formát: `[oblast] co se změnilo`
 
+## 15. 7. 2026
+- [učebnice] revize všech kapitol
+- [učebnice] přidání kapitoly Generika
+
 ## 14. 7. 2026
 - [metodika AI] zavedeno číslování kapitol/bodů (1. / 1.1 / 1.1a) pro přesné odkazování na změny
 - [metodika AI] 2.1: doplněna poznámka o IDE autocomplete/IntelliCode/quick actions — nepovažuje se za "použití AI"
