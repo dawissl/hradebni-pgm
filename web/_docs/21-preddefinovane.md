@@ -104,7 +104,7 @@ Convert.ToBoolean("true");  // true     (string → bool)
 Convert.ToInt32(3.9);       // 4        – zaokrouhluje (na rozdíl od (int) castu)
 ```
 
-> 💡 Pro bezpečnou konverzi uživatelského vstupu, kde čekáte možnou chybu, použijte raději `int.TryParse()` (kapitola 20) – `Convert` při neplatném vstupu vyhodí výjimku.
+> 💡 Pro bezpečnou konverzi uživatelského vstupu, kde čekáte možnou chybu, použijte raději `int.TryParse()` (kapitola **Parametry a návratové hodnoty**) – `Convert` při neplatném vstupu vyhodí výjimku.
 
 ---
 
@@ -180,7 +180,7 @@ Console.WriteLine(d.ToString("F2"));      // "3.14"
 
 ### `string`
 
-Probráno detailně v kapitole [Řetězce](./16-retezce.md) – `Length`, `Substring`, `Split`, `Trim`, `ToUpper`/`ToLower`, `Contains`, `IndexOf`, `Replace`...
+Probráno detailně v kapitole **Práce s řetězcem** – `Length`, `Substring`, `Split`, `Trim`, `ToUpper`/`ToLower`, `Contains`, `IndexOf`, `Replace`...
 
 ### `bool`
 
@@ -193,7 +193,7 @@ Console.WriteLine(flag.ToString()); // "True"
 
 ## Předdefinované metody kolekcí
 
-Také `array`, `List<T>` a `Dictionary<K,V>` mají vlastní metody – probráno detailně v kapitolách 14 a 15. Stručná připomínka:
+Také `array`, `List<T>` a `Dictionary<K,V>` mají vlastní metody – probráno detailně v kapitolách **Pole** a **List a Dictionary**. Stručná připomínka:
 
 ```csharp
 // array
