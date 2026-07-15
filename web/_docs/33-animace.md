@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Animace a časovač"
-order: 33
+order: 330
 ---
 
 Animace ve WinForms stojí na jednoduchém principu: v pravidelných intervalech aktualizujete stav (pozici, barvu, velikost) a překreslíte scénu. K tomu slouží `Timer` z kapitoly 29 v kombinaci s `Graphics` z kapitoly 32.

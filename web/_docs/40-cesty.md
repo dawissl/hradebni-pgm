@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Cesty a adresáře"
-order: 40
+order: 400
 ---
 
 Soubor musíte nejdřív najít — a to vyžaduje správně sestavit cestu. Třída `Path` pomáhá se sestavováním cest přenositelným způsobem, třída `Directory` s procházením adresářové struktury.

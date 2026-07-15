@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Práce se soubory"
-order: 38
+order: 380
 ---
 
 Data v proměnných existují jen po dobu běhu programu — při ukončení se ztratí. Soubory umožňují data **trvale uložit** na disk a znovu načíst při příštím spuštění. Tato kapitola je přehledem; konkrétní techniky čtení a zápisu jsou v kapitolách **Vstupní a výstupní proudy** a **Cesty a adresáře**.

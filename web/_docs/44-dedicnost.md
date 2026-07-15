@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Dědičnost"
-order: 44
+order: 440
 ---
 
 Dědičnost umožňuje vytvořit novou třídu, která přebírá (dědí) vlastnosti a chování třídy existující — a přidává nebo upravuje to, co potřebuje. Zabraňuje opakování kódu a modeluje vztahy „je typem" mezi třídami.

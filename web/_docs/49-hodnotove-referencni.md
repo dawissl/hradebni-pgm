@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Hodnotové a referenční typy"
-order: 49
+order: 490
 ---
 
 Každý typ v C# je buď **hodnotový** nebo **referenční**. Tento rozdíl určuje, co se stane při kopírování proměnné nebo předání do metody.

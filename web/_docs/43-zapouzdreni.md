@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Zapouzdření"
-order: 43
+order: 430
 ---
 
 Zapouzdření je první z pilířů OOP. Říká: **data objektu by měla být skryta před okolím a přístupná jen přes definované rozhraní**. Objekt je „černá skříňka" — víte, co dělá, ale nemusíte vědět, jak to dělá uvnitř.

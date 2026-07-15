@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Polymorfismus"
-order: 45
+order: 450
 ---
 
 Polymorfismus (z řeckého „mnoho tvarů") umožňuje pracovat s různými typy objektů jednotným způsobem — volat stejnou metodu na různých objektech a nechat každý objekt, ať se zachová po svém. Staví na dědičnosti a přepsání metod z kapitoly **Dědičnost**.

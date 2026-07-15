@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Podmínky"
-order: 11
+order: 110
 ---
 
 Podmínky umožňují programu **rozhodovat** – provést různý kód podle toho, zda platí nebo neplatí nějaká podmínka. Jsou základem jakékoli logiky v programu.

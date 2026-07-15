@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Abstraktní třídy a rozhraní"
-order: 46
+order: 460
 ---
 
 Abstraktní třídy a rozhraní jsou nástroje pro **definici kontraktu** — říkají, co musí potomek nebo implementátor umět, aniž by určovaly, jak to dělat. Jsou základem pro navrhování flexibilní a rozšiřitelné architektury.

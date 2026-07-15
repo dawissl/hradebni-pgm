@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Algoritmizace"
-order: 1
+order: 10
 ---
 
 Než začnete psát první řádek kódu, musíte umět **myslet jako počítač** — rozkládat problémy na jasné, přesné kroky, které lze vykonat mechanicky. Tenhle způsob myšlení se nazývá algoritmizace a je základem celého programování.

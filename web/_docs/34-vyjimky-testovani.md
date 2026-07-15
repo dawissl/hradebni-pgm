@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Výjimky, ladění a testování"
-order: 34
+order: 340
 ---
 
 Každý program narazí na neočekávané situace — chybný vstup, chybějící soubor, přetečení hodnoty. Tato sekce pokrývá tři témata, která tvoří základ robustního kódu: výjimky, ladění a testování.

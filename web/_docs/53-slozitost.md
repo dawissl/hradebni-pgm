@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Složitost algoritmů"
-order: 53
+order: 530
 ---
 
 Dva algoritmy mohou řešit stejný problém — ale jeden zvládne milion prvků za sekundu a druhý za hodinu. Složitost algoritmů je způsob, jak tento rozdíl popsat bez nutnosti spouštět kód.

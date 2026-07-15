@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Třída a objekt"
-order: 42
+order: 420
 ---
 
 Třída je šablona — popis struktury. Objekt je konkrétní věc vytvořená podle té šablony. Tato kapitola ukazuje, jak třídy definovat, jak z nich vytvářet objekty a jak pracovat s jejich daty a chováním.

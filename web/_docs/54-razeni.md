@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Řadící algoritmy"
-order: 54
+order: 540
 ---
 
 Řazení dat je jednou z nejčastějších operací v programování — seznam kontaktů, výsledky vyhledávání, tabulka výsledků. Tato kapitola ukáže tři základní algoritmy pro pochopení principu, jejich srovnání a pak — proč v praxi používáte vestavěné řazení.

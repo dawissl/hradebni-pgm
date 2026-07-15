@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Základní komponenty"
-order: 27
+order: 270
 ---
 
 V aplikacích Windows Forms se uživatelské rozhraní skládá z jednotlivých komponent. Komponenty představují prvky, se kterými uživatel pracuje – například tlačítka, textová pole nebo seznamy.

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Dialogová okna"
-order: 30
+order: 300
 ---
 
 Dialogová okna jsou specializovaná okna, která vyžadují od uživatele reakci nebo výběr — potvrzení akce, výběr souboru, volbu barvy. WinForms nabízí sadu hotových dialogů, takže je nemusíte navrhovat od nuly.

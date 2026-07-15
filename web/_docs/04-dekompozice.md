@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Dekompozice problému"
-order: 4
+order: 40
 ---
 
 Složité problémy se neřeší najednou — rozkládají se na menší, zvládnutelné části. Tomuto přístupu se říká **dekompozice** a je jednou z nejdůležitějších dovedností programátora.

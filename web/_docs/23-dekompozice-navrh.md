@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Dekompozice a návrh aplikace"
-order: 23
+order: 230
 ---
 
 Dosud jsme se věnovali jednotlivým **stavebním kamenům** jazyka – proměnným, podmínkám, cyklům, metodám, kolekcím. Od příští kapitoly se přesouváme k **Windows Forms aplikacím** (WFA) – programům s okny, tlačítky a grafickým rozhraním.

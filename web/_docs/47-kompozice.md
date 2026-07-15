@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Kompozice vs. dědičnost"
-order: 47
+order: 470
 ---
 
 Dědičnost není jediný způsob, jak znovu použít kód. **Kompozice** je alternativa, která je v mnoha situacích vhodnější — a zkušení programátoři ji preferují.

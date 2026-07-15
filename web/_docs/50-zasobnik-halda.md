@@ -1,108 +1,157 @@
 ---
 layout: post
-title: "Zásobník a halda"
-order: 50
+title: "Hodnotové a referenční typy"
+order: 500
 ---
 
-Víme, že hodnotové typy uchovávají hodnotu přímo a referenční typy ukládají odkaz. Ale kde se tato data fyzicky nacházejí v paměti? Odpověď jsou dvě oblasti: **zásobník** (stack) a **halda** (heap).
+Každý typ v C# je buď **hodnotový** nebo **referenční**. Tento rozdíl určuje, co se stane při kopírování proměnné nebo předání do metody.
 
 ---
 
-## Zásobník (Stack)
+## Hodnotové typy
 
-Zásobník je rychlá paměťová oblast organizovaná jako LIFO (Last In, First Out) — poslední přidaný prvek je první odebraný.
-
-Každé volání metody přidá na zásobník **rámec** (frame) s:
-- lokálními proměnnými metody
-- parametry metody
-- návratovou adresou
-
-Po skončení metody se rámec automaticky odebere — vše se vyčistí samo.
-
-![Zásobník se třemi rámci: Main → VolejA → VolejB; šipka ukazuje na vrchol zásobníku](../assets/stack-diagram.png)
-
-**Hodnotové typy** (lokální proměnné jako `int`, `bool`, `struct`) se ukládají přímo na zásobník.
+Hodnotový typ uchovává **přímo hodnotu**. Při přiřazení vznikne nezávislá kopie.
 
 ```csharp
-void Metoda()
+int a = 10;
+int b = a;   // b je kopie hodnoty 10
+b = 99;
+
+Console.WriteLine(a);  // 10 — nezměněno
+Console.WriteLine(b);  // 99
+```
+
+**Hodnotové typy:** `int`, `long`, `double`, `float`, `decimal`, `bool`, `char`, `byte`, `struct`, `enum`
+
+---
+
+## Referenční typy
+
+Referenční typ uchovává **odkaz** (adresu) na objekt v paměti. Při přiřazení se zkopíruje odkaz — ne data.
+
+```csharp
+int[] a = { 1, 2, 3 };
+int[] b = a;   // b odkazuje na stejné pole jako a
+
+b[0] = 99;
+
+Console.WriteLine(a[0]);  // 99 — změnil se objekt, na který odkazují oba
+Console.WriteLine(b[0]);  // 99
+```
+
+![Diagram: proměnná a a b obě šipkou ukazují na jedno pole {99, 2, 3} v paměti](../assets/reference-diagram.png)
+
+**Referenční typy:** třídy (všechny vlastní třídy), `string`, pole (`int[]`, `string[]`…), rozhraní
+
+---
+
+## Kopírování objektu (deep copy)
+
+Pokud chcete skutečnou nezávislou kopii objektu, musíte ji vytvořit ručně:
+
+```csharp
+int[] original = { 1, 2, 3 };
+
+// Clone() nebo Array.Copy() vytvoří nové pole s vlastními hodnotami
+int[] kopie = (int[])original.Clone();
+
+// Nebo:
+int[] kopie2 = new int[original.Length];
+Array.Copy(original, kopie2, original.Length);
+
+kopie[0] = 99;
+Console.WriteLine(original[0]);  // 1 — nezměněno
+```
+
+> ⚠️ **Pozor u polí objektů:** `Clone()`/`Array.Copy()` je vždy jen **mělká kopie** — zkopíruje samo pole, ale pokud pole obsahuje referenční typy, zkopírují se jen odkazy na ně, ne objekty samotné. `int[]` tenhle problém nemá, protože `int` je hodnotový typ — proto v ukázce výše `kopie[0] = 99` na `original` nesáhne. U `Student[]` by ale `kopie[0].Jmeno = "Nové"` změnilo i `original[0].Jmeno`, protože oba prvky by stále odkazovaly na týž objekt `Student`.
+
+---
+
+## Předávání do metod
+
+### Hodnotový typ — předání hodnotou
+
+```csharp
+void Zdvoj(int x)
 {
-    int x = 10;       // na zásobníku
-    double y = 3.14;  // na zásobníku
-    // po skončení metody — oba zmizí automaticky
+    x = x * 2;
+    Console.WriteLine($"Uvnitř metody: {x}");  // 20
 }
+
+int cislo = 10;
+Zdvoj(cislo);
+Console.WriteLine($"Vně metody: {cislo}");  // 10 — nezměněno
 ```
 
----
+Metoda dostane **kopii** hodnoty. Změna uvnitř metody nemá vliv na původní proměnnou.
 
-## Halda (Heap)
-
-Halda je větší, ale pomalejší oblast paměti pro data s proměnnou životností. Objekty (instance tříd, pole) se alokují na haldě.
-
-Proměnná (na zásobníku) drží **odkaz** (adresu) na objekt na haldě.
+### Referenční typ — předání odkazu
 
 ```csharp
-void Metoda()
+void Nastav(int[] pole)
 {
-    int[] pole = new int[100];
-    //  ↑ odkaz na zásobníku    ↑ 100 intů na haldě
+    pole[0] = 99;
 }
+
+int[] data = { 1, 2, 3 };
+Nastav(data);
+Console.WriteLine(data[0]);  // 99 — změna se projevila
 ```
 
-![Zásobník s proměnnou pole obsahující šipku; šipka míří na objekt na haldě](../assets/heap-diagram.png)
+Metoda dostane **kopii odkazu** — ale oba odkazy míří na stejný objekt. Změna obsahu objektu je viditelná i vně.
 
----
+### Klíčové slovo `ref` a `out`
 
-## Kopírování a sdílení
-
-Toto vysvětluje chování z kapitoly **Hodnotové a referenční typy**:
+Pokud chcete předat hodnotový typ odkazem (aby metoda mohla změnit původní proměnnou):
 
 ```csharp
-int a = 5;
-int b = a;
-// Zásobník: a=5, b=5 — dvě nezávislé hodnoty
-```
-
-```csharp
-int[] x = new int[] { 1, 2, 3 };
-int[] y = x;
-// Zásobník: x=adresa1, y=adresa1 — dva odkaz na stejný objekt na haldě
-```
-
----
-
-## Praktické dopady
-
-**Velikost zásobníku je omezená** — výchozí velikost je typicky 1–8 MB. Příliš hluboká rekurze způsobí `StackOverflowException`.
-
-```csharp
-// Toto způsobí StackOverflowException — zásobník se přeplní
-void Nekonecna()
+void Zdvoj(ref int x)
 {
-    Nekonecna();  // volá sama sebe bez podmínky ukončení
+    x = x * 2;
 }
+
+int cislo = 10;
+Zdvoj(ref cislo);
+Console.WriteLine(cislo);  // 20 — změněno
 ```
 
-**Halda je spravována garbage collectorem** — viz kapitola **Garbage collector**. Objekty na haldě existují, dokud na ně existuje alespoň jeden odkaz.
+`out` funguje podobně, ale proměnná nemusí být inicializována před předáním — metoda ji musí nastavit.
+
+---
+
+## Výjimka: `string`
+
+`string` je referenční typ, ale chová se jako hodnotový — je **immutable** (neměnný). Každá operace na stringu vytvoří nový objekt.
+
+```csharp
+string a = "ahoj";
+string b = a;
+b = b.ToUpper();
+
+Console.WriteLine(a);  // ahoj — nezměněno
+Console.WriteLine(b);  // AHOJ
+```
+
+`b.ToUpper()` nevytvořil nový string v `b` — ale `b` nyní odkazuje na nový objekt `"AHOJ"`, zatímco `a` stále odkazuje na původní `"ahoj"`.
 
 ---
 
 ## Shrnutí
 
-| | Zásobník (Stack) | Halda (Heap) |
+| | Hodnotový typ | Referenční typ |
 |---|---|---|
-| Organizace | LIFO | Libovolná |
-| Rychlost | Velmi rychlý | Pomalejší |
-| Správa | Automatická (rámce metod) | Garbage collector |
-| Ukládá | Hodnotové typy, odkazy | Objekty (referenční typy) |
-| Omezení | Omezená velikost | Větší, ale fragmentuje se |
+| Ukládá | Přímo hodnotu | Odkaz na objekt |
+| Kopírování | Nová nezávislá hodnota | Nový odkaz na stejný objekt |
+| Předání do metody | Metoda dostane kopii | Metoda může měnit původní objekt |
+| Příklady | `int`, `bool`, `struct` | třídy, pole, `string` |
 
 ---
 
 ## Otázky k zamyšlení
 
-1. Proč je alokace na zásobníku rychlejší než na haldě? Co dělá uvolnění paměti zásobníku tak levným?
-2. Kde přesně bydlí objekt třídy a kde jeho reference, když je reference lokální proměnnou metody?
-3. Co způsobí `StackOverflowException` a proč souvisí právě se zásobníkem?
+1. Které typy jsou hodnotové a které referenční? Kam patří `int`, `string`, pole, `struct`, třída?
+2. Co přesně se kopíruje při `b = a`, když `a` je `int`, a co, když `a` je objekt třídy?
+3. Proč metoda může změnit obsah pole předaného parametrem, ale nemůže (bez `ref`) změnit předaný `int`?
 
 ---
 
@@ -110,25 +159,49 @@ void Nekonecna()
 
 ### Řešený příklad
 
-**Zadání:** Obrázek zachycuje stav paměti běžícího programu. Odpovězte: (a) Které metody právě běží a v jakém pořadí byly volány? (b) Kolik objektů leží na haldě? (c) Co se stane s rámcem `SectiPole()` po jejím skončení? (d) Co se stane s polem na haldě, pokud na něj po skončení všech metod už nevede žádná reference?
+**Zadání:** Bez spouštění určete výstup programu a vysvětlete každý řádek výstupu:
 
-![Zásobník a halda](../assets/50-zasobnik-halda.png)
+```csharp
+struct BodS { public int X; }
+class BodC { public int X; }
+
+class Program
+{
+    static void Main()
+    {
+        BodS s1 = new BodS { X = 1 };
+        BodS s2 = s1;
+        s2.X = 99;
+
+        BodC c1 = new BodC { X = 1 };
+        BodC c2 = c1;
+        c2.X = 99;
+
+        Console.WriteLine($"s1.X = {s1.X}, s2.X = {s2.X}");
+        Console.WriteLine($"c1.X = {c1.X}, c2.X = {c2.X}");
+    }
+}
+```
 
 <details markdown="1">
 <summary>💡 Zobrazit řešení</summary>
 
-**(a)** Zásobník čteme zdola nahoru podle pořadí volání: `Main()` → `VypocitejPrumer()` → `SectiPole()`. Nahoře je rámec právě běžící metody (`SectiPole`).
+Výstup:
 
-**(b)** Na haldě jsou **4 objekty**: pole `int[]`, řetězec `"Ahoj"`, objekt `Student` a `List<int>`.
+```
+s1.X = 1, s2.X = 99
+c1.X = 99, c2.X = 99
+```
 
-**(c)** Po `return` ze `SectiPole` se její rámec **okamžitě odstraní** z vrcholu zásobníku — všechny její lokální proměnné přestanou existovat. Řízení se vrátí do `VypocitejPrumer`, jejíž rámec je teď na vrcholu.
+- **Struktura (hodnotový typ):** `s2 = s1` vytvoří **úplnou kopii** dat. `s1` a `s2` jsou dva nezávislé body — změna `s2.X` se `s1` nedotkne.
+- **Třída (referenční typ):** `c2 = c1` zkopíruje jen **referenci** — obě proměnné ukazují na *tentýž* objekt na haldě. Změna přes `c2` je vidět i přes `c1`, protože žádný druhý objekt neexistuje.
 
-**(d)** Pole se stane **nedosažitelným** — a nedosažitelný objekt je kandidát pro garbage collector. Neuklidí se ale hned: GC běží, až když sám uzná za vhodné (typicky při tlaku na paměť). Do té doby pole na haldě "leží mrtvé".
+Mentální model: hodnotový typ = kopie listu papíru; referenční typ = druhý klíč od téhož bytu.
 
 </details>
 
 ### Samostatná cvičení
 
-1. **Základní** — Nakreslete podobný obrázek pro program: `Main` vytvoří `List<string>` se dvěma jmény a zavolá `Vypis(seznam)`. Zachyťte okamžik uvnitř `Vypis`.
-2. **Pokročilejší** — Napište rekurzivní metodu bez ukončovací podmínky, spusťte ji a pozorujte `StackOverflowException`. Vysvětlete pomocí obrázku zásobníku, co přesně se v paměti stalo.
-3. **Bonus (*)** — Zdůvodněte, proč struktura (hodnotový typ) v lokální proměnné nepotřebuje garbage collector, a co se změní, když je tatáž struktura polem uvnitř třídy.
+1. **Základní** — Napište metodu `Vynuluj(int[] pole)`, která nastaví všechny prvky na 0, a ověřte, že se změna projeví u volajícího. Pak vysvětlete proč — vždyť pole bylo předáno "hodnotou"?
+2. **Pokročilejší** — Napište metodu `Prohod(ref int a, ref int b)` a druhou verzi bez `ref`. Ukažte na výstupu, že bez `ref` prohození "nefunguje", a vysvětlete, co se prohodilo doopravdy.
+3. **Bonus (*)** — Zjistěte, co je "boxing" (`object o = 42;`). Proč je to výkonnostně drahé, a jak se mu vyhýbají generické kolekce? (Nápověda: kapitola **Generika** se k boxingu už vrací — ověřte si tam svou odpověď.)

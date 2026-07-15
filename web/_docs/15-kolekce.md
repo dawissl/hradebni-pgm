@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "List a Dictionary"
-order: 15
+order: 150
 ---
 
 Kromě polí (`array`) nabízí C# i generické kolekce, které umožňují flexibilnější práci s daty. Nejčastěji se používají `List<T>` a `Dictionary<TKey, TValue>`.
@@ -10,7 +10,7 @@ Písmeno `T` v názvu `List<T>` je **typový parametr** – při deklaraci ho na
 konkrétním datovým typem (`int`, `string`, vlastní třída…). Kompilátor pak
 zajistí, že do listu nepůjde vložit nic jiného. `List<int>` přijme jen celá čísla,
 `List<string>` jen řetězce. Tomuto principu se říká **generické programování**
-a vrátíme se k němu podrobněji u OOP.
+a podrobně se mu budeme věnovat v kapitole **Generika** — tam si takovou třídu i sami napíšete.
 
 Totéž platí pro `Dictionary<TKey, TValue>`, kde `TKey` a `TValue` jsou dva samostatné typové parametry (klíč a hodnota mohou být různého typu).
 

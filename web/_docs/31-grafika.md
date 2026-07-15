@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Grafika a animace"
-order: 31
+order: 310
 ---
 
 WinForms umožňuje kreslit přímo na formulář nebo komponentu — čáry, obdélníky, kruhy, text, obrázky. K tomu slouží třída `Graphics` z jmenného prostoru `System.Drawing`. Tato a následující dvě kapitoly vám ukážou, jak s ní pracovat.
@@ -12,9 +12,9 @@ WinForms umožňuje kreslit přímo na formulář nebo komponentu — čáry, ob
 
 | Kapitola | Obsah |
 |---|---|
-| **[Grafika a animace](./31-grafika.md)** | Přehled, první krok, souřadnicový systém |
-| **[Základy práce s grafikou](./32-grafika-zaklady.md)** | Pen, Brush, kreslicí metody, událost Paint |
-| **[Animace a časovač](./33-animace.md)** | Timer, pohyblivé objekty, překreslování |
+| **Grafika a animace** | Přehled, první krok, souřadnicový systém |
+| **Základy práce s grafikou** | Pen, Brush, kreslicí metody, událost Paint |
+| **Animace a časovač** | Timer, pohyblivé objekty, překreslování |
 
 ---
 

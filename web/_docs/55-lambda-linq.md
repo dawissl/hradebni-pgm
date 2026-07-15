@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Lambda funkce a LINQ"
-order: 55
+order: 550
 ---
 
 Lambda výrazy a LINQ jsou dvě úzce propojené funkce C#, které zásadně zpřehledňují práci s kolekcemi. Místo explicitních cyklů s podmínkami napíšete záměr přímo — „vyber studenty s průměrem pod 2, seřaď je podle příjmení."

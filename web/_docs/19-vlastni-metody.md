@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Vlastní metody"
-order: 19
+order: 190
 ---
 
 V kapitole **Metody** jsme si ukázali, jak metodu definovat, zavolat a vrátit z ní hodnotu. Teď se podíváme na to, jak metody **navrhovat** – jak vypadá dobře rozdělený program – a na dvě věci, které ušetří práci při volání: **výchozí hodnoty parametrů** a **pojmenované argumenty**.

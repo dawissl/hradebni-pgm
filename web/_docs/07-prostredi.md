@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Vývojové prostředí"
-order: 7
+order: 70
 ---
 
 ## Instalace Visual Studia

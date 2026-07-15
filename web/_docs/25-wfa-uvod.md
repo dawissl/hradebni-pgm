@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Co je WinForms"
-order: 25
+order: 250
 ---
 
 V minulé kapitole jsme si WinForms vyzkoušeli prakticky – vytvořili projekt, spustili prázdné okno a podívali se, jak spolu souvisí `Form1.cs` a `Form1.Designer.cs`. Tato kapitola se vrací o krok zpět a dívá se na WinForms **v širším kontextu**: jako na jednu z technologií pro tvorbu desktopových aplikací, proč ji ve výuce používáme, a jak `partial` třída funguje v C# obecně – ne jen u oken.

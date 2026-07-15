@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Rekurze"
-order: 22
+order: 220
 ---
 
 Rekurze je technika, kdy **metoda volá sama sebe**. Zní to paradoxně, ale je to mocný nástroj pro řešení problémů, které lze rozložit na menší instance toho samého problému.

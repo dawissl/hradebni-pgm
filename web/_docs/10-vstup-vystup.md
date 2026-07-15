@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Vstup a výstup"
-order: 10
+order: 100
 ---
 
 Program komunikuje s uživatelem přes **konzoli** – textové okno, do kterého vypisuje zprávy a čte uživatelský vstup. K tomu slouží třída `Console` z namespace `System`.

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Ladění a debugging"
-order: 36
+order: 360
 ---
 
 Ladění (debugging) je proces hledání a opravování chyb v programu. Visual Studio nabízí výkonné nástroje, které vám umožní program zastavit, zkontrolovat hodnoty proměnných a projít kód krok za krokem.

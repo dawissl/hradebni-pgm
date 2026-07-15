@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Práce s pamětí"
-order: 48
+order: 480
 ---
 
 C# spravuje paměť automaticky — nemusíte ji ručně alokovat ani uvolňovat jako v C nebo C++. Přesto je dobré rozumět tomu, jak paměť funguje. Pomůže vám to pochopit chování proměnných, vyhnout se skrytým chybám a psát efektivnější kód.

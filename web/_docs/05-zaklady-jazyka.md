@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Základy jazyka C#"
-order: 5
+order: 50
 ---
 
 ## Co je C#?

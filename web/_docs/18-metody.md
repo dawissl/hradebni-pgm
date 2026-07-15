@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Metody"
-order: 18
+order: 180
 ---
 
 Jak program roste, začíná být obtížné udržovat veškerý kód na jednom místě. Opakující se části programu zhoršují přehlednost a zvyšují riziko chyb.

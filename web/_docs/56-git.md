@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Verzovací systémy a Git"
-order: 56
+order: 560
 ---
 
 Verzovací systém sleduje změny v kódu — kdo co změnil, kdy a proč. Umožňuje vrátit se k libovolné dřívější verzi, pracovat na víc věcech naráz a spolupracovat v týmu bez přepisování cizí práce.

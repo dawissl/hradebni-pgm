@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Principy UX a UI"
-order: 26
+order: 260
 ---
 
 Při tvorbě aplikací nestačí, aby program pouze fungoval. Důležité je také to, jak se uživateli používá. Přehledné ovládání, srozumitelné informace a logické uspořádání prvků mohou výrazně ovlivnit spokojenost uživatele.

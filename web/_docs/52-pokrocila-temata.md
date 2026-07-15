@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Pokročilá témata"
-order: 52
+order: 520
 ---
 
 Předchozí kapitoly pokryly základy jazyka, OOP a práci se soubory. Tato sekce se věnuje tématům, která vás posunou o úroveň výš — nezbytným pro pochopení profesionálního C# kódu a přípravě na praxi.

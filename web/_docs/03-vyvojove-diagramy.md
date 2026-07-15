@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Vývojové diagramy"
-order: 3
+order: 30
 ---
 
 Vývojový diagram je grafický zápis algoritmu. Místo slov používá standardizované symboly propojené šipkami — díky tomu je struktura algoritmu okamžitě viditelná, bez ohledu na programovací jazyk.

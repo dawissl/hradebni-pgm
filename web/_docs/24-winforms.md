@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Grafické aplikace — WinForms"
-order: 24
+order: 240
 ---
 
 Doteď naše programy běžely v černém okně konzole – textový vstup, textový výstup. Od této kapitoly se přesouváme k aplikacím s **grafickým uživatelským rozhraním** (GUI) – okny, tlačítky, textovými poli a dalšími prvky, na které uživatel klikne myší.

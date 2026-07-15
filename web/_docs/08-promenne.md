@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Proměnné a datové typy"
-order: 8
+order: 80
 ---
 
 ## Co je proměnná?

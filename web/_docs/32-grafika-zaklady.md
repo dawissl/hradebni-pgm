@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Základy práce s grafikou"
-order: 32
+order: 320
 ---
 
 Tato kapitola navazuje na přehled z kapitoly 31. Naučíte se kreslit základní tvary, pracovat s barvami a textem a správně obsluhovat událost `Paint`.

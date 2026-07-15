@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Vstupní a výstupní proudy"
-order: 39
+order: 390
 ---
 
 Třída `File` z kapitoly Práce se soubory načítá celý soubor najednou do paměti. Pro velké soubory nebo pro čtení řádek po řádku jsou vhodnější **proudy** (streams) — data čtete nebo zapisujete postupně, bez nutnosti mít vše v paměti najednou.

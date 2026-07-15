@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Události a event handlery"
-order: 28
+order: 280
 ---
 
 WinForms aplikace nefunguje jako konzolový program — nespouští příkazy shora dolů, ale **čeká na akce uživatele**. Kliknutí na tlačítko, změna textu, stisk klávesy — to vše jsou **události** (events), na které program reaguje.

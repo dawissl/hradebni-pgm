@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Objektově orientované programování"
-order: 41
+order: 410
 ---
 
 Doteď jsme psali kód procedurálně — příkazy za sebou, data v proměnných, logika ve funkcích. Tento přístup funguje pro menší programy. Jakmile aplikace roste, procedurální kód se stává nepřehledným a obtížně udržovatelným. Řešením je **objektově orientované programování** (OOP).

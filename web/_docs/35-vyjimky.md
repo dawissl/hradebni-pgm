@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Výjimky"
-order: 35
+order: 350
 ---
 
 Každý program narazí na situace, které neočekával — uživatel zadá písmeno místo čísla, soubor neexistuje, dojde místo na disku. Tyto situace se v C# řeší mechanismem **výjimek** (exceptions).

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Předdefinované metody"
-order: 21
+order: 210
 ---
 
 C# a .NET nabízí ohromné množství hotových metod pro běžné úkoly – matematické výpočty, generování náhodných čísel, práci s datem a časem, konverze. Než cokoliv naprogramujete sami, **stojí za to zkontrolovat, jestli to už neexistuje**.

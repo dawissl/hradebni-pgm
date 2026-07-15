@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Testování"
-order: 37
+order: 370
 ---
 
 Testování ověřuje, že program dělá to, co dělat má. Bez testování zjistíte chyby až od uživatelů — a to je pozdě. Tato kapitola pokrývá základy testovací terminologie a praktický úvod do unit testů v C#.

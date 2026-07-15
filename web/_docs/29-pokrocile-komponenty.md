@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Pokročilé komponenty"
-order: 29
+order: 290
 ---
 
 Předchozí kapitola pokryla základní komponenty pro vstup a výstup dat. Tato kapitola rozšiřuje paletu o komponenty pro strukturování aplikace, navigaci a zobrazení komplexnějších dat.

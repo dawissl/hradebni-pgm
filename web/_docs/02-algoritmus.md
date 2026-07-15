@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Co je algoritmus"
-order: 2
+order: 20
 ---
 
 Algoritmus je přesný postup složený z konečného počtu kroků, který vede k řešení daného problému. Slovo pochází od jména perského matematika Al-Chorezmího, který žil v 9. století.
