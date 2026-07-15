@@ -10,9 +10,9 @@ Vývojový diagram je grafický zápis algoritmu. Místo slov používá standar
 
 ## Proč vývojové diagramy?
 
-Než začneš psát kód, je užitečné si algoritmus nakreslit. Vývojový diagram ti pomůže:
+Než začnete psát kód, je užitečné si algoritmus nakreslit. Vývojový diagram vám pomůže:
 
-- **odhalit chyby v logice** dřív, než napíšeš jediný řádek kódu
+- **odhalit chyby v logice** dřív, než napíšete jediný řádek kódu
 - **vysvětlit algoritmus** kolegovi nebo zákazníkovi, který neprogramuje
 - **rozmyslet větvení a cykly** — uvidíš, jestli program v každé situaci skončí správně
 
@@ -58,7 +58,7 @@ Postup čtení diagramu:
 3. Je `x > 0`? → Ano: vypiš „kladné", konec. Ne: pokračuj
 4. Je `x < 0`? → Ano: vypiš „záporné", konec. Ne: vypiš „nula", konec
 
-Všimni si, že každá větev vede ke svému **Konci** — algoritmus skončí vždy, v každé situaci.
+Všimněte si, že každá větev vede ke svému **Konci** — algoritmus skončí vždy, v každé situaci.
 
 ---
 
@@ -72,15 +72,15 @@ Algoritmus, který vypisuje čísla 1 až 5:
 
 Zpětná šipka (smyčka) je klíčový vizuální signál — říká: tenhle blok se bude opakovat.
 
-> ⚠️ Pozor na **nekonečnou smyčku** — pokud podmínka nikdy nenastane jako Ne (např. zapomeneš `i = i + 1`), algoritmus nikdy neskončí. Vývojový diagram ti tento problém pomůže odhalit ještě před psaním kódu.
+> ⚠️ Pozor na **nekonečnou smyčku** — pokud podmínka nikdy nenastane jako Ne (např. zapomenete `i = i + 1`), algoritmus nikdy neskončí. Vývojový diagram vám tento problém pomůže odhalit ještě před psaním kódu.
 
 ---
 
 ## Tipy pro kreslení
 
 - Nástroje pro rychlé kreslení: [draw.io](https://draw.io) (zdarma, online), Excalidraw, nebo tužka a papír
-- Začni vždy od **Startu** a postupuj krok za krokem — neptej se „jak to nakreslit", ale „co se stane jako první, druhé, třetí…"
-- Pokud nevíš jak zakreslit složitou část, rozlož ji na menší kroky a kresli každý zvlášť
+- Začněte vždy od **Startu** a postupujte krok za krokem — neptejte se „jak to nakreslit", ale „co se stane jako první, druhé, třetí…"
+- Pokud nevíte jak zakreslit složitou část, rozložte ji na menší kroky a kreslete každý zvlášť
 
 ---
 

@@ -77,7 +77,7 @@ class Program
 
 ### Metoda `Main()`
 
-`Main()` je **vstupní bod** každé konzolové, i kterékoliv jiní aplikace – první metoda, která se spustí. To platí pro většinu programovacích jazyků.
+`Main()` je **vstupní bod** každé konzolové, i kterékoliv jiné aplikace – první metoda, která se spustí. To platí pro většinu programovacích jazyků.
 
 ```csharp
 static void Main(string[] args)
@@ -96,7 +96,7 @@ Závorky označují začátek a konec každého bloku kódu (namespace, třídy,
 
 ## Komentáře
 
-Komentáře jsou části kódu ignorované kompilátorem – slouží k vysvětlení logiky pro ostatní (nebo pro autora za půl roku, když se k práci vráti).
+Komentáře jsou části kódu ignorované kompilátorem – slouží k vysvětlení logiky pro ostatní (nebo pro autora za půl roku, když se k práci vrátí).
 
 ```csharp
 // Jednořádkový komentář
@@ -140,7 +140,7 @@ namespace HelloWorld
 
 ## Středník
 
-Každý příkaz v C# končí **středníkem** (`;`). Zapomenuý středník je jedna z nejčastějších chyb začátečníků.
+Každý příkaz v C# končí **středníkem** (`;`). Zapomenutý středník je jedna z nejčastějších chyb začátečníků.
 
 ```csharp
 Console.WriteLine("Toto funguje");   // ✅

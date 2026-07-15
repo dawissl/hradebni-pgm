@@ -50,7 +50,7 @@ List<string> names = new List<string> { "Kamil", "Jana" };
 names.Add("Tomáš");
 ```
 
-→ Detailně v kapitole **Kolekce**
+→ Detailně v kapitole **List a Dictionary**
 
 ---
 
@@ -68,7 +68,7 @@ Console.WriteLine(grades["Kamil"]); // 90
 
 Typické použití: překlad slov, konfigurace nebo výsledky podle jména.
 
-→ Detailně v kapitole **Kolekce**
+→ Detailně v kapitole **List a Dictionary**
 
 ---
 
@@ -124,7 +124,7 @@ Console.WriteLine(name.Length);    // 5
 Console.WriteLine(name.ToUpper()); // KAMIL
 ```
 
-→ Detailně v kapitole **Řetězce**
+→ Detailně v kapitole **Práce s řetězcem**
 
 ---
 

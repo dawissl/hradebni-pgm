@@ -14,7 +14,7 @@ Během instalace vyberte **workload** (sadu nástrojů):
 
 - ✅ **.NET desktop development** – pro konzolové a Windows Forms aplikace
 
-Instalace stáhne potřebné komponenty a zabere cca 5–10 GB místa na disku. Po dokončení restartuj počítač.
+Instalace stáhne potřebné komponenty a zabere cca 5–10 GB místa na disku. Po dokončení restartujte počítač.
 
 > 💡 Aktuální verze je **Visual Studio 2026**. Pokud máte starší, základní principy jsou stejné.
 
@@ -24,13 +24,13 @@ Instalace stáhne potřebné komponenty a zabere cca 5–10 GB místa na disku. 
 
 Po spuštění Visual Studia:
 
-1. Klikni na **Vytvořit nový projekt**
-2. Do vyhledávacího pole napiš `Console` a vyber **Konzolová aplikace (Console App)**
-3. Zkontroluj, že je zvolen jazyk **C#**
-4. Klikni **Další**
-5. Pojmenuj projekt – např. `HelloWorld`
-6. Zvol umístění na disku (vytvoř složku `C# Projekty`)
-7. Klikni **Vytvořit**
+1. Klikněte na **Vytvořit nový projekt**
+2. Do vyhledávacího pole napište `Console` a vyberte **Konzolová aplikace (Console App)**
+3. Zkontrolujte, že je zvolen jazyk **C#**
+4. Klikněte **Další**
+5. Pojmenujte projekt – např. `HelloWorld`
+6. Zvolte umístění na disku (vytvořte složku `C# Projekty`)
+7. Klikněte **Vytvořit**
 
 ---
 
@@ -48,7 +48,7 @@ HelloWorld/
 
 | Soubor | Co to je |
 |---|---|
-| `.sln` | **Solution** – kontejner, který sdružuje projekty. Tento soubor otevírej pro znovuotevření práce. |
+| `.sln` | **Solution** – kontejner, který sdružuje projekty. Tento soubor otevírejte pro znovuotevření práce. |
 | `.csproj` | **Projekt** – definuje nastavení jednoho programu nebo knihovny |
 | `Program.cs` | Zdrojový kód – sem píšete C# |
 
@@ -78,7 +78,7 @@ namespace HelloWorld
 }
 ```
 
-Program spustíš tlačítkem ▶ **Start** (nebo klávesou `F5`).
+Program spustíte tlačítkem ▶ **Start** (nebo klávesou `F5`).
 
 Pokud vše proběhlo správně, otevře se černé okno konzole s textem:
 
@@ -97,11 +97,11 @@ Stiskněte Enter – okno se zavře.
 | Klávesa | Chování |
 |---|---|
 | `F5` | Spustí s debuggerem – konzolové okno se zavře hned po skončení programu |
-| `Ctrl + F5` | Spustí bez debuggeru – okno zůstane otevřené, dokud nestiskneš klávesu |
+| `Ctrl + F5` | Spustí bez debuggeru – okno zůstane otevřené, dokud nestisknete klávesu |
 
 Proto je v příkladu výše `Console.Read()` – drží okno otevřené i při `F5`.
 
-Režim s debuggerem slouží k postupnému procházení kódu řádek po řádku. Pokud nechecme procházet celý kód od začátku, lze umístit na příslušný řádek tzv.  **breakpoint**. Ten způsobí, že aplikace běží samostatně až do momentu než narazí na řádek s breakpointem. Od tohoto momentu lze kód krokovat. 
+Režim s debuggerem slouží k postupnému procházení kódu řádek po řádku. Pokud nechceme procházet celý kód od začátku, lze umístit na příslušný řádek tzv. **breakpoint**. Ten způsobí, že aplikace běží samostatně až do momentu než narazí na řádek s breakpointem. Od tohoto momentu lze kód krokovat. 
 
 ---
 
@@ -115,7 +115,7 @@ Nejčastější chyby začátečníků:
 - záměna velkých a malých písmen (`console` místo `Console`)
 - chybějící nebo přebývající složená závorka (`{` nebo `}`)
 
-> 💡 Pokud kód v nějaký moment vypadá jako rozsypaná čáj, lze využít kombinace klávesových zkratek ve Visual Studiu `Ctrl + K` a následně `Ctrl + D`. Tato kombinace zajistí, že se kód zarovná podle složených závorek, přidají se mezery na příslušná místa a hned je kód o něco čitelnější.
+> 💡 Pokud kód v nějaký moment vypadá jako rozsypaný čaj, lze využít kombinace klávesových zkratek ve Visual Studiu `Ctrl + K` a následně `Ctrl + D`. Tato kombinace zajistí, že se kód zarovná podle složených závorek, přidají se mezery na příslušná místa a hned je kód o něco čitelnější.
 
 
 ---

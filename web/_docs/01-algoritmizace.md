@@ -43,7 +43,7 @@ Algoritmus lze zapsat třemi způsoby:
 | Způsob | Kdy se hodí | Příklad |
 |---|---|---|
 | **Přirozeným jazykem** | Rychlý náčrt, komunikace s ne-programátory | „Načti číslo. Pokud je kladné, vypiš ‚kladné', jinak ‚záporné'." |
-| **Vývojový diagram** | Vizualizace větvení a cyklů | Grafické schéma se symboly (→ kapitola 3) |
+| **Vývojový diagram** | Vizualizace větvení a cyklů | Grafické schéma se symboly (→ kapitola **Vývojové diagramy**) |
 | **Pseudokód** | Přechod k implementaci | Strukturovaný zápis připomínající kód, ale bez přesné syntaxe |
 
 Příklad pseudokódu pro výpočet průměru dvou čísel:

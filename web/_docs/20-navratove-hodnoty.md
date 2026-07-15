@@ -47,7 +47,7 @@ Console.WriteLine(vowels);           // a dál s ním pracujeme
 | Metoda *zjišťuje*, *počítá*, *vytváří* něco? | — | konkrétní typ |
 | Metoda *vypisuje*, *ukládá*, *nastavuje* něco? | — | obvykle `void` |
 
-> 💡 Jazykový test: pokud název metody začíná na *Get*, *Calculate*, *Is*, *Find*, *Create* – čekáš návratovou hodnotu. *Print*, *Show*, *Save*, *Set* – obvykle `void`.
+> 💡 Jazykový test: pokud název metody začíná na *Get*, *Calculate*, *Is*, *Find*, *Create* – čekáte návratovou hodnotu. *Print*, *Show*, *Save*, *Set* – obvykle `void`.
 
 ---
 

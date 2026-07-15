@@ -187,7 +187,7 @@ Metoda("text"); // použije se výchozí hodnota 10
 | Výchozí hodnota | `typ param = hodnota` – argument lze při volání vynechat |
 | Pojmenovaný argument | `Metoda(param: hodnota)` – umožní vynechat parametry uprostřed |
 
-> Modifikátory `ref` a `out` a detailní práci s `return` probereme v následující kapitole.
+> Modifikátory `ref` a `out` a detailní práci s `return` probereme v kapitole **Parametry a návratové hodnoty**.
 ---
 
 ## Otázky k zamyšlení
@@ -241,5 +241,5 @@ Díky parametrům je metoda univerzální — jeden kód, libovolné rozměry. T
 ### Samostatná cvičení
 
 1. **Základní** — Napište metodu `PozdravUzivatele(string jmeno, int hodina)`, která podle hodiny vypíše "Dobré ráno/odpoledne/večer, {jmeno}".
-2. **Pokročilejší** — Napište metodu `VykresliTrojuhelnik(int vyska)`, která vykreslí trojúhelník z hvězdiček. Pak přidej druhou variantu obrácenou vzhůru nohama.
+2. **Pokročilejší** — Napište metodu `VykresliTrojuhelnik(int vyska)`, která vykreslí trojúhelník z hvězdiček. Pak přidejte druhou variantu obrácenou vzhůru nohama.
 3. **Bonus (*)** — Napište metodu `JePrvocislo(int n)` vracející `bool` a s její pomocí vypište všechna prvočísla do 100. Všimněte si, jak volání `if (JePrvocislo(i))` zpřehledňuje kód.

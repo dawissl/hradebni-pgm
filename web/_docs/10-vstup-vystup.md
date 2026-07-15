@@ -130,7 +130,7 @@ string name = Console.ReadLine();
 Console.WriteLine($"Ahoj, {name}!");
 ```
 
-> ⚠️ `ReadLine()` vždy vrací `string`. Pokud potřebujete číslo, musíte ho převést než s ním můžete dál pracovat. V opačeném případě očekávejte chybu při kompilaci nebo běhovou vyjímku.
+> ⚠️ `ReadLine()` vždy vrací `string`. Pokud potřebujete číslo, musíte ho převést než s ním můžete dál pracovat. V opačném případě očekávejte chybu při kompilaci nebo běhovou výjimku.
 
 ### `Console.Read()`
 

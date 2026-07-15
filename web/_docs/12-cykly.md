@@ -159,7 +159,7 @@ do
 } while (choice != "0");
 ```
 
-> 💡 Nezapomeň na středník `;` za `while (podmínka);` – jinak kód nepůjde zkompilovat.
+> 💡 Nezapomeňte na středník `;` za `while (podmínka);` – jinak kód nepůjde zkompilovat.
 
 ---
 

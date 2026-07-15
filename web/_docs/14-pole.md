@@ -54,7 +54,7 @@ Console.WriteLine(scores[2]); // 100
 
 > ⚠️ Přístup na neexistující index (např. `scores[5]` u pole délky 5) způsobí výjimku `IndexOutOfRangeException` za běhu programu.
 
-Poslední index bezpečně získáš přes `Length - 1`:
+Poslední index bezpečně získáte přes `Length - 1`:
 
 ```csharp
 Console.WriteLine(scores[scores.Length - 1]); // vždy poslední prvek
@@ -64,7 +64,7 @@ Console.WriteLine(scores[scores.Length - 1]); // vždy poslední prvek
 
 ### Procházení pole cyklem
 
-**Pomocí `for`** – máš přístup k indexu:
+**Pomocí `for`** – máte přístup k indexu:
 
 ```csharp
 int[] scores = { 85, 92, 78, 90, 88 };

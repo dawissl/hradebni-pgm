@@ -256,4 +256,4 @@ Všimněte si čitelnosti: `Where` = filtr, `OrderBy` = řazení, `Average`/`Cou
 
 1. **Základní** — Nad polem čísel 1–100 pomocí LINQ: vyberte sudá, umocněte je na druhou (`Select`) a sečtěte (`Sum`). Vše v jednom řetězeném výrazu.
 2. **Pokročilejší** — Načtěte textový soubor (`File.ReadAllLines`) a pomocí LINQ najděte 5 nejdelších řádků a vypište je s délkou.
-3. **Bonus (*)** — Vyřešte úlohu "četnost slov" z kapitoly **Datové struktury a kolekce** znovu — tentokrát celou přes LINQ (`GroupBy` + `OrderByDescending`). Porovnejte délku a čitelnost obou řešení.
+3. **Bonus (*)** — Vyřešte úlohu "četnost slov" z kapitoly **List a Dictionary** znovu — tentokrát celou přes LINQ (`GroupBy` + `OrderByDescending`). Porovnejte délku a čitelnost obou řešení.

@@ -75,7 +75,7 @@ Pro vývoj v C# se nejčastěji používá **Visual Studio** od Microsoftu.
 
 ### Řešený příklad
 
-**Zadání (teoretické):** Vysvětlěte vlastními slovy cestu programu od zdrojového kódu v C# až po běžící aplikaci na počítači. Použijte pojmy: zdrojový kód, kompilátor, IL, runtime (CLR), JIT.
+**Zadání (teoretické):** Vysvětlete vlastními slovy cestu programu od zdrojového kódu v C# až po běžící aplikaci na počítači. Použijte pojmy: zdrojový kód, kompilátor, IL, runtime (CLR), JIT.
 
 <details markdown="1">
 <summary>💡 Zobrazit řešení</summary>

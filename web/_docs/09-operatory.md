@@ -297,39 +297,11 @@ Obecné pořadí (od nejvyšší priority):
 
 ---
 
-## Typová konverze a přetypování
+## Typová konverze pomocí `Convert`
 
-Při operacích se různé datové typy někdy musí převést na společný typ. C# to řeší dvěma způsoby.
+Implicitní a explicitní konverzi (`(int)hodnota`) jsme si představili v kapitole **Proměnné a datové typy**. Tady tu myšlenku rozšíříme o další nástroj a ukážeme, čím se liší od přetypování.
 
-### Implicitní konverze (automatická)
-
-Proběhne sama, pokud nedochází ke ztrátě dat – kompilátor převede „menší" typ na „větší":
-
-```csharp
-int myInt = 10;
-double myDouble = myInt; // int → double, žádná ztráta
-```
-
-Bezpečný směr: `byte → int → long → float → double`
-
-### Explicitní přetypování (cast)
-
-Nutné, když hrozí ztráta dat. Cílový typ zapíšete do závorek před hodnotu:
-
-```csharp
-double price = 20.9;
-int rounded = (int)price; // výsledek: 20 (desetinná část se ořízne, NEzaokrouhlí)
-```
-
-```csharp
-double d = 20.9;
-float f  = (float)d;    // 20.9
-float f2 = (float)20.9; // alternativa k suffixu 'f'
-```
-
-> ⚠️ `(int)20.9` je `20`, ne `21`. Přetypování vždy **ořízne**, nezaokrouhluje.
-
-### Konverze pomocí `Convert`
+Bezpečný směr implicitní konverze bez ztráty dat: `byte → int → long → float → double`.
 
 Třída `Convert` z namespace `System` nabízí bezpečnější převody, zejména ze `string` na číslo:
 

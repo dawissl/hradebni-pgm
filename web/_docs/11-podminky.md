@@ -118,16 +118,26 @@ if (age >= 18 && hasTicket)
 
 ## Ternární operátor
 
-Zkrácený zápis podmínky na jeden řádek. Hodí se, když chcete přiřadit hodnotu nebo vrátit výsledek podle podmínky.
-
-```
-podmínka ? hodnota_když_true : hodnota_když_false
-```
+Ternární operátor `?:` jsme si stručně představili v kapitole **Operátory a výrazy** — tady se na něj podíváme jako na zkratku konkrétně pro `if-else`, protože sem svým významem patří.
 
 ```csharp
 int age = 20;
 string status = age >= 18 ? "plnoletý" : "nezletilý";
 Console.WriteLine(status); // plnoletý
+```
+
+Je to přesný ekvivalent tohoto zápisu:
+
+```csharp
+string status;
+if (age >= 18)
+{
+    status = "plnoletý";
+}
+else
+{
+    status = "nezletilý";
+}
 ```
 
 Nebo přímo uvnitř `WriteLine`:
@@ -248,7 +258,7 @@ string s = x switch { 1 => "jedna", 2 => "dva", _ => "jiné" };
 
 ### Řešený příklad
 
-**Zadání:** Napište program, který načte bodový zisk z testu (0–100) a vypíše známku podle stupnice: 90+ → 1, 75+ → 2, 60+ → 3, 45+ → 4, jinak 5. Vstup mimo rozsah 0–100 odmítni.
+**Zadání:** Napište program, který načte bodový zisk z testu (0–100) a vypíše známku podle stupnice: 90+ → 1, 75+ → 2, 60+ → 3, 45+ → 4, jinak 5. Vstup mimo rozsah 0–100 odmítněte.
 
 <details markdown="1">
 <summary>💡 Zobrazit řešení</summary>
