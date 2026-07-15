@@ -4,7 +4,11 @@ title: "Rejstřík"
 order: 1000
 ---
 
-🚧 **Tato kapitola se teprve připravuje.** Rejstřík níže pokrývá kapitoly probrané k dnešnímu dni, ale s přibývajícími kapitolami se bude dál rozšiřovat a přeskupovat. Pokud v něm chybí pojem, který hledáte, zkuste postranní navigaci nebo vyhledávání.
+🚧 **Tato kapitola se teprve připravuje.** 
+
+---
+
+Rejstřík níže pokrývá kapitoly probrané k dnešnímu dni, ale s přibývajícími kapitolami se bude dál rozšiřovat a přeskupovat. Pokud v něm chybí pojem, který hledáte, zkuste postranní navigaci nebo vyhledávání.
 
 ---
 

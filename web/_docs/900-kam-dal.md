@@ -3,7 +3,10 @@ layout: post
 title: "Kam dál?"
 order: 900
 ---
-🚧 **Tato kapitola se teprve připravuje.**
+
+🚧 **Tato kapitola se teprve připravuje.** 
+
+---
 
 Pokud jste se dostali až sem, prošli jste cestu od „co je to vlastně algoritmus" až po generika, delegáty a vlastní knihovny. To není málo. Tahle poslední kapitola nemá učit novou syntaxi — je to mapa. C# a .NET jsou jen výchozí bod; ukážeme si, kam z něj vedou cesty, a co se z toho, co už umíte, na každé z nich přímo hodí.
 
@@ -19,6 +22,64 @@ Než se podíváme na konkrétní směry, stojí za to si uvědomit, že větši
 - **Návyky** (verzování, testování, čitelný kód, dokumentace) — přenositelné do jakéhokoli jazyka a týmu.
 
 Konkrétní směry níže se liší v tom, *na čem* tyhle dovednosti použijete — ne v tom, *jestli* je použijete.
+
+---
+
+## A co úplně jiný jazyk?
+
+Všechny směry výše zůstávají v C#/.NET. Stejně dobrá — a v praxi velmi běžná — cesta je přejít na **úplně jiný jazyk**: Python, Java, Kotlin, Swift, TypeScript... Zní to jako "začít znovu od nuly", ale ve skutečnosti přesouváte jen menší část toho, co umíte — syntaxi. Zbytek (algoritmické myšlení, dekompozice, OOP, práce s daty) je nezávislý na tom, v jakých závorkách a klíčových slovech je zapsaný.
+
+Podívejte se, jak stejná myšlenka — třída s vlastností a metodou z kapitoly **Třída a objekt** — vypadá v pár jiných jazycích:
+
+```csharp
+// C#
+class Osoba
+{
+    public string Jmeno { get; set; }
+    public void Pozdrav() => Console.WriteLine($"Ahoj, jsem {Jmeno}.");
+}
+```
+
+```python
+# Python
+class Osoba:
+    def __init__(self, jmeno):
+        self.jmeno = jmeno
+    def pozdrav(self):
+        print(f"Ahoj, jsem {self.jmeno}.")
+```
+
+```typescript
+// TypeScript
+class Osoba {
+    constructor(public jmeno: string) {}
+    pozdrav() {
+        console.log(`Ahoj, jsem ${this.jmeno}.`);
+    }
+}
+```
+
+```kotlin
+// Kotlin
+class Osoba(val jmeno: String) {
+    fun pozdrav() = println("Ahoj, jsem $jmeno.")
+}
+```
+
+Jiná klíčová slova, jiná interpunkce, místy jiná pravidla (Python nepoužívá složené závorky vůbec, TypeScript je "JavaScript s typy" podobnými těm z kapitoly **Proměnné a datové typy**). Ale pojem *třída*, pojem *vlastnost*, pojem *metoda* — ty jsou stejné jako v C#, protože to jsou pojmy OOP, ne pojmy jazyka C#.
+
+### Co se liší skutečně, ne jen v zápisu
+
+Není to jen "jiná gramatika stejné věty" — pár jazyků myslí jinak, a to stojí za vědomí předem:
+
+- **Python** je *dynamicky typovaný* — proměnná nemá pevný typ jako `int` nebo `string` (kapitola **Proměnné a datové typy**), typ se odvozuje za běhu. Píše se rychleji, ale kompilátor vás neupozorní na chybu typu tak brzy jako v C#.
+- **JavaScript/TypeScript** běží hlavně v prohlížeči — TypeScript k němu přidává typovou kontrolu podobnou C#, ale pořád je to jiný svět (žádné `Console`, místo toho HTML stránka).
+- **Java** a **Kotlin** jsou z hlediska OOP téměř identická dvojčata C# — kdo umí C#, čte kód v Javě prakticky bez učení, jen s jinými názvy pár věcí (`System.out.println` místo `Console.WriteLine`).
+- **Swift** je jazyk pro vývoj na Apple platformách (iOS, macOS) — syntaxí i filozofií (typová bezpečnost, `struct`/`class` rozlišení stejné jako v kapitole **Struktura a enumerace**) je C# překvapivě blízký.
+
+### Jak moc to bude bolet
+
+Většina "bolesti" při přechodu na nový jazyk je ve **znovu-učení syntaxe a standardní knihovny** — jak se v tomto jazyce píše cyklus, jak se volá metoda, jaký má ekvivalent `List<T>`. To se naučí za týdny, ne měsíce, právě proto, že koncept za tím už znáte. Nemusíte se rozhodovat mezi "zůstat u C#" a "naučit se jiný jazyk" jako mezi dvěma protichůdnými cestami — druhý, třetí, pátý jazyk je vždy levnější naučit se než první.
 
 ---
 
@@ -129,3 +190,5 @@ Nemusíte se rozhodnout napořád — ale pár praktických vodítek:
 ## Na závěr
 
 Žádná z těchto technologií vás nenaučí přemýšlet jako programátor — to jste se naučili už v prvních kapitolách této knihy, dávno před tím, než jste napsali první řádek C#. Technologie se za pár let změní; rozklad problému na menší části, systematické testování a čitelný kód zůstávají. To jste si odnesli. Zbytek je detail, který se doučí za pochodu.
+
+Hodně štěstí.
