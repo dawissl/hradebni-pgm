@@ -6,7 +6,7 @@ Formát: `[oblast] co se změnilo`
 
 ## 15. 7. 2026
 - [učebnice] revize všech kapitol
-- [učebnice] přidání kapitoly Generika
+- [učebnice] přidání kapitol - Generika, XML Dokumentace, Pattern Matching, Nullable, Životní cyklus programu, Delegáti, Export knihovny
 
 ## 14. 7. 2026
 - [metodika AI] zavedeno číslování kapitol/bodů (1. / 1.1 / 1.1a) pro přesné odkazování na změny
