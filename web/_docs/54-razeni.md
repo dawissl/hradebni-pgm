@@ -4,7 +4,7 @@ title: "Řadící algoritmy"
 order: 54
 ---
 
-Řazení dat je jednou z nejčastějších operací v programování — seznam kontaktů, výsledky vyhledávání, tabulka výsledků. Tato kapitola ukáže tři základní algoritmy pro pochopení principu, jejich srovnání a pak — proč v praxi používáš vestavěné řazení.
+Řazení dat je jednou z nejčastějších operací v programování — seznam kontaktů, výsledky vyhledávání, tabulka výsledků. Tato kapitola ukáže tři základní algoritmy pro pochopení principu, jejich srovnání a pak — proč v praxi používáte vestavěné řazení.
 
 ---
 
@@ -115,7 +115,7 @@ void InsertionSort(int[] pole)
 
 ## Vestavěné řazení v C#
 
-V praxi neimplementuješ řadící algoritmus ručně — použiješ vestavěné metody, které jsou optimalizované a otestované.
+V praxi neimplementujete řadící algoritmus ručně — použijete vestavěné metody, které jsou optimalizované a otestované.
 
 ```csharp
 int[] cisla = { 64, 34, 25, 12, 22, 11, 90 };
@@ -123,8 +123,7 @@ Array.Sort(cisla);
 Console.WriteLine(string.Join(", ", cisla));
 // 11, 12, 22, 25, 34, 64, 90
 
-// Sestupně
-Array.Sort(cisla);
+// Sestupně — pole je už seřazené vzestupně, jen ho otočíme
 Array.Reverse(cisla);
 
 // List
@@ -138,7 +137,7 @@ seznam.Sort();
 List<string> jmena = new List<string> { "Tomáš", "Jana", "Adam" };
 jmena.Sort();  // abecedně
 
-// Vlastní pravidlo řazení (lambda — viz kapitola 55)
+// Vlastní pravidlo řazení (lambda — viz kapitola **Lambda funkce a LINQ**)
 List<Student> studenti = GetStudenti();
 studenti.Sort((a, b) => a.Prumer.CompareTo(b.Prumer));  // podle průměru
 ```
@@ -147,4 +146,64 @@ studenti.Sort((a, b) => a.Prumer.CompareTo(b.Prumer));  // podle průměru
 
 ## Shrnutí
 
-Základní algoritmy (Bubble, Selection, Insertion) jsou O(n²) a slouží hlavně k pochopení principu. Pro reálná data s tisíci a více prvky vždy použij `Array.Sort()` nebo `List.Sort()` — jsou implementovány jako Introsort (kombinace QuickSort, HeapSort, Insertion Sort) s průměrnou složitostí O(n log n).
+Základní algoritmy (Bubble, Selection, Insertion) jsou O(n²) a slouží hlavně k pochopení principu. Pro reálná data s tisíci a více prvky vždy použijte `Array.Sort()` nebo `List.Sort()` — jsou implementovány jako Introsort (kombinace QuickSort, HeapSort, Insertion Sort) s průměrnou složitostí O(n log n).
+
+---
+
+## Otázky k zamyšlení
+
+1. Proč existuje tolik řadících algoritmů, když `Array.Sort` "prostě funguje"? Co se na nich učíme?
+2. Bubble sort je O(n²), merge sort O(n log n). Proč se přesto bubble sort učí jako první?
+3. Co znamená "stabilní řazení" a kdy na stabilitě záleží? (Nápověda: řazení už seřazených dat podle druhého kritéria.)
+
+---
+
+## Procvičení
+
+### Řešený příklad
+
+**Zadání:** Obrázek zachycuje první průchod bubble sortu polem `{5, 3, 8, 1, 4}`. (a) Rozepište zbývající průchody až do seřazení. (b) Implementujte bubble sort s vylepšením: pokud v průchodu nedošlo k žádné výměně, skončete.
+
+![Bubble sort — první průchod](../assets/54-bubblesort-kroky.png)
+
+<details markdown="1">
+<summary>💡 Zobrazit řešení</summary>
+
+**(a)** Po 1. průchodu (z obrázku): `{3, 5, 1, 4, 8}` — osmička "probublala" na konec.
+- 2. průchod: `{3, 1, 4, 5, 8}` (5 doputovala na místo)
+- 3. průchod: `{1, 3, 4, 5, 8}` — pole je seřazené
+- 4. průchod: žádná výměna → díky vylepšení končíme.
+
+**(b)** Implementace:
+
+```csharp
+static void BubbleSort(int[] pole)
+{
+    for (int i = 0; i < pole.Length - 1; i++)
+    {
+        bool dosloKVymene = false;
+
+        // po i-tém průchodu je posledních i prvků na místě
+        for (int j = 0; j < pole.Length - 1 - i; j++)
+        {
+            if (pole[j] > pole[j + 1])
+            {
+                (pole[j], pole[j + 1]) = (pole[j + 1], pole[j]);  // prohození
+                dosloKVymene = true;
+            }
+        }
+
+        if (!dosloKVymene) break;   // seřazeno – žádný další průchod není třeba
+    }
+}
+```
+
+Vylepšení nemění nejhorší případ (stále O(n²)), ale už seřazené pole zvládne v jediném průchodu — O(n). Všimněte si i zkracujícího se vnitřního cyklu (`- i`): konec pole je po každém průchodu hotový.
+
+</details>
+
+### Samostatná cvičení
+
+1. **Základní** — Ručně (na papír) rozepište průchody bubble sortu pro pole `{9, 2, 7, 2, 6}` a spočítejte celkový počet výměn.
+2. **Pokročilejší** — Implementujte selection sort (najděte minimum zbytku, prohoďte na začátek) a porovnejte s bubble sortem počet výměn na stejném náhodném poli (přidejte počítadla).
+3. **Bonus (*)** — Změřte `Stopwatch`em čas bubble sortu a `Array.Sort` na poli 50 000 náhodných čísel. Kolikanásobný je rozdíl a proč?

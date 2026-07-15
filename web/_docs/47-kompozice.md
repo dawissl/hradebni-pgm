@@ -26,7 +26,7 @@ Rozdíl mezi dědičností a kompozicí lze shrnout dvěma otázkami:
 
 ## Příklad — kdy dědičnost selže
 
-Představ si třídu `Pracovnik`, od které chceš odvodit `PracovnikSPravem` (má navíc přístupová práva) a `PracovnikSAuremDobre`:
+Představte si třídu `Pracovnik`, od které chcete odvodit `PracovnikSPravem` (má navíc přístupová práva) a `PracovnikSAutemDobre`:
 
 ```csharp
 class Pracovnik { ... }
@@ -101,7 +101,7 @@ class DatabazeService : Logger   // ❌ DatabazeService "není typem" Loggeru
 ```csharp
 class DatabazeService
 {
-    private readonly Logger logger;  // kompozice — má logger
+    private readonly Logger logger;  // kompozice — má logger (readonly: nastaví se jen v konstruktoru a dál se nemění)
 
     public DatabazeService(Logger logger)
     {
@@ -151,3 +151,63 @@ Výhoda: `Logger` lze snadno vyměnit za jiný (soubor, databáze, síť) bez zm
 | Více zdrojů chování | ❌ jedna třída | ✅ více objektů |
 | Flexibilita | Nižší | Vyšší |
 | Kdy | Přirozená hierarchie | Skládání chování |
+---
+
+## Otázky k zamyšlení
+
+1. Vysvětlete rozdíl vztahů "je" (dědičnost) a "má" (kompozice) na dvojici Auto–Motor a Auto–DopravniProstredek.
+2. Proč se říká "preferuj kompozici před dědičností"? Jaké problémy hluboké dědičné hierarchie způsobují?
+3. Třída `StackOverflowList : List<int>` zdědí i metody, které se pro zásobník nehodí (`Insert`, `RemoveAt`...). Jak tento problém řeší kompozice?
+
+---
+
+## Procvičení
+
+### Řešený příklad
+
+**Zadání (návrhové):** Modelujete hru: postava může být Válečník nebo Mág a zároveň může umět plavat, létat, ani jedno, nebo obojí. Kolega navrhl dědičnost: `Valecnik`, `Mag`, `PlavajiciValecnik`, `LetajiciValecnik`, `PlavajiciLetajiciValecnik`, `PlavajiciMag`... Vysvětlete, proč tento návrh neškáluje, a navrhněte řešení kompozicí.
+
+<details markdown="1">
+<summary>💡 Zobrazit řešení</summary>
+
+**Problém:** kombinatorická exploze. 2 povolání × 4 kombinace schopností = 8 tříd; přidáním třetí schopnosti (neviditelnost) naroste počet na 16, dalším povoláním na 24... Navíc kód plavání je nakopírovaný v každé "plavající" třídě — oprava chyby znamená opravit ji N-krát.
+
+**Řešení kompozicí:** schopnosti nejsou to, co postava *je*, ale co postava *má*:
+
+```csharp
+interface ISchopnost
+{
+    string Pouzij();
+}
+
+class Plavani : ISchopnost
+{
+    public string Pouzij() => "plave";
+}
+
+class Letani : ISchopnost
+{
+    public string Pouzij() => "letí";
+}
+
+class Postava
+{
+    public string Jmeno { get; }
+    public string Povolani { get; }                 // Válečník / Mág
+    private List<ISchopnost> schopnosti = new();
+
+    public Postava(string jmeno, string povolani) { Jmeno = jmeno; Povolani = povolani; }
+
+    public void NaucSe(ISchopnost s) => schopnosti.Add(s);
+}
+```
+
+Libovolná kombinace vzniká skládáním za běhu (`hrdina.NaucSe(new Plavani())`), nová schopnost = jedna nová třída, kód každé schopnosti existuje právě jednou. Dědičnost si šetřete pro skutečné vztahy "je" se sdíleným jádrem — pro kombinovatelné vlastnosti je kompozice téměř vždy lepší.
+
+</details>
+
+### Samostatná cvičení
+
+1. **Základní** — Rozhodněte u dvojic, zda jde o dědičnost, nebo kompozici: Škola–Třída, Ctverec–Tvar, Objednávka–Polozka, Ucitel–Osoba, Auto–Kola.
+2. **Pokročilejší** — Navrhněte třídu `Objednavka`, která *má* seznam položek (`Polozka`: název, cena, počet) a metodu `CelkovaCena()`. Implementujte a otestujte.
+3. **Bonus (*)** — Implementujte zásobník `MujZasobnik` kompozicí (uvnitř `private List<int>`), navenek jen `Push`, `Pop`, `Peek`, `Count`. Porovnejte s děděním z `List<int>` — co všechno teď uživatel třídy *nemůže* pokazit?

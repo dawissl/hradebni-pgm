@@ -18,7 +18,7 @@ OOP přineslo nový způsob organizace kódu: místo volných dat a funkcí sdru
 
 ## Procedurální vs. objektový přístup
 
-Představ si program pro správu zaměstnanců.
+Představte si program pro správu zaměstnanců.
 
 **Procedurálně:**
 
@@ -38,7 +38,7 @@ void ZvysPlat(ref decimal p, decimal castka)
 }
 ```
 
-Data jsou volně plovoucí proměnné. Funkce pracují s daty přes parametry. Přidáš-li druhého zaměstnance, musíš duplikovat proměnné. Pro sto zaměstnanců je kód chaotický.
+Data jsou volně plovoucí proměnné. Funkce pracují s daty přes parametry. Přidáte-li druhého zaměstnance, musíte duplikovat proměnné. Pro sto zaměstnanců je kód chaotický.
 
 **Objektově:**
 
@@ -69,12 +69,12 @@ Data a metody, které s nimi pracují, jsou pohromadě v jedné třídě. Pro st
 
 OOP stojí na čtyřech základních principech:
 
-| Princip | Co znamená | Kde v knize |
+| Princip | Co znamená | Kapitola |
 |---|---|---|
-| **Zapouzdření** | Data objektu jsou skryta, přístup přes metody | Kapitola 43 |
-| **Dědičnost** | Třída může přebírat vlastnosti jiné třídy | Kapitola 44 |
-| **Polymorfismus** | Různé třídy mohou reagovat na stejnou zprávu různě | Kapitola 45 |
-| **Abstrakce** | Skrytí implementace, práce s rozhraním | Kapitola 46 |
+| **Zapouzdření** | Data objektu jsou skryta, přístup přes metody | **Zapouzdření** |
+| **Dědičnost** | Třída může přebírat vlastnosti jiné třídy | **Dědičnost** |
+| **Polymorfismus** | Různé třídy mohou reagovat na stejnou zprávu různě | **Polymorfismus** |
+| **Abstrakce** | Skrytí implementace, práce s rozhraním a abstraktními třídami | **Abstraktní třídy a rozhraní** |
 
 ---
 
@@ -108,9 +108,9 @@ Obě auta jsou instance třídy `Auto` — sdílejí strukturu, ale mají vlastn
 
 ## OOP v kontextu C#
 
-C# je od základu objektově orientovaný jazyk. Všechno, s čím jsme pracovali — `Console`, `string`, `List<T>` — jsou třídy. Vždy, když napíšeš `Console.WriteLine()`, voláš metodu objektu.
+C# je od základu objektově orientovaný jazyk. Všechno, s čím jsme pracovali — `Console`, `string`, `List<T>` — jsou třídy. Když napíšete `seznam.Add(...)` u `List<T>`, voláte metodu konkrétního objektu (instance); `Console.WriteLine()` je podobný případ, jen jde o statickou metodu, která patří přímo třídě `Console` — ke statickým a instančním členům se dostaneme v kapitole **Třída a objekt**.
 
-V kapitolách 42–47 si postupně projdeme všechny klíčové koncepty: jak třídy definovat, jak funguje zapouzdření přes properties, jak dědit, jak polymorfismus pracuje s přetěžováním a virtuálními metodami.
+V následujících kapitolách si postupně projdeme všechny klíčové koncepty: jak třídy definovat, jak funguje zapouzdření přes properties, jak dědit, jak polymorfismus pracuje s přetěžováním a virtuálními metodami.
 
 ---
 
@@ -123,3 +123,37 @@ V kapitolách 42–47 si postupně projdeme všechny klíčové koncepty: jak t�
 | Třída | Šablona definující strukturu objektu |
 | Objekt | Konkrétní instance třídy |
 | Čtyři pilíře | Zapouzdření, dědičnost, polymorfismus, abstrakce |
+---
+
+## Otázky k zamyšlení
+
+1. Jaký problém OOP řeší? Co se stane s programem "evidence školy" psaným jen pomocí polí a metod, když poroste?
+2. Objekt spojuje **data** a **chování** do jednoho celku. Proč je to lepší než data zvlášť (pole) a funkce zvlášť?
+3. Vyjmenujte čtyři pilíře OOP a ke každému napište jednu větu, co znamená. Kterému zatím rozumíte nejméně?
+
+---
+
+## Procvičení
+
+### Řešený příklad
+
+**Zadání (teoretické):** Program eviduje studenty pomocí tří polí: `string[] jmena`, `int[] rocniky`, `double[] prumery`, kde index drží záznamy pohromadě. Popište alespoň tři konkrétní problémy tohoto přístupu a vysvětlete, jak je řeší třída `Student`.
+
+<details markdown="1">
+<summary>💡 Zobrazit řešení</summary>
+
+Problémy "paralelních polí":
+
+1. **Křehkost:** nic nevynucuje, že `jmena[3]`, `rocniky[3]` a `prumery[3]` patří k sobě. Jedno zapomenuté přidání nebo smazání v jediném poli a všechna data od toho indexu dál patří jiným lidem.
+2. **Neškálovatelnost:** každá nová vlastnost studenta = nové pole + úprava všech metod, které se studenty pracují (přidání, mazání, řazení...).
+3. **Rozptýlené chování:** logika "spočítej, zda student prospěl" nemá kde bydlet — je to volná metoda kdesi v programu, která musí dostat tři hodnoty a doufat, že jsou ze stejného indexu.
+
+Třída `Student` řeší všechny tři: data jednoho studenta drží **pohromadě v jednom objektu** (nelze je rozpojit), nová vlastnost je jeden řádek ve třídě, a chování (`Prospel()`) bydlí přímo u dat, se kterými pracuje. Evidence je pak jediný `List<Student>` — přidání a mazání je vždy atomické.
+
+</details>
+
+### Samostatná cvičení
+
+1. **Základní** — Vyberte si tři objekty z reálného světa (např. kniha, bankovní účet, semafor) a u každého vypište jeho data (vlastnosti) a chování (metody).
+2. **Pokročilejší** — Najděte ve svém starším programu místo, kde "paralelně" držíte související data, a navrhněte pro ně třídu (jen návrh: název, vlastnosti, metody).
+3. **Bonus (*)** — Zamyslete se: `string`, `List` i `Random` jsou třídy, které celou dobu používáte. U každé určete, jaká data asi drží uvnitř a jaké chování nabízí navenek.

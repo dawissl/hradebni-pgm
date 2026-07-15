@@ -81,7 +81,7 @@ Konstruktor je speciální metoda, která se spustí při vytvoření objektu (`
 
 ### Implicitní konstruktor
 
-Pokud žádný konstruktor nedefinuješ, C# automaticky vytvoří prázdný (implicitní) konstruktor — ten inicializuje atributy na výchozí hodnoty (`0`, `null`, `false`).
+Pokud žádný konstruktor nedefinujete, C# automaticky vytvoří prázdný (implicitní) konstruktor — ten inicializuje atributy na výchozí hodnoty (`0`, `null`, `false`).
 
 ### Vlastní konstruktor
 
@@ -114,7 +114,7 @@ o.Pozdrav();
 
 Výhoda: objekt je ihned po vytvoření v platném stavu — není možné zapomenout inicializovat atribut.
 
-> 💡 Pokud definuješ vlastní konstruktor s parametry, implicitní konstruktor **přestane existovat**. Pokud ho stále potřebuješ (bez parametrů), musíš ho dopsat ručně.
+> 💡 Pokud definujete vlastní konstruktor s parametry, implicitní konstruktor **přestane existovat**. Pokud ho stále potřebujete (bez parametrů), musíte ho dopsat ručně.
 
 ### Přetěžování konstruktorů
 
@@ -126,10 +126,8 @@ class Osoba
     public string Jmeno;
     public int Vek;
 
-    public Osoba(string jmeno)
+    public Osoba(string jmeno) : this(jmeno, 0)   // delegace na druhý konstruktor
     {
-        Jmeno = jmeno;
-        Vek = 0;
     }
 
     public Osoba(string jmeno, int vek)
@@ -140,9 +138,13 @@ class Osoba
 }
 ```
 
+> 💡 `: this(jmeno, 0)` přesměruje volání na **jiný konstruktor téže třídy** — inicializační logika existuje jen jednou, v konstruktoru se všemi parametry. Bez `this(...)` by se `Jmeno = jmeno;` musel opakovat v obou konstruktorech. Stejný princip, jen v rámci jedné třídy, jako `base(...)` pro volání konstruktoru předka (viz kapitola **Dědičnost**).
+
 ---
 
 ## Properties (vlastnosti)
+
+> 💡 Se zápisem `{ get; set; }` jsme se krátce a neformálně setkali už v kapitole **Dekompozice a návrh aplikace** u třídy `ShoppingItem`. Teď se podíváme, co přesně dělá a jak do něj přidat vlastní logiku.
 
 Properties jsou doporučený způsob přístupu k datům objektu — nabízejí kontrolu nad čtením a zápisem atributů.
 
@@ -172,12 +174,54 @@ Console.WriteLine(c.Vek);  // 25
 
 ### Zkrácený zápis (auto-implemented property)
 
-Pokud žádnou logiku v getru/setru nepotřebuješ:
+Pokud žádnou logiku v getru/setru nepotřebujete:
 
 ```csharp
 public string Jmeno { get; set; }
 public int Vek { get; private set; }  // jen pro čtení zvenčí
 ```
+
+---
+
+## Statické vs. instanční členy
+
+Doteď měl každý objekt **svoji vlastní kopii** atributů — `prvni.Jmeno` a `druha.Jmeno` byly dvě různé hodnoty. Tomu se říká **instanční** člen — patří konkrétnímu objektu (instanci).
+
+Klíčové slovo `static` říká: tento člen **nepatří žádnému konkrétnímu objektu, ale celé třídě** — existuje jen jednou, sdílený všemi instancemi.
+
+```csharp
+class Pocitac
+{
+    public static int PocetVytvorenych = 0;   // static – jedna hodnota pro všechny objekty
+    public int Cislo;                          // instanční – každý objekt má svoje
+
+    public Pocitac()
+    {
+        PocetVytvorenych++;       // zvýší se společné počítadlo
+        Cislo = PocetVytvorenych; // uloží se do vlastního pole objektu
+    }
+}
+```
+
+```csharp
+Pocitac a = new Pocitac();
+Pocitac b = new Pocitac();
+Pocitac c = new Pocitac();
+
+Console.WriteLine(Pocitac.PocetVytvorenych);  // 3 – static člen se volá přes NÁZEV TŘÍDY
+Console.WriteLine(a.Cislo);  // 1
+Console.WriteLine(b.Cislo);  // 2
+Console.WriteLine(c.Cislo);  // 3
+```
+
+> 💡 Static člen se čte a zapisuje přes **název třídy** (`Pocitac.PocetVytvorenych`), ne přes konkrétní objekt. Proto `static void Main()` — vstupní bod programu se spouští ještě dřív, než existuje jakýkoli objekt, takže musí patřit celé třídě, ne instanci.
+
+| | Instanční člen | Statický člen (`static`) |
+|---|---|---|
+| Patří | Konkrétnímu objektu | Celé třídě |
+| Kolik kopií existuje | Jedna pro každý objekt | Jedna jediná, sdílená |
+| Přístup | `objekt.Cislo` | `NazevTridy.PocetVytvorenych` |
+| Typický příklad | `Jmeno`, `Vek` konkrétní osoby | Počítadlo vytvořených objektů, konstanty |
 
 ---
 
@@ -214,5 +258,80 @@ NazevTridy obj = new NazevTridy(argumenty);
 | Atribut (pole) | Proměnná patřící třídě, uchovává stav |
 | Metoda | Funkce patřící třídě, definuje chování |
 | Konstruktor | Spustí se při `new`, inicializuje objekt |
+| `: this(...)` | Delegace na jiný konstruktor téže třídy |
 | Property | Řízený přístup k atributu přes get/set |
 | `new` | Operátor pro vytvoření instance |
+---
+
+## Otázky k zamyšlení
+
+1. Vysvětlete vztah třídy a objektu na vlastní analogii (ne formička/cukroví — vymyslete jinou).
+2. Co je konstruktor a co se stane, když ho nedefinujete? Proč mít konstruktor s parametry?
+3. Dvě proměnné odkazují na tentýž objekt. Co se stane, když jednu z nich změníte? Jak vzniknou dva nezávislé objekty?
+
+---
+
+## Procvičení
+
+### Řešený příklad
+
+**Zadání:** Vytvořte třídu `BankovniUcet` s vlastníkem a zůstatkem, konstruktorem, metodami `Vloz(castka)` a `Vyber(castka)` (výběr nesmí jít do minusu — vrací `bool`) a metodou `Vypis()`. V `Main` předveďte použití.
+
+<details markdown="1">
+<summary>💡 Zobrazit řešení</summary>
+
+```csharp
+class BankovniUcet
+{
+    public string Vlastnik;
+    private decimal zustatek;   // private – nikdo zvenku ho nesmí nastavit napřímo
+
+    public BankovniUcet(string vlastnik, decimal pocatecniVklad)
+    {
+        Vlastnik = vlastnik;
+        zustatek = pocatecniVklad;
+    }
+
+    public void Vloz(decimal castka)
+    {
+        if (castka > 0) zustatek += castka;
+    }
+
+    public bool Vyber(decimal castka)
+    {
+        if (castka <= 0 || castka > zustatek)
+            return false;       // nepovolený výběr
+        zustatek -= castka;
+        return true;
+    }
+
+    public void Vypis()
+    {
+        Console.WriteLine($"Účet {Vlastnik}: {zustatek} Kč");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        BankovniUcet ucet = new BankovniUcet("Jan Novák", 1000);
+        ucet.Vloz(500);
+
+        if (!ucet.Vyber(2000))
+            Console.WriteLine("Výběr zamítnut – nedostatečný zůstatek.");
+
+        ucet.Vypis();   // Účet Jan Novák: 1500 Kč
+    }
+}
+```
+
+Klíčová myšlenka: `zustatek` je `private`, takže **jediná cesta**, jak ho změnit, vede přes metody — a ty hlídají pravidla (žádný minus). To je první ochutnávka principu, kterému se bude věnovat celá kapitola **Zapouzdření**.
+
+</details>
+
+### Samostatná cvičení
+
+1. **Základní** — Vytvořte třídu `Kniha` (název, autor, počet stran) s konstruktorem a metodou `Predstav()`. Vytvořte `List<Kniha>` se třemi knihami a všechny představte.
+2. **Pokročilejší** — Vytvořte třídu `Hrac` (jméno, životy, skóre) s metodami `PridejSkore`, `UberZivot` a vlastností/metodou `JeVeHre` (životy > 0). Simulujte krátkou hru dvou hráčů.
+3. **Bonus (*)** — Přidejte třídě `BankovniUcet` statické počítadlo vytvořených účtů a automatické číslo účtu přidělované v konstruktoru. Vysvětlete rozdíl mezi statickým a instančním polem.
