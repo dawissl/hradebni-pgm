@@ -13,6 +13,7 @@ Předchozí kapitoly pokryly základy jazyka, OOP a práci se soubory. Tato sekc
 | Kapitola | Obsah |
 |---|---|
 | **Složitost algoritmů** | O-notace, časová a paměťová složitost |
+| **Stromové struktury: BST a halda** | Binární vyhledávací strom, halda jako datová struktura *(bonus)* |
 | **Řadící algoritmy** | Bubble sort, Selection sort, Insertion sort, vestavěné řazení |
 | **Lambda funkce a LINQ** | Lambda výrazy, dotazování nad kolekcemi |
 | **Verzovací systémy a Git** | Verzování kódu, základní příkazy, GitHub |

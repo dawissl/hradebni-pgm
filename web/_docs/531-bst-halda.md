@@ -4,6 +4,8 @@ title: "Stromové struktury: BST a halda"
 order: 531
 ---
 
+> 📌 Tato kapitola je **bonusová**, stejně jako Řadící algoritmy. Na rozdíl od `List<T>` nebo `Dictionary<TKey, TValue>`, se kterými pracujete v celé knize dál, BST a haldu jako datovou strukturu v dalších kapitolách nikde nepotřebujete — učí se čistě pro algoritmické myšlení a pochopení složitosti, ne jako nástroj, který příště použijete v projektu. Pokud vás teoretické datové struktury nezajímají, můžete klidně přeskočit na kapitolu **Řadící algoritmy**.
+
 > ⚠️ Pozor na název: v kapitole **Zásobník a halda** jsme „haldou" (heap) nazývali **paměťovou oblast**, kam se ukládají objekty. Tahle kapitola mluví o haldě jako o **datové struktuře** — něčem, co si sami naprogramujete, podobně jako `Stack<T>` nebo `Queue<T>` z kapitoly **Datové struktury a kolekce**. Je to bohužel stejné české slovo pro dva různé pojmy — v angličtině se datová struktura obvykle píše taky „heap", takže záměna existuje i v originále. Kontext vám vždy řekne, o kterou haldu jde.
 
 ---
