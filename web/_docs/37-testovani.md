@@ -4,7 +4,7 @@ title: "Testování"
 order: 370
 ---
 
-Testování ověřuje, že program dělá to, co dělat má. Bez testování zjistíte chyby až od uživatelů — a to je pozdě. Tato kapitola pokrývá základy testovací terminologie a praktický úvod do unit testů v C#.
+Testování ověřuje, že program dělá to, co dělat má. Bez testování zjistíte chyby až od uživatelů — a to je pozdě. Kapitola **Principy testování** dala obecný teoretický rámec (proč testování nikdy nedokáže dokázat bezchybnost, jen odhalit chyby); tahle kapitola pokrývá základy testovací terminologie a praktický úvod do unit testů v C#.
 
 ---
 
@@ -33,8 +33,8 @@ Základní pravidlo: jeden test ověřuje jednu věc.
 
 **Přidání testovacího projektu:**
 1. V Solution Explorer pravý klik na Solution → Přidat → Nový projekt
-2. Vyberte **MSTest Test Project** (C#)
-3. Pojmenujte ho např. `MojeAplikace.Tests`
+2. Vyber **MSTest Test Project** (C#)
+3. Pojmenuj ho např. `MojeAplikace.Tests`
 
 **Struktura test projektu:**
 
@@ -132,7 +132,7 @@ Nejzrádnější chyba v testování není chybějící nástroj, ale falešný 
 
 ### Příklad: funguje to — dokud to nezkusíte podruhé
 
-V kapitole **Soubory** se ukládá nákupní seznam takto:
+V kapitole 38 se ukládá nákupní seznam takto:
 
 ```csharp
 File.WriteAllLines("nakup.txt", polozky);
@@ -144,7 +144,7 @@ Jenže funkční požadavek zní: *"uživatel může do seznamu přidávat polo�
 
 ### Proč se to stává
 
-Smoke test funguje jako důkaz správnosti jen tehdy, když je přesně definováno, **co má aplikace umět** — tedy až po pořádném návrhu (viz kapitola **Dekompozice a návrh**). Bez jasně zapsaného funkčního požadavku ("přidávání položek", "opakované ukládání") nemá test s čím porovnávat, a "vypadá to, že to jde" se snadno zamění za "funguje to".
+Smoke test funguje jako důkaz správnosti jen tehdy, když je přesně definováno, **co má aplikace umět** — tedy až po pořádném návrhu (viz kapitola 23 — dekompozice a specifikace). Bez jasně zapsaného funkčního požadavku ("přidávání položek", "opakované ukládání") nemá test s čím porovnávat, a "vypadá to, že to jde" se snadno zamění za "funguje to".
 
 ### Jak testovat lépe
 
@@ -208,4 +208,4 @@ Dvanáct případů pokryje všechny větve i obě "brány" každé hranice. Chy
 1. **Základní** — Navrhněte stejným způsobem testovací případy pro metodu `bool JePrestupny(int rok)`. Nezapomeňte na roky 1900 a 2000.
 2. **Pokročilejší** — Napište metodu `Znamka` ze zadání a k ní testovací program, který projde všechny případy z tabulky a vypíše PASS/FAIL pro každý.
 3. **Bonus (*)** — Schválně zaveďte do metody chybu (`>` místo `>=`) a ověřte, že ji vaše testy odhalí. Kolik z nich selhalo? Co by to znamenalo, kdyby žádný?
-4. **Bonus (*)** — Vezměte nákupní seznam z kapitoly **Soubory** a napište pro něj tři testovací scénáře, které smoke test (jedno spuštění, jedna položka) nikdy neodhalí — např. přidání druhé položky, opakované spuštění programu, prázdný vstup hned na začátku.
+4. **Bonus (*)** — Vezměte nákupní seznam z kapitoly 38 a napište pro něj tři testovací scénáře, které smoke test (jedno spuštění, jedna položka) nikdy neodhalí — např. přidání druhé položky, opakované spuštění programu, prázdný vstup hned na začátku.

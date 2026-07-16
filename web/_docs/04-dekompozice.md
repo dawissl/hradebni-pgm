@@ -43,6 +43,24 @@ Nejdříve problém přesně popište. Co je vstup? Co je výstup? Jaká jsou om
 > - Výstup: jedno číslo (průměr)
 > - Omezení: prázdný seznam musí být ošetřen
 
+### Technika podtrhávání — jak číst zadání v praxi
+
+Skutečné zadání zřídka přijde už rozdělené na vstup/výstup/omezení — obvykle je to souvislý text, ze kterého si tuhle strukturu musíte sami vytáhnout. Osvědčená technika: při čtení zadání podtrhávejte (nebo jinak barevně označujte) tři druhy slov zvlášť.
+
+> **Zadání:** *"Naprogramujte aplikaci pro rezervaci sportovní haly. Zákazník zadá jméno, datum a čas rezervace. Aplikace musí ověřit, že daný termín ještě není obsazený, a pokud ano, oznámit to uživateli. Maximální délka jedné rezervace jsou 3 hodiny."*
+
+- **Podstatná jména** (data, se kterými program pracuje) → *jméno, datum, čas rezervace, termín, délka rezervace* — to jsou kandidáti na vlastnosti tříd nebo parametry metod.
+- **Slovesa** (akce, které program musí umět) → *zadá, ověřit, oznámit* — to jsou kandidáti na metody.
+- **Čísla a omezující slova** (musí, nejvýše, pouze...) → *"musí ověřit"*, *"maximální délka... 3 hodiny"* — to jsou kandidáti na validaci a hraniční hodnoty pro testování (kapitola **Testování**).
+
+Rozepsáno do stejné struktury jako výše:
+
+- **Vstup:** jméno zákazníka, datum, čas, délka rezervace
+- **Výstup:** potvrzení rezervace, nebo oznámení o obsazenosti
+- **Omezení:** termín nesmí kolidovat s existující rezervací; délka nejvýše 3 hodiny
+
+> 💡 Tahle technika se hodí přesně v okamžiku, kdy zadání ještě nemá formu "vstup/výstup/omezení" — tedy vždy, když zadání nedostanete od učebnice, ale od člověka (učitele, klienta, nadřízeného).
+
 ### 2. Analýza
 
 Rozložte problém na části. Ptejte se: „Co všechno musím udělat, aby to fungovalo?"
@@ -157,3 +175,6 @@ Všimněte si, že každý podproblém jde řešit (a testovat!) samostatně —
 1. **Základní** — Proveďte dekompozici problému "napéct cukroví na Vánoce" do dvou úrovní.
 2. **Pokročilejší** — Proveďte dekompozici programu "jednoduchá kalkulačka pro dvě čísla". Ke každému podproblému napište, jaký má vstup a výstup.
 3. **Bonus (*)** — Vezměte svou dekompozici kalkulačky a najděte podproblém, který by šel znovu použít i v úplně jiném programu. Proč je znovupoužitelnost důležitá?
+4. **Bonus (*)** — Přečtěte si následující přepis rozhovoru s klientem a technikou podtrhávání z něj vytáhněte vstupy, výstupy, akce (metody) a omezení. Text je záměrně méně uspořádaný než klasické zadání — přesně tak zní požadavky ve skutečnosti.
+
+   > *"Potřebuju něco na hlídání docházky brigádníků. Oni prostě přijdou, řeknou svoje jméno, a já chci vědět, kdy přišli a kdy odešli. Jo a stane se, že někdo zapomene se odhlásit, tak by to mělo nějak upozornit, když je někdo 'přihlášený' déle než 12 hodin — to se prostě nemůže stát. Na konci měsíce potřebuju vidět součet hodin za každého brigádníka."*
