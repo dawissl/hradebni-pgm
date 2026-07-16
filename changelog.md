@@ -5,6 +5,9 @@ Sleduje pouze zásadní/větší úpravy napříč repozitářem (metodika prác
 Formát: `[oblast] co se změnilo`
 
 ## 15. 7. 2026
+- [učebnice] přidání kapitol - Principy testování, singleton a SOLID, Stromové struktury a halda
+
+## 15. 7. 2026
 - [učebnice] revize všech kapitol
 - [učebnice] přidání kapitol - Generika, XML Dokumentace, Pattern Matching, Nullable, Životní cyklus programu, Delegáti, Export knihovny
 
