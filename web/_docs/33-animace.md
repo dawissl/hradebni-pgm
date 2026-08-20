@@ -65,6 +65,8 @@ public partial class Form1 : Form
 }
 ```
 
+<!-- TODO: gif - krátká nahrávka odrážejícího se míčku na formuláři (2-3 sekundy, smyčka) -->
+
 ---
 
 ## DoubleBuffered — zbavení se blikání

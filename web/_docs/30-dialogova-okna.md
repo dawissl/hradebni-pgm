@@ -51,6 +51,8 @@ if (result == DialogResult.Yes)
 }
 ```
 
+<!-- TODO: screenshot - MessageBox s tlačítky Ano/Ne a ikonou Warning -->
+
 ---
 
 ## OpenFileDialog — výběr souboru
@@ -70,6 +72,8 @@ if (dialog.ShowDialog() == DialogResult.OK)
 
 Vlastnost `Filter` určuje typy souborů v rozevíracím seznamu dialogu. Formát: `"Popis (*.ext)|*.ext"`. Více typů oddělujete `|`.
 
+<!-- TODO: screenshot - dialog pro otevření souboru s nastaveným Filter (Textové soubory) -->
+
 ---
 
 ## SaveFileDialog — uložení souboru
@@ -87,6 +91,8 @@ if (dialog.ShowDialog() == DialogResult.OK)
 }
 ```
 
+<!-- TODO: screenshot - dialog pro uložení souboru s předvyplněným názvem -->
+
 ---
 
 ## ColorDialog — výběr barvy
@@ -100,6 +106,8 @@ if (dialog.ShowDialog() == DialogResult.OK)
     panelNahled.BackColor = dialog.Color;
 }
 ```
+
+<!-- TODO: screenshot - dialog pro výběr barvy -->
 
 ---
 
@@ -115,6 +123,8 @@ if (dialog.ShowDialog() == DialogResult.OK)
 }
 ```
 
+<!-- TODO: screenshot - dialog pro výběr písma -->
+
 ---
 
 ## Vlastní formulářové okno
@@ -122,6 +132,8 @@ if (dialog.ShowDialog() == DialogResult.OK)
 Někdy standardní dialogy nestačí — potřebujete vlastní okno s konkrétními poli.
 
 **1. Přidejte nový formulář:** pravý klik na projekt → Přidat → Formulář Windows Forms → pojmenujte ho (např. `FormNastaveni`).
+
+<!-- TODO: screenshot - kontextové menu projektu: Přidat → Formulář Windows Forms -->
 
 **2. Navrhněte UI** v Designeru — přidejte komponenty, tlačítka OK a Storno.
 

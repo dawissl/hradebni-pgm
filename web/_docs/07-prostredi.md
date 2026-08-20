@@ -14,6 +14,8 @@ Během instalace vyberte **workload** (sadu nástrojů):
 
 - ✅ **.NET desktop development** – pro konzolové a Windows Forms aplikace
 
+<!-- TODO: screenshot - obrazovka VS Installeru s zaškrtnutým workloadem ".NET desktop development" -->
+
 Instalace stáhne potřebné komponenty a zabere cca 5–10 GB místa na disku. Po dokončení restartujte počítač.
 
 > 💡 Aktuální verze je **Visual Studio 2026**. Pokud máte starší, základní principy jsou stejné.
@@ -31,6 +33,9 @@ Po spuštění Visual Studia:
 5. Pojmenujte projekt – např. `HelloWorld`
 6. Zvolte umístění na disku (vytvořte složku `C# Projekty`)
 7. Klikněte **Vytvořit**
+
+<!-- TODO: screenshot - dialog "Vytvořit nový projekt" s vyhledaným "Console App" a zvoleným jazykem C# -->
+<!-- TODO: screenshot - dialog s názvem projektu a umístěním na disku -->
 
 ---
 
@@ -51,6 +56,8 @@ HelloWorld/
 | `.sln` | **Solution** – kontejner, který sdružuje projekty. Tento soubor otevírejte pro znovuotevření práce. |
 | `.csproj` | **Projekt** – definuje nastavení jednoho programu nebo knihovny |
 | `Program.cs` | Zdrojový kód – sem píšete C# |
+
+<!-- TODO: screenshot - Solution Explorer zobrazující strukturu HelloWorld.sln → HelloWorld → Program.cs -->
 
 > ⚠️ Pro znovuotevření projektu vždy klikněte na `.sln`, ne na `.cs`.
 
@@ -88,7 +95,11 @@ Hello World
 
 Stiskněte Enter – okno se zavře.
 
+<!-- TODO: screenshot - běžící konzolové okno s vypsaným textem "Hello World" -->
+
 > 💡 Zkuste kód vždy **napsat ručně**, ne kopírovat. Procvičíte si práci s IDE a všimnete si IntelliSense – automatického doplňování, které se zobrazí po napsání tečky (`.`).
+
+<!-- TODO: screenshot - IntelliSense nabídka po napsání tečky za "Console." -->
 
 ---
 
@@ -103,11 +114,15 @@ Proto je v příkladu výše `Console.Read()` – drží okno otevřené i při 
 
 Režim s debuggerem slouží k postupnému procházení kódu řádek po řádku. Pokud nechceme procházet celý kód od začátku, lze umístit na příslušný řádek tzv. **breakpoint**. Ten způsobí, že aplikace běží samostatně až do momentu než narazí na řádek s breakpointem. Od tohoto momentu lze kód krokovat. 
 
+<!-- TODO: screenshot - řádek kódu s nastaveným breakpointem (červená tečka) a zastaveným během v okně Locals -->
+
 ---
 
 ## Chyba při spuštění
 
 Pokud program nejde spustit, Visual Studio ukáže chybu v okně **Error List** (dole). Poklepáním na chybu přejdete přesně na problematický řádek i soubor, pokud již pracujete s více soubory.
+
+<!-- TODO: screenshot - okno Error List se seznamem chyb -->
 
 Nejčastější chyby začátečníků:
 

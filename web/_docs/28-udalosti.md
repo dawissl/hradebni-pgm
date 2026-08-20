@@ -50,11 +50,15 @@ private void buttonOK_Click(object sender, EventArgs e)
 }
 ```
 
+<!-- TODO: screenshot - dvojklik na Button v Designeru → automaticky vygenerovaná kostra metody v kódu -->
+
 ### Způsob 2 — přes panel Properties
 
 1. Vyberte komponentu v Designeru
 2. V panelu Properties klikněte na ikonu blesku ⚡ (Events)
 3. Najděte požadovanou událost a dvojklikněte na prázdné pole vedle ní
+
+<!-- TODO: screenshot - Properties okno s ikonou blesku (Events) a seznamem dostupných událostí -->
 
 Tento způsob použijte, když potřebujete jiný event než výchozí (např. `MouseEnter`, `KeyDown`).
 

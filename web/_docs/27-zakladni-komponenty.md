@@ -14,6 +14,8 @@ Komponenty přidáváme na formulář pomocí okna **Toolbox**. Každá komponen
 
 > 💡 Jak přesně události a jejich obsluha (event handlery) funguje, si podrobně vysvětlíme v příští kapitole. Tady si jen u každé komponenty ukážeme, jak typický zápis vypadá.
 
+<!-- TODO: screenshot - panel Toolbox s kategorií Common Controls -->
+
 ---
 
 ## Label
@@ -39,6 +41,8 @@ lblResult.Text = "Hotovo";
 | BackColor | Barva pozadí |
 | Visible | Viditelnost komponenty |
 | AutoSize | Automatické přizpůsobení velikosti |
+
+<!-- TODO: screenshot - Label na formuláři + okno Properties se zvýrazněnou vlastností Text -->
 
 ### Nejčastější použití
 
@@ -76,6 +80,8 @@ private void btnSave_Click(object sender, EventArgs e)
 |---|---|
 | Click | Kliknutí na tlačítko |
 
+<!-- TODO: screenshot - Button na formuláři + Properties se zvýrazněnou vlastností Name (btnSave) -->
+
 ### Nejčastější použití
 
 - potvrzení formuláře,
@@ -108,6 +114,8 @@ string name = txtName.Text;
 | Událost | Význam |
 |---|---|
 | TextChanged | Změna textu |
+
+<!-- TODO: screenshot - TextBox s nastaveným PasswordChar (skryté znaky) a druhý s Multiline -->
 
 ### Nejčastější použití
 
@@ -143,6 +151,8 @@ if (chkTerms.Checked)
 |---|---|
 | CheckedChanged | Změna stavu |
 
+<!-- TODO: screenshot - CheckBox na formuláři v zaškrtnutém i nezaškrtnutém stavu -->
+
 ### Nejčastější použití
 
 - souhlas s podmínkami,
@@ -177,6 +187,8 @@ if (radMale.Checked)
 
 > 💡 RadioButtony umístěné ve stejné skupině umožňují vybrat pouze jednu možnost.
 
+<!-- TODO: screenshot - dvě skupiny RadioButtonů v oddělených GroupBoxech -->
+
 ### Nejčastější použití
 
 - výběr pohlaví,
@@ -200,6 +212,8 @@ cmbCity.Items.Add("Praha");
 cmbCity.Items.Add("Brno");
 cmbCity.Items.Add("Ostrava");
 ```
+
+<!-- TODO: screenshot - Editor kolekce (Items) otevřený z Properties u ComboBoxu -->
 
 ### Důležité vlastnosti
 
@@ -247,6 +261,8 @@ lstStudents.Items.Add("Jana");
 |---|---|
 | SelectedIndexChanged | Změna výběru |
 
+<!-- TODO: screenshot - ListBox s několika položkami na formuláři -->
+
 ### Nejčastější použití
 
 - seznam studentů,
@@ -270,6 +286,8 @@ picLogo.Image = Image.FromFile("logo.png");
 | Image | Zobrazený obrázek |
 | SizeMode | Způsob zobrazení |
 | Visible | Viditelnost |
+
+<!-- TODO: screenshot - PictureBox s nastavením SizeMode na StretchImage vs Normal -->
 
 ### Nejčastější použití
 

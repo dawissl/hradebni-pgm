@@ -33,6 +33,8 @@ using SolidBrush stetec = new SolidBrush(Color.LightYellow);
 
 > 📌 Toto je jiný význam `using` než ten z kapitoly 5 (import jmenného prostoru). Tady `using Pen pero = ...;` znamená „až tato proměnná vypadne z platnosti, automaticky zavolej `pero.Dispose()`" — hodí se u objektů, které si berou omezené systémové prostředky (zde: kreslicí nástroj) a je potřeba je po použití uvolnit.
 
+<!-- TODO: screenshot - okno Properties se zvýrazněnou vlastností barvy otevírající barevnou paletu -->
+
 ---
 
 ## Kreslicí metody

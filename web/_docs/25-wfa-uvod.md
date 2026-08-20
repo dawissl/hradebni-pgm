@@ -64,6 +64,8 @@ V kapitole **Grafické aplikace — WinForms** jsme viděli, jak projekt vznikne
 | `Form1.Designer.cs` | Automaticky generovaný kód – deklarace komponent a jejich vlastnosti |
 | `Form1.resx` | Zdroje (resources) – obrázky, ikony, lokalizované texty |
 
+<!-- TODO: screenshot - Solution Explorer s rozbaleným uzlem Form1.cs ukazujícím Form1.Designer.cs a Form1.resx -->
+
 ### Co se stane, když v designeru přidáte tlačítko?
 
 1. Přetáhnete `Button` z Toolboxu na plochu okna
@@ -72,6 +74,8 @@ V kapitole **Grafické aplikace — WinForms** jsme viděli, jak projekt vznikne
    - v metodě `InitializeComponent()` nastavení vlastností (`this.button1.Text = "button1"; this.button1.Location = new Point(50, 50); ...`)
    - přidání komponenty do okna (`this.Controls.Add(this.button1);`)
 3. Váš `Form1.cs` se **nezmění** – proto v něm můžete mít vlastní kód, aniž by ho designer přepsal
+
+<!-- TODO: screenshot - přetažení Button z Toolboxu na formulář + zvýrazněný vygenerovaný řádek v Form1.Designer.cs -->
 
 ### Co se stane, když `Form1.Designer.cs` smažete nebo poškodíte?
 

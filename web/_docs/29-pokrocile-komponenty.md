@@ -79,6 +79,8 @@ if (tabControl1.SelectedTab.Text == "Kontakt")
 }
 ```
 
+<!-- TODO: screenshot - TabControl s otevřeným editorem TabPages (přidávání záložek) -->
+
 ---
 
 ## Timer — opakované akce
@@ -103,6 +105,8 @@ private void timer1_Tick(object sender, EventArgs e)
 
 > 💡 `timer1.Start()` je totéž jako `timer1.Enabled = true`. Pro zastavení: `timer1.Stop()`.
 
+<!-- TODO: screenshot - Timer jako neviditelná komponenta v tray pod formulářem + nastavení Interval v Properties -->
+
 ---
 
 ## NumericUpDown — číselný vstup
@@ -126,6 +130,8 @@ int rok = (int)numericUpDownRok.Value;
 > 💡 `Value` má typ `decimal` — pro celočíselné použití je potřeba přetypovat: `(int)numericUpDownRok.Value`.
 
 Výhoda oproti `TextBox` s validací: `NumericUpDown` neumožní zadat nesmyslnou hodnotu už na vstupu — uživatel nemůže napsat písmeno ani zadat číslo mimo povolený rozsah.
+
+<!-- TODO: screenshot - NumericUpDown na formuláři s šipkami nahoru/dolů -->
 
 ---
 
@@ -159,6 +165,8 @@ listView1.Items.Add(item);
 | Editace buněk | Ne | Ne | Ano |
 | Vhodné pro | Jednoduchý seznam | Seznam s ikonami/sloupci bez editace | Tabulková data k editaci |
 
+<!-- TODO: screenshot - ListView v pohledu Details se sloupci Jméno/Věk -->
+
 ---
 
 ## DataGridView — tabulková data
@@ -189,6 +197,8 @@ dataGridView1.DataSource = seznam;
 ```
 
 DataGridView automaticky vytvoří sloupec pro každou veřejnou property třídy `Zamestnanec`.
+
+<!-- TODO: screenshot - DataGridView s daty napojenými přes DataSource, automaticky vytvořené sloupce -->
 
 ### Čtení vybraného řádku
 
