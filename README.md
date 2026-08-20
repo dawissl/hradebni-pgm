@@ -35,7 +35,7 @@
 
 ### Aktivní přístup v hodinách, řešení implementace
 - V průběhu hodin bude hodnocena implementace zadaných projektů a samostatná práce (váha 3–5).  
-- Pokud student práci v hodině neodevzdá, je tato práce hodnocena známkou **N (neklasifikováno)**. Aktivita v hodině je však hodnocena samostatně se stejnou vahou, jakou měla původní práce.  
+- Pokud žák práci v hodině neodevzdá, je tato práce hodnocena známkou **N (neklasifikováno)**. Aktivita v hodině je však hodnocena samostatně se stejnou vahou, jakou měla původní práce.  
 - Bonusové známky lze získat za aktivitu v hodinách.  
 
 ### Dobrovolné domácí práce (váha 1–3)
@@ -56,7 +56,7 @@
 ---
 
 ## Docházka
-- Student nepřekročí povolenou absenci vycházející ze školního řádu.  
+- Žák nepřekročí povolenou absenci vycházející ze školního řádu.  
 - V případě překročení absence je klasifikace diskutována s třídním a vyhodnocena individuálně.  
 
 ---
