@@ -46,12 +46,15 @@
 ## Výsledná známka
 
 - Výsledná známka vychází jako vážený průměr z výše uvedeného hodnocení.  
-- Nerozhodná známka je v intervalu **X,40–X,60** (např. 2,40–2,60).  
+- Nerozhodná známka je v intervalu **X,40–X,60** (např. 2,40–2,60).
+- U známky 5 je hranice pro hodnocení nedostatečný stanovena od hodnoty váženého průměru 4,35 včetně.
+- Pokud vážený průměr dosáhne hodnoty 4,35 a vyšší, je výsledná známka nedostatečná.  
 - V případě nerozhodné známky rozhodují dodatečná kritéria:
   - Přístup k výuce
   - Připravenost na jednotlivé hodiny
   - Vypracování dobrovolných úkolů
   - Chování v hodinách
+- 
 
 ---
 
