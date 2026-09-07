@@ -4,6 +4,9 @@ Sleduje pouze zásadní/větší úpravy napříč repozitářem (metodika prác
 
 Formát: `[oblast] co se změnilo`
 
+## 7. 9. 2026
+- [prezentace] vytvoření a přidání nových verzí prezentací pro 3. ročník
+
 ## 16. 7. 2026
 - [učebnice] přidání kapitol - Principy testování, singleton a SOLID, Stromové struktury a halda
 
