@@ -4,9 +4,6 @@ title: "Kam dál?"
 order: 900
 ---
 
-🚧 **Tato kapitola se teprve připravuje.** 
-
----
 
 Pokud jste se dostali až sem, prošli jste cestu od „co je to vlastně algoritmus" až po generika, delegáty a vlastní knihovny. To není málo. Tahle poslední kapitola nemá učit novou syntaxi — je to mapa. C# a .NET jsou jen výchozí bod; ukážeme si, kam z něj vedou cesty, a co se z toho, co už umíte, na každé z nich přímo hodí.
 
